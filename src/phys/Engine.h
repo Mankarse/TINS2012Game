@@ -1,14 +1,38 @@
-//
-//  Engine.h
-//  TINSGame2012
-//
-//  Created by Evan Wallace on 4/08/12.
-//
-//
+#ifndef TINSGame2012__Engine
+#define TINSGame2012__Engine
+#include <memory>
 
-#ifndef __TINSGame2012__Engine__
-#define __TINSGame2012__Engine__
+struct Continuation {};
 
-#include <iostream>
+struct NormalContinuation:Continuation{
 
-#endif /* defined(__TINSGame2012__Engine__) */
+};
+
+struct CaveContinuation:Continuation{
+    //Cave/Save Data (i.e. score, score delta, dragon stats, spawner stats)
+};
+
+struct LoseContinuation:Continuation{
+    //Final Score
+};
+
+/*struct PauseContinuation:Continuation{
+    Bitmap currentView;
+};
+*/
+
+struct ExitContinuation:Continuation{
+};
+
+class Engine {
+    public:
+    std::auto_ptr<Continuation> logicStep();
+    
+    void render();
+    //
+    //
+    //
+    //
+};
+
+#endif /* defined(TINSGame2012__Engine) */

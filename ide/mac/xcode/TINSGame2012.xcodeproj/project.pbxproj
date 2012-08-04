@@ -10,6 +10,8 @@
 		2058B8A315CCE5CF00C316BB /* Viewport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2058B8A115CCE5CF00C316BB /* Viewport.cpp */; };
 		2058B8A715CCF2BD00C316BB /* GroundHeightmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2058B8A515CCF2BD00C316BB /* GroundHeightmap.cpp */; };
 		2058B8B015CCFAC700C316BB /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2058B8AE15CCFAC700C316BB /* GameObject.cpp */; };
+		2058B8B315CD081500C316BB /* GameObjManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2058B8B115CD081500C316BB /* GameObjManager.cpp */; };
+		2058B8B615CD105C00C316BB /* Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2058B8B415CD105C00C316BB /* Engine.cpp */; };
 		207F585815CCD7C60037B9D9 /* TINSGame2012-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 207F585715CCD7C60037B9D9 /* TINSGame2012-Info.plist */; };
 		207F585B15CCD7E90037B9D9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 207F585915CCD7E90037B9D9 /* main.cpp */; };
 		207F586715CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F585C15CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib */; };
@@ -33,6 +35,10 @@
 		2058B8A615CCF2BD00C316BB /* GroundHeightmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundHeightmap.h; sourceTree = "<group>"; };
 		2058B8AE15CCFAC700C316BB /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
 		2058B8AF15CCFAC700C316BB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
+		2058B8B115CD081500C316BB /* GameObjManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObjManager.cpp; sourceTree = "<group>"; };
+		2058B8B215CD081500C316BB /* GameObjManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObjManager.h; sourceTree = "<group>"; };
+		2058B8B415CD105C00C316BB /* Engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Engine.cpp; sourceTree = "<group>"; };
+		2058B8B515CD105C00C316BB /* Engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
 		207F585715CCD7C60037B9D9 /* TINSGame2012-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TINSGame2012-Info.plist"; sourceTree = "<group>"; };
 		207F585915CCD7E90037B9D9 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		207F585C15CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_acodec.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_acodec.5.0.7.dylib; sourceTree = "<group>"; };
@@ -79,8 +85,10 @@
 		2058B89F15CCE10600C316BB /* phys */ = {
 			isa = PBXGroup;
 			children = (
-				2058B8A515CCF2BD00C316BB /* GroundHeightmap.cpp */,
 				2058B8A615CCF2BD00C316BB /* GroundHeightmap.h */,
+				2058B8A515CCF2BD00C316BB /* GroundHeightmap.cpp */,
+				2058B8B515CD105C00C316BB /* Engine.h */,
+				2058B8B415CD105C00C316BB /* Engine.cpp */,
 			);
 			path = phys;
 			sourceTree = "<group>";
@@ -99,6 +107,8 @@
 			children = (
 				2058B8AE15CCFAC700C316BB /* GameObject.cpp */,
 				2058B8AF15CCFAC700C316BB /* GameObject.h */,
+				2058B8B115CD081500C316BB /* GameObjManager.cpp */,
+				2058B8B215CD081500C316BB /* GameObjManager.h */,
 			);
 			path = obj;
 			sourceTree = "<group>";
@@ -237,6 +247,8 @@
 				2058B8A315CCE5CF00C316BB /* Viewport.cpp in Sources */,
 				2058B8A715CCF2BD00C316BB /* GroundHeightmap.cpp in Sources */,
 				2058B8B015CCFAC700C316BB /* GameObject.cpp in Sources */,
+				2058B8B315CD081500C316BB /* GameObjManager.cpp in Sources */,
+				2058B8B615CD105C00C316BB /* Engine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,14 +1,14 @@
-//
-//  GameObjManager.h
-//  TINSGame2012
-//
-//  Created by Evan Wallace on 4/08/12.
-//
-//
 
-#ifndef __TINSGame2012__GameObjManager__
-#define __TINSGame2012__GameObjManager__
+#ifndef TINSGame2012__GameObjManager
+#define TINSGame2012__GameObjManager
+#include <vector>
+#include "GameObject.h"
+class GameObjManager
+{
+    public:
+    std::vector<GameObject*> existingObjects;
+    
+    void addObject(GameObject* newObject);
+};
 
-#include <iostream>
-
-#endif /* defined(__TINSGame2012__GameObjManager__) */
+#endif /* defined(TINSGame2012__GameObjManager) */
