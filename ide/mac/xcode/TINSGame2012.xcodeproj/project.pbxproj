@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2058B8A315CCE5CF00C316BB /* Viewport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2058B8A115CCE5CF00C316BB /* Viewport.cpp */; };
+		2058B8A715CCF2BD00C316BB /* GroundHeightmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2058B8A515CCF2BD00C316BB /* GroundHeightmap.cpp */; };
 		207F585815CCD7C60037B9D9 /* TINSGame2012-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 207F585715CCD7C60037B9D9 /* TINSGame2012-Info.plist */; };
 		207F585B15CCD7E90037B9D9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 207F585915CCD7E90037B9D9 /* main.cpp */; };
 		207F586715CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F585C15CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib */; };
@@ -27,6 +28,8 @@
 /* Begin PBXFileReference section */
 		2058B8A115CCE5CF00C316BB /* Viewport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Viewport.cpp; sourceTree = "<group>"; };
 		2058B8A215CCE5CF00C316BB /* Viewport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Viewport.h; sourceTree = "<group>"; };
+		2058B8A515CCF2BD00C316BB /* GroundHeightmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GroundHeightmap.cpp; sourceTree = "<group>"; };
+		2058B8A615CCF2BD00C316BB /* GroundHeightmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundHeightmap.h; sourceTree = "<group>"; };
 		207F585715CCD7C60037B9D9 /* TINSGame2012-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TINSGame2012-Info.plist"; sourceTree = "<group>"; };
 		207F585915CCD7E90037B9D9 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		207F585C15CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_acodec.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_acodec.5.0.7.dylib; sourceTree = "<group>"; };
@@ -73,6 +76,8 @@
 		2058B89F15CCE10600C316BB /* phys */ = {
 			isa = PBXGroup;
 			children = (
+				2058B8A515CCF2BD00C316BB /* GroundHeightmap.cpp */,
+				2058B8A615CCF2BD00C316BB /* GroundHeightmap.h */,
 			);
 			path = phys;
 			sourceTree = "<group>";
@@ -217,6 +222,7 @@
 			files = (
 				207F585B15CCD7E90037B9D9 /* main.cpp in Sources */,
 				2058B8A315CCE5CF00C316BB /* Viewport.cpp in Sources */,
+				2058B8A715CCF2BD00C316BB /* GroundHeightmap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
