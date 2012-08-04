@@ -17,6 +17,6 @@ class Viewport {
     
     public:
     void renderScreen();
-}
+};
 
 #endif /* defined(__TINSGame2012__Viewport__) */
