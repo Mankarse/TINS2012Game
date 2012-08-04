@@ -1,13 +1,12 @@
-#ifndef TINSGame2012_MainMenu_h
-#define TINSGame2012_MainMenu_h
-#include <iostream>
+#ifndef TINSGame2012_Game_h
+#define TINSGame2012_Game_h
 #include "Scene.h"
 
 inline bool isDisplayClosedEvent(ALLEGRO_EVENT const& e) {
     return e.type == ALLEGRO_EVENT_DISPLAY_CLOSE;
 }
 
-class MainMenu:public Scene {
+class Game:public Scene {
 public:
     void init() {
     }
@@ -21,4 +20,5 @@ public:
         
     }
 };
+
 #endif

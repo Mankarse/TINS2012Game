@@ -77,6 +77,7 @@
 		20E7360215CD2EA000A4F90B /* Scene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
 		20E7360315CD305400A4F90B /* MainMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainMenu.h; sourceTree = "<group>"; };
 		20E7360415CD30F300A4F90B /* InputState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputState.h; sourceTree = "<group>"; };
+		20E7360515CD465100A4F90B /* Game.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		20FE1FB515CCD6250055B92B /* TINSGame2012.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = TINSGame2012.app; path = "Chocozumas Revenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20FE1FB915CCD6250055B92B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		20FE1FBC15CCD6250055B92B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -178,6 +179,7 @@
 				20E7360215CD2EA000A4F90B /* Scene.h */,
 				20E7360315CD305400A4F90B /* MainMenu.h */,
 				20E7360415CD30F300A4F90B /* InputState.h */,
+				20E7360515CD465100A4F90B /* Game.h */,
 			);
 			path = scene;
 			sourceTree = "<group>";
