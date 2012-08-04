@@ -1,6 +1,6 @@
 #include "Engine.h"
 
-    void Engine::logicStep() {
+    std::auto_ptr<Continuation> Engine::logicStep() {
         
         //So where does screen control come in to this?
         
