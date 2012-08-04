@@ -25,6 +25,17 @@
 		207F586F15CCDB410037B9D9 /* liballegro_primitives.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F586415CCDB410037B9D9 /* liballegro_primitives.5.0.7.dylib */; };
 		207F587015CCDB410037B9D9 /* liballegro_ttf.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F586515CCDB410037B9D9 /* liballegro_ttf.5.0.7.dylib */; };
 		207F587115CCDB410037B9D9 /* liballegro.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F586615CCDB410037B9D9 /* liballegro.5.0.7.dylib */; };
+		20E735F315CD091100A4F90B /* ContinueDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735E815CD091100A4F90B /* ContinueDown.png */; };
+		20E735F415CD091100A4F90B /* ContinueGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735E915CD091100A4F90B /* ContinueGrey.png */; };
+		20E735F515CD091100A4F90B /* ContinueUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735EA15CD091100A4F90B /* ContinueUp.png */; };
+		20E735F615CD091100A4F90B /* ExitDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735EB15CD091100A4F90B /* ExitDown.png */; };
+		20E735F715CD091100A4F90B /* ExitUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735EC15CD091100A4F90B /* ExitUp.png */; };
+		20E735F815CD091100A4F90B /* InstructionsDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735ED15CD091100A4F90B /* InstructionsDown.png */; };
+		20E735F915CD091100A4F90B /* InstructionsUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735EE15CD091100A4F90B /* InstructionsUp.png */; };
+		20E735FA15CD091100A4F90B /* MenuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735EF15CD091100A4F90B /* MenuBackground.png */; };
+		20E735FB15CD091100A4F90B /* NewGameDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735F015CD091100A4F90B /* NewGameDown.png */; };
+		20E735FC15CD091100A4F90B /* NewGameUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735F115CD091100A4F90B /* NewGameUp.png */; };
+		20E735FD15CD091100A4F90B /* Title.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735F215CD091100A4F90B /* Title.png */; };
 		20FE1FBA15CCD6250055B92B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FE1FB915CCD6250055B92B /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +63,18 @@
 		207F586415CCDB410037B9D9 /* liballegro_primitives.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_primitives.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_primitives.5.0.7.dylib; sourceTree = "<group>"; };
 		207F586515CCDB410037B9D9 /* liballegro_ttf.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_ttf.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_ttf.5.0.7.dylib; sourceTree = "<group>"; };
 		207F586615CCDB410037B9D9 /* liballegro.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro.5.0.7.dylib; sourceTree = "<group>"; };
+		20E735E715CD06B800A4F90B /* Globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		20E735E815CD091100A4F90B /* ContinueDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContinueDown.png; sourceTree = "<group>"; };
+		20E735E915CD091100A4F90B /* ContinueGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContinueGrey.png; sourceTree = "<group>"; };
+		20E735EA15CD091100A4F90B /* ContinueUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContinueUp.png; sourceTree = "<group>"; };
+		20E735EB15CD091100A4F90B /* ExitDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ExitDown.png; sourceTree = "<group>"; };
+		20E735EC15CD091100A4F90B /* ExitUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ExitUp.png; sourceTree = "<group>"; };
+		20E735ED15CD091100A4F90B /* InstructionsDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InstructionsDown.png; sourceTree = "<group>"; };
+		20E735EE15CD091100A4F90B /* InstructionsUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InstructionsUp.png; sourceTree = "<group>"; };
+		20E735EF15CD091100A4F90B /* MenuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBackground.png; sourceTree = "<group>"; };
+		20E735F015CD091100A4F90B /* NewGameDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameDown.png; sourceTree = "<group>"; };
+		20E735F115CD091100A4F90B /* NewGameUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewGameUp.png; sourceTree = "<group>"; };
+		20E735F215CD091100A4F90B /* Title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Title.png; sourceTree = "<group>"; };
 		20FE1FB515CCD6250055B92B /* TINSGame2012.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = TINSGame2012.app; path = "Chocozumas Revenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20FE1FB915CCD6250055B92B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		20FE1FBC15CCD6250055B92B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -119,6 +142,7 @@
 				2058B8AC15CCFA9600C316BB /* obj */,
 				2058B8A415CCE5E900C316BB /* cam */,
 				2058B89F15CCE10600C316BB /* phys */,
+				20E735E715CD06B800A4F90B /* Globals.h */,
 				207F585915CCD7E90037B9D9 /* main.cpp */,
 			);
 			name = src;
@@ -128,6 +152,17 @@
 		205E8C2C15CCD77C00CD2AA5 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				20E735E815CD091100A4F90B /* ContinueDown.png */,
+				20E735E915CD091100A4F90B /* ContinueGrey.png */,
+				20E735EA15CD091100A4F90B /* ContinueUp.png */,
+				20E735EB15CD091100A4F90B /* ExitDown.png */,
+				20E735EC15CD091100A4F90B /* ExitUp.png */,
+				20E735ED15CD091100A4F90B /* InstructionsDown.png */,
+				20E735EE15CD091100A4F90B /* InstructionsUp.png */,
+				20E735EF15CD091100A4F90B /* MenuBackground.png */,
+				20E735F015CD091100A4F90B /* NewGameDown.png */,
+				20E735F115CD091100A4F90B /* NewGameUp.png */,
+				20E735F215CD091100A4F90B /* Title.png */,
 				207F585715CCD7C60037B9D9 /* TINSGame2012-Info.plist */,
 			);
 			name = res;
@@ -232,7 +267,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				207F585815CCD7C60037B9D9 /* TINSGame2012-Info.plist in Resources */,
+				20E735F315CD091100A4F90B /* ContinueDown.png in Resources */,
+				20E735F415CD091100A4F90B /* ContinueGrey.png in Resources */,
+				20E735F515CD091100A4F90B /* ContinueUp.png in Resources */,
+				20E735F615CD091100A4F90B /* ExitDown.png in Resources */,
+				20E735F715CD091100A4F90B /* ExitUp.png in Resources */,
+				20E735F815CD091100A4F90B /* InstructionsDown.png in Resources */,
+				20E735F915CD091100A4F90B /* InstructionsUp.png in Resources */,
+				20E735FA15CD091100A4F90B /* MenuBackground.png in Resources */,
+				20E735FB15CD091100A4F90B /* NewGameDown.png in Resources */,
+				20E735FC15CD091100A4F90B /* NewGameUp.png in Resources */,
+				20E735FD15CD091100A4F90B /* Title.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
