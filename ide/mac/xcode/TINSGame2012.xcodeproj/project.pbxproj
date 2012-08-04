@@ -36,6 +36,7 @@
 		20E735FC15CD091100A4F90B /* NewGameUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735F115CD091100A4F90B /* NewGameUp.png */; };
 		20E735FD15CD091100A4F90B /* Title.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735F215CD091100A4F90B /* Title.png */; };
 		20E7360715CD5C7D00A4F90B /* TitleMus.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 20E7360615CD5C7D00A4F90B /* TitleMus.ogg */; };
+		20E7360C15CD768700A4F90B /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E7360B15CD768700A4F90B /* MainMenu.cpp */; };
 		20FE1FBA15CCD6250055B92B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FE1FB915CCD6250055B92B /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		20E7360515CD465100A4F90B /* Game.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		20E7360615CD5C7D00A4F90B /* TitleMus.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = TitleMus.ogg; sourceTree = "<group>"; };
 		20E7360815CD67EB00A4F90B /* Rect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rect.h; sourceTree = "<group>"; };
+		20E7360B15CD768700A4F90B /* MainMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenu.cpp; sourceTree = "<group>"; };
 		20FE1FB515CCD6250055B92B /* TINSGame2012.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = TINSGame2012.app; path = "Chocozumas Revenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20FE1FB915CCD6250055B92B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		20FE1FBC15CCD6250055B92B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -183,6 +185,7 @@
 			children = (
 				20E7360215CD2EA000A4F90B /* Scene.h */,
 				20E7360315CD305400A4F90B /* MainMenu.h */,
+				20E7360B15CD768700A4F90B /* MainMenu.cpp */,
 				20E7360415CD30F300A4F90B /* InputState.h */,
 				20E7360515CD465100A4F90B /* Game.h */,
 			);
@@ -315,6 +318,7 @@
 				2058B8B015CCFAC700C316BB /* GameObject.cpp in Sources */,
 				2058B8B315CD081500C316BB /* GameObjManager.cpp in Sources */,
 				2058B8B615CD105C00C316BB /* Engine.cpp in Sources */,
+				20E7360C15CD768700A4F90B /* MainMenu.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
