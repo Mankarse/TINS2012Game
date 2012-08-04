@@ -162,9 +162,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		20FE1FB415CCD6250055B92B /* TINSGame2012 */ = {
+		20FE1FB415CCD6250055B92B /* Chocozumas Revenge */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 20FE1FD115CCD6250055B92B /* Build configuration list for PBXNativeTarget "TINSGame2012" */;
+			buildConfigurationList = 20FE1FD115CCD6250055B92B /* Build configuration list for PBXNativeTarget "Chocozumas Revenge" */;
 			buildPhases = (
 				20FE1FB115CCD6250055B92B /* Sources */,
 				20FE1FB215CCD6250055B92B /* Frameworks */,
@@ -174,7 +174,7 @@
 			);
 			dependencies = (
 			);
-			name = TINSGame2012;
+			name = "Chocozumas Revenge";
 			productName = TINSGame2012;
 			productReference = 20FE1FB515CCD6250055B92B /* TINSGame2012.app */;
 			productType = "com.apple.product-type.application";
@@ -199,7 +199,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				20FE1FB415CCD6250055B92B /* TINSGame2012 */,
+				20FE1FB415CCD6250055B92B /* Chocozumas Revenge */,
 			);
 		};
 /* End PBXProject section */
@@ -320,7 +320,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		20FE1FD115CCD6250055B92B /* Build configuration list for PBXNativeTarget "TINSGame2012" */ = {
+		20FE1FD115CCD6250055B92B /* Build configuration list for PBXNativeTarget "Chocozumas Revenge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				20FE1FD215CCD6250055B92B /* Debug */,
