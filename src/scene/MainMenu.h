@@ -4,6 +4,7 @@
 #include "Scene.h"
 #include "Globals.h"
 #include "Rect.h"
+#include "Game.h"
 
 inline bool isDisplayClosedEvent(ALLEGRO_EVENT const& e) {
     return e.type == ALLEGRO_EVENT_DISPLAY_CLOSE;

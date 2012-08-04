@@ -5,6 +5,7 @@
 #include "GroundHeightmap.h"
 #include "Geometry.h"
 #include <allegro5/allegro.h>
+#include "Globals.h"
 #include <vector>
 
 
@@ -26,7 +27,7 @@ private:
         return e.type == ALLEGRO_EVENT_DISPLAY_CLOSE;
     }
 
-    ALLEGRO_BITMAP background;
+    ALLEGRO_BITMAP* background;
 
 public:
     Game() :
@@ -38,7 +39,7 @@ public:
     
     
     void init() {
-        // Remember to implement this!
+        background = g_MenuBackground;
     }
     
     Point2D mouseToWorldPos(Point2D mousePosition) {
