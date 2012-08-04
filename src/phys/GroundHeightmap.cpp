@@ -13,7 +13,11 @@ GroundHeightmap::GroundHeightmap(int newRes, int newWidth, std::vector<double> c
     width(newWidth),
     data(newData) {}
     
-double GroundHeightmap::getInterpolatedPoint(double xPos) {
+void GroundHeightmap::draw(Point2D screenPos) const {
+    
+}
+    
+double GroundHeightmap::getInterpolatedPoint(double xPos) const{
     double p1;
     double p2;
     double proportion;

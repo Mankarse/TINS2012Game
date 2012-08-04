@@ -10,6 +10,7 @@
 #define TINSGame2012__GroundHeightmap
 #include <vector>
 #include <cmath>
+#include "Geometry.h"
 class GroundHeightmap {
     private:
     int resolution;
@@ -18,8 +19,8 @@ class GroundHeightmap {
     
     public: 
     GroundHeightmap(int newRes, int newWidth, std::vector<double> const& newData);
-    
-    double getInterpolatedPoint(double xPos);
+    void draw(Point2D screenPos) const;
+    double getInterpolatedPoint(double xPos) const;
     
     
 };

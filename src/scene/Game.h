@@ -42,12 +42,16 @@ public:
         background = g_MenuBackground;
     }
     
-    Point2D mouseToWorldPos(Point2D mousePosition) {
+    Point2D mouseToWorldPos(Point2D const& mousePosition) const {
         int windowX;
         int windowY;
         al_get_window_position(al_get_current_display(), &windowX, &windowY);
         Point2D retV = mousePosition - Point2D(windowX, windowY);
         return retV - screenCentre;
+    }
+    
+    Point2D worldToScreenPoint(Point2D const& worldPosition, double layer = 1) const {
+        return (worldPosition - screenCentre) * layer;
     }
     
     virtual Scene* update(InputState const& input) {
@@ -71,7 +75,13 @@ public:
         return this;
     }
     virtual void renderTo(ALLEGRO_BITMAP* target) const {
+        // Collect renderables, add to queues
+        
         // Render each queue, in order
+        // Background:
+        Point2D backgroundPos = worldToScreenPoint(screenCentre, 0.1);
+        al_draw_scaled_bitmap(background, 100.f, 75.f, 200.f, 150.f, backgroundPos.x, backgroundPos.y, 800.f, 600.f, 0);
+        
         player.renderStep(screenCentre);
     }
 };
