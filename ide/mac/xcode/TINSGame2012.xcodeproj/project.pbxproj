@@ -12,6 +12,7 @@
 		2058B8B015CCFAC700C316BB /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2058B8AE15CCFAC700C316BB /* GameObject.cpp */; };
 		2058B8B315CD081500C316BB /* GameObjManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2058B8B115CD081500C316BB /* GameObjManager.cpp */; };
 		2058B8B615CD105C00C316BB /* Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2058B8B415CD105C00C316BB /* Engine.cpp */; };
+		2077483D15CD51E7000EAED4 /* Dragon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2077483B15CD51E7000EAED4 /* Dragon.cpp */; };
 		207F585B15CCD7E90037B9D9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 207F585915CCD7E90037B9D9 /* main.cpp */; };
 		207F586715CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F585C15CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib */; };
 		207F586815CCDB410037B9D9 /* liballegro_audio.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F585D15CCDB410037B9D9 /* liballegro_audio.5.0.7.dylib */; };
@@ -49,6 +50,9 @@
 		2058B8B215CD081500C316BB /* GameObjManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObjManager.h; sourceTree = "<group>"; };
 		2058B8B415CD105C00C316BB /* Engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Engine.cpp; sourceTree = "<group>"; };
 		2058B8B515CD105C00C316BB /* Engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
+		2077483B15CD51E7000EAED4 /* Dragon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dragon.cpp; sourceTree = "<group>"; };
+		2077483C15CD51E7000EAED4 /* Dragon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dragon.h; sourceTree = "<group>"; };
+		2077483F15CD62D6000EAED4 /* Geometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Geometry.h; sourceTree = "<group>"; };
 		207F585715CCD7C60037B9D9 /* TINSGame2012-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TINSGame2012-Info.plist"; sourceTree = "<group>"; };
 		207F585915CCD7E90037B9D9 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		207F585C15CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_acodec.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_acodec.5.0.7.dylib; sourceTree = "<group>"; };
@@ -135,6 +139,9 @@
 				2058B8AF15CCFAC700C316BB /* GameObject.h */,
 				2058B8B115CD081500C316BB /* GameObjManager.cpp */,
 				2058B8B215CD081500C316BB /* GameObjManager.h */,
+				2077483C15CD51E7000EAED4 /* Dragon.h */,
+				2077483B15CD51E7000EAED4 /* Dragon.cpp */,
+				2077483F15CD62D6000EAED4 /* Geometry.h */,
 			);
 			path = obj;
 			sourceTree = "<group>";
@@ -309,6 +316,7 @@
 				2058B8B015CCFAC700C316BB /* GameObject.cpp in Sources */,
 				2058B8B315CD081500C316BB /* GameObjManager.cpp in Sources */,
 				2058B8B615CD105C00C316BB /* Engine.cpp in Sources */,
+				2077483D15CD51E7000EAED4 /* Dragon.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
