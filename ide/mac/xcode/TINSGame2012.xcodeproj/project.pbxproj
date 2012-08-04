@@ -36,6 +36,7 @@
 		20E735FB15CD091100A4F90B /* NewGameDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735F015CD091100A4F90B /* NewGameDown.png */; };
 		20E735FC15CD091100A4F90B /* NewGameUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735F115CD091100A4F90B /* NewGameUp.png */; };
 		20E735FD15CD091100A4F90B /* Title.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735F215CD091100A4F90B /* Title.png */; };
+		20E7360715CD5C7D00A4F90B /* TitleMus.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 20E7360615CD5C7D00A4F90B /* TitleMus.ogg */; };
 		20FE1FBA15CCD6250055B92B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FE1FB915CCD6250055B92B /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +55,7 @@
 		2077483C15CD51E7000EAED4 /* Dragon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dragon.h; sourceTree = "<group>"; };
 		2077483F15CD62D6000EAED4 /* Geometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Geometry.h; sourceTree = "<group>"; };
 		207F585715CCD7C60037B9D9 /* TINSGame2012-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TINSGame2012-Info.plist"; sourceTree = "<group>"; };
-		207F585915CCD7E90037B9D9 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		207F585915CCD7E90037B9D9 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = main.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		207F585C15CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_acodec.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_acodec.5.0.7.dylib; sourceTree = "<group>"; };
 		207F585D15CCDB410037B9D9 /* liballegro_audio.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_audio.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_audio.5.0.7.dylib; sourceTree = "<group>"; };
 		207F585E15CCDB410037B9D9 /* liballegro_color.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_color.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_color.5.0.7.dylib; sourceTree = "<group>"; };
@@ -66,7 +67,7 @@
 		207F586415CCDB410037B9D9 /* liballegro_primitives.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_primitives.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_primitives.5.0.7.dylib; sourceTree = "<group>"; };
 		207F586515CCDB410037B9D9 /* liballegro_ttf.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_ttf.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_ttf.5.0.7.dylib; sourceTree = "<group>"; };
 		207F586615CCDB410037B9D9 /* liballegro.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro.5.0.7.dylib; sourceTree = "<group>"; };
-		20E735E715CD06B800A4F90B /* Globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		20E735E715CD06B800A4F90B /* Globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Globals.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		20E735E815CD091100A4F90B /* ContinueDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContinueDown.png; sourceTree = "<group>"; };
 		20E735E915CD091100A4F90B /* ContinueGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContinueGrey.png; sourceTree = "<group>"; };
 		20E735EA15CD091100A4F90B /* ContinueUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContinueUp.png; sourceTree = "<group>"; };
@@ -82,6 +83,8 @@
 		20E7360315CD305400A4F90B /* MainMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainMenu.h; sourceTree = "<group>"; };
 		20E7360415CD30F300A4F90B /* InputState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputState.h; sourceTree = "<group>"; };
 		20E7360515CD465100A4F90B /* Game.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		20E7360615CD5C7D00A4F90B /* TitleMus.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = TitleMus.ogg; sourceTree = "<group>"; };
+		20E7360815CD67EB00A4F90B /* Rect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rect.h; sourceTree = "<group>"; };
 		20FE1FB515CCD6250055B92B /* TINSGame2012.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = TINSGame2012.app; path = "Chocozumas Revenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20FE1FB915CCD6250055B92B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		20FE1FBC15CCD6250055B92B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -142,6 +145,7 @@
 				2077483C15CD51E7000EAED4 /* Dragon.h */,
 				2077483B15CD51E7000EAED4 /* Dragon.cpp */,
 				2077483F15CD62D6000EAED4 /* Geometry.h */,
+				20E7360815CD67EB00A4F90B /* Rect.h */,
 			);
 			path = obj;
 			sourceTree = "<group>";
@@ -163,6 +167,7 @@
 		205E8C2C15CCD77C00CD2AA5 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				20E7360615CD5C7D00A4F90B /* TitleMus.ogg */,
 				20E735E815CD091100A4F90B /* ContinueDown.png */,
 				20E735E915CD091100A4F90B /* ContinueGrey.png */,
 				20E735EA15CD091100A4F90B /* ContinueUp.png */,
@@ -300,6 +305,7 @@
 				20E735FB15CD091100A4F90B /* NewGameDown.png in Resources */,
 				20E735FC15CD091100A4F90B /* NewGameUp.png in Resources */,
 				20E735FD15CD091100A4F90B /* Title.png in Resources */,
+				20E7360715CD5C7D00A4F90B /* TitleMus.ogg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

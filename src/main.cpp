@@ -5,9 +5,12 @@
 #include <allegro5/allegro.h>
 #include <memory>
 #include <allegro5/allegro_image.h>
+#include <allegro5/allegro_audio.h>
+#include <allegro5/allegro_acodec.h>
 #include "scene/MainMenu.h"
 
 ALLEGRO_DISPLAY *g_display;
+
 ALLEGRO_BITMAP *g_ContinueDown;
 ALLEGRO_BITMAP *g_ContinueGrey;
 ALLEGRO_BITMAP *g_ContinueUp;
@@ -20,6 +23,7 @@ ALLEGRO_BITMAP *g_NewGameDown;
 ALLEGRO_BITMAP *g_NewGameUp;
 ALLEGRO_BITMAP *g_Title;
 
+ALLEGRO_SAMPLE *g_TitleMus;
 
 struct LoadingException : std::exception {
     LoadingException(char const* what):what_message(what){}
@@ -66,22 +70,111 @@ struct MouseInit {
     }
 };
 struct ImageAddonInit {
-
+    ImageAddonInit() {
+       if (!al_init_image_addon()){
+           throw LoadingException("failed to initialize image I/O addon\n");
+       }
+    }
 };
+
+struct AudioInit {
+    AudioInit() {
+        if(!al_install_audio()) {
+            throw LoadingException("failed to initialize audio addon\n");
+        }
+    }
+};
+
+struct AudioSamplesInit {
+    AudioSamplesInit() {
+        if(!al_reserve_samples(128)) {
+            throw LoadingException("failed to reserve samples\n");
+        }
+    }
+};
+
+struct AudioCodecInit {
+    AudioCodecInit() {
+        if (!al_init_acodec_addon()) {
+            throw LoadingException("failed to initialize audio codec addon\n");
+        }
+    }
+};
+
 
 struct AllegroInit {
     CoreAllegroInit coreAllegro;
     KeyboardInit keyboard;
     MouseInit mouse;
     ImageAddonInit imageAddon;
+    AudioInit audio;
+    AudioSamplesInit samples;
+    AudioCodecInit acodecs;
+};
+
+struct BitmapInit {
+    BitmapInit(ALLEGRO_BITMAP **toInitialize, char const* filename):
+        toInitialize(toInitialize)
+    {
+        *toInitialize = al_load_bitmap(filename);
+        if (!*toInitialize) {
+            throw LoadingException("Failed to load bitmap\n");
+        }
+    }
+    ~BitmapInit() {
+        al_destroy_bitmap(*toInitialize);
+    }
+    private:
+    ALLEGRO_BITMAP **toInitialize;
+};
+
+
+struct SampleInit {
+    SampleInit(ALLEGRO_SAMPLE **toInitialize, char const* filename):
+        toInitialize(toInitialize)
+    {
+        *toInitialize = al_load_sample(filename);
+        if (!*toInitialize) {
+            throw LoadingException("Failed to load sample\n");
+        }
+    }
+    ~SampleInit() {
+        al_destroy_sample(*toInitialize);
+    }
+    private:
+    ALLEGRO_SAMPLE **toInitialize;
 };
 
 struct ResourcesInit {
-    ResourcesInit()
+    ResourcesInit() :
+        ContinueDown(&g_ContinueDown, "ContinueDown.png"),
+        ContinueGrey(&g_ContinueGrey, "ContinueGrey.png"),
+        ContinueUp(&g_ContinueUp, "ContinueUp.png"),
+        ExitDown(&g_ExitDown, "ExitDown.png"),
+        ExitUp(&g_ExitUp, "ExitUp.png"),
+        InstructionsDown(&g_InstructionsDown, "InstructionsDown.png"),
+        InstructionsUp(&g_InstructionsUp, "InstructionsUp.png"),
+        MenuBackground(&g_MenuBackground, "MenuBackground.png"),
+        NewGameDown(&g_NewGameDown, "NewGameDown.png"),
+        NewGameUp(&g_NewGameUp, "NewGameUp.png"),
+        Title(&g_Title, "Title.png"),
+        TitleMus(&g_TitleMus, "TitleMus.ogg")
     {
-        
     }
     ~ResourcesInit() {}
+    BitmapInit ContinueDown;
+    BitmapInit ContinueGrey;
+    BitmapInit ContinueUp;
+    BitmapInit ExitDown;
+    BitmapInit ExitUp;
+    BitmapInit InstructionsDown;
+    BitmapInit InstructionsUp;
+    BitmapInit MenuBackground;
+    BitmapInit NewGameDown;
+    BitmapInit NewGameUp;
+    BitmapInit Title;
+    
+    SampleInit TitleMus;
 };
 
 struct Initializer {
