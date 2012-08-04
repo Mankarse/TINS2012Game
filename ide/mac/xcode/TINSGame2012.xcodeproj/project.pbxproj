@@ -1,0 +1,307 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		207F585815CCD7C60037B9D9 /* TINSGame2012-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 207F585715CCD7C60037B9D9 /* TINSGame2012-Info.plist */; };
+		207F585B15CCD7E90037B9D9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 207F585915CCD7E90037B9D9 /* main.cpp */; };
+		207F586715CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F585C15CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib */; };
+		207F586815CCDB410037B9D9 /* liballegro_audio.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F585D15CCDB410037B9D9 /* liballegro_audio.5.0.7.dylib */; };
+		207F586915CCDB410037B9D9 /* liballegro_color.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F585E15CCDB410037B9D9 /* liballegro_color.5.0.7.dylib */; };
+		207F586A15CCDB410037B9D9 /* liballegro_dialog.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F585F15CCDB410037B9D9 /* liballegro_dialog.5.0.7.dylib */; };
+		207F586B15CCDB410037B9D9 /* liballegro_font.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F586015CCDB410037B9D9 /* liballegro_font.5.0.7.dylib */; };
+		207F586C15CCDB410037B9D9 /* liballegro_image.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F586115CCDB410037B9D9 /* liballegro_image.5.0.7.dylib */; };
+		207F586D15CCDB410037B9D9 /* liballegro_main.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F586215CCDB410037B9D9 /* liballegro_main.5.0.7.dylib */; };
+		207F586E15CCDB410037B9D9 /* liballegro_memfile.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F586315CCDB410037B9D9 /* liballegro_memfile.5.0.7.dylib */; };
+		207F586F15CCDB410037B9D9 /* liballegro_primitives.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F586415CCDB410037B9D9 /* liballegro_primitives.5.0.7.dylib */; };
+		207F587015CCDB410037B9D9 /* liballegro_ttf.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F586515CCDB410037B9D9 /* liballegro_ttf.5.0.7.dylib */; };
+		207F587115CCDB410037B9D9 /* liballegro.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F586615CCDB410037B9D9 /* liballegro.5.0.7.dylib */; };
+		20FE1FBA15CCD6250055B92B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FE1FB915CCD6250055B92B /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		207F585715CCD7C60037B9D9 /* TINSGame2012-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TINSGame2012-Info.plist"; sourceTree = "<group>"; };
+		207F585915CCD7E90037B9D9 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		207F585C15CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_acodec.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_acodec.5.0.7.dylib; sourceTree = "<group>"; };
+		207F585D15CCDB410037B9D9 /* liballegro_audio.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_audio.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_audio.5.0.7.dylib; sourceTree = "<group>"; };
+		207F585E15CCDB410037B9D9 /* liballegro_color.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_color.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_color.5.0.7.dylib; sourceTree = "<group>"; };
+		207F585F15CCDB410037B9D9 /* liballegro_dialog.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_dialog.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_dialog.5.0.7.dylib; sourceTree = "<group>"; };
+		207F586015CCDB410037B9D9 /* liballegro_font.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_font.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_font.5.0.7.dylib; sourceTree = "<group>"; };
+		207F586115CCDB410037B9D9 /* liballegro_image.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_image.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_image.5.0.7.dylib; sourceTree = "<group>"; };
+		207F586215CCDB410037B9D9 /* liballegro_main.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_main.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_main.5.0.7.dylib; sourceTree = "<group>"; };
+		207F586315CCDB410037B9D9 /* liballegro_memfile.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_memfile.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_memfile.5.0.7.dylib; sourceTree = "<group>"; };
+		207F586415CCDB410037B9D9 /* liballegro_primitives.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_primitives.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_primitives.5.0.7.dylib; sourceTree = "<group>"; };
+		207F586515CCDB410037B9D9 /* liballegro_ttf.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_ttf.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_ttf.5.0.7.dylib; sourceTree = "<group>"; };
+		207F586615CCDB410037B9D9 /* liballegro.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro.5.0.7.dylib; sourceTree = "<group>"; };
+		20FE1FB515CCD6250055B92B /* TINSGame2012.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TINSGame2012.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		20FE1FB915CCD6250055B92B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		20FE1FBC15CCD6250055B92B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		20FE1FBD15CCD6250055B92B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		20FE1FBE15CCD6250055B92B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		20FE1FB215CCD6250055B92B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20FE1FBA15CCD6250055B92B /* Cocoa.framework in Frameworks */,
+				207F586715CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib in Frameworks */,
+				207F586815CCDB410037B9D9 /* liballegro_audio.5.0.7.dylib in Frameworks */,
+				207F586915CCDB410037B9D9 /* liballegro_color.5.0.7.dylib in Frameworks */,
+				207F586A15CCDB410037B9D9 /* liballegro_dialog.5.0.7.dylib in Frameworks */,
+				207F586B15CCDB410037B9D9 /* liballegro_font.5.0.7.dylib in Frameworks */,
+				207F586C15CCDB410037B9D9 /* liballegro_image.5.0.7.dylib in Frameworks */,
+				207F586D15CCDB410037B9D9 /* liballegro_main.5.0.7.dylib in Frameworks */,
+				207F586E15CCDB410037B9D9 /* liballegro_memfile.5.0.7.dylib in Frameworks */,
+				207F586F15CCDB410037B9D9 /* liballegro_primitives.5.0.7.dylib in Frameworks */,
+				207F587015CCDB410037B9D9 /* liballegro_ttf.5.0.7.dylib in Frameworks */,
+				207F587115CCDB410037B9D9 /* liballegro.5.0.7.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		205E8C2B15CCD71900CD2AA5 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				207F585915CCD7E90037B9D9 /* main.cpp */,
+			);
+			name = src;
+			path = ../../../src;
+			sourceTree = SOURCE_ROOT;
+		};
+		205E8C2C15CCD77C00CD2AA5 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				207F585715CCD7C60037B9D9 /* TINSGame2012-Info.plist */,
+			);
+			name = res;
+			path = ../../../res;
+			sourceTree = SOURCE_ROOT;
+		};
+		20FE1FA815CCD5F90055B92B = {
+			isa = PBXGroup;
+			children = (
+				205E8C2C15CCD77C00CD2AA5 /* res */,
+				205E8C2B15CCD71900CD2AA5 /* src */,
+				20FE1FB815CCD6250055B92B /* Frameworks */,
+				20FE1FB615CCD6250055B92B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		20FE1FB615CCD6250055B92B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20FE1FB515CCD6250055B92B /* TINSGame2012.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		20FE1FB815CCD6250055B92B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				207F585C15CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib */,
+				207F585D15CCDB410037B9D9 /* liballegro_audio.5.0.7.dylib */,
+				207F585E15CCDB410037B9D9 /* liballegro_color.5.0.7.dylib */,
+				207F585F15CCDB410037B9D9 /* liballegro_dialog.5.0.7.dylib */,
+				207F586015CCDB410037B9D9 /* liballegro_font.5.0.7.dylib */,
+				207F586115CCDB410037B9D9 /* liballegro_image.5.0.7.dylib */,
+				207F586215CCDB410037B9D9 /* liballegro_main.5.0.7.dylib */,
+				207F586315CCDB410037B9D9 /* liballegro_memfile.5.0.7.dylib */,
+				207F586415CCDB410037B9D9 /* liballegro_primitives.5.0.7.dylib */,
+				207F586515CCDB410037B9D9 /* liballegro_ttf.5.0.7.dylib */,
+				207F586615CCDB410037B9D9 /* liballegro.5.0.7.dylib */,
+				20FE1FB915CCD6250055B92B /* Cocoa.framework */,
+				20FE1FBB15CCD6250055B92B /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		20FE1FBB15CCD6250055B92B /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20FE1FBC15CCD6250055B92B /* AppKit.framework */,
+				20FE1FBD15CCD6250055B92B /* CoreData.framework */,
+				20FE1FBE15CCD6250055B92B /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		20FE1FB415CCD6250055B92B /* TINSGame2012 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20FE1FD115CCD6250055B92B /* Build configuration list for PBXNativeTarget "TINSGame2012" */;
+			buildPhases = (
+				20FE1FB115CCD6250055B92B /* Sources */,
+				20FE1FB215CCD6250055B92B /* Frameworks */,
+				20FE1FB315CCD6250055B92B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TINSGame2012;
+			productName = TINSGame2012;
+			productReference = 20FE1FB515CCD6250055B92B /* TINSGame2012.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		20FE1FAA15CCD5F90055B92B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+			};
+			buildConfigurationList = 20FE1FAD15CCD5F90055B92B /* Build configuration list for PBXProject "TINSGame2012" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 20FE1FA815CCD5F90055B92B;
+			productRefGroup = 20FE1FB615CCD6250055B92B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				20FE1FB415CCD6250055B92B /* TINSGame2012 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		20FE1FB315CCD6250055B92B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				207F585815CCD7C60037B9D9 /* TINSGame2012-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		20FE1FB115CCD6250055B92B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				207F585B15CCD7E90037B9D9 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		20FE1FAF15CCD5F90055B92B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		20FE1FB015CCD5F90055B92B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		20FE1FD215CCD6250055B92B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++98";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../../../ext/allegro/include;
+				INFOPLIST_FILE = "$(SRCROOT)/../../../res/TINSGame2012-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					../../../ext/allegro/lib,
+					"\"$(SRCROOT)/../../../ext/allegro/lib\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		20FE1FD315CCD6250055B92B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++98";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../../../ext/allegro/include;
+				INFOPLIST_FILE = "$(SRCROOT)/../../../res/TINSGame2012-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					../../../ext/allegro/lib,
+					"\"$(SRCROOT)/../../../ext/allegro/lib\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		20FE1FAD15CCD5F90055B92B /* Build configuration list for PBXProject "TINSGame2012" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20FE1FAF15CCD5F90055B92B /* Debug */,
+				20FE1FB015CCD5F90055B92B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20FE1FD115CCD6250055B92B /* Build configuration list for PBXNativeTarget "TINSGame2012" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20FE1FD215CCD6250055B92B /* Debug */,
+				20FE1FD315CCD6250055B92B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 20FE1FAA15CCD5F90055B92B /* Project object */;
+}
