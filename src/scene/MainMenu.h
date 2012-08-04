@@ -4,6 +4,7 @@
 #include "Scene.h"
 #include "Globals.h"
 #include "Rect.h"
+#include "Game.h"
 
 
 class MainMenu: public Scene {
