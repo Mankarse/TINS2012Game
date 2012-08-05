@@ -1,7 +1,7 @@
 #ifndef TINSGame2012_GameSave_h
 #define TINSGame2012_GameSave_h
 #include <string>
-#include <sstream>
+#include <utility>
 #include "DragonStats.h"
 struct GameSave {
     unsigned long long totalScore;
@@ -9,30 +9,10 @@ struct GameSave {
     DragonStats stats;
 };
 
-inline std::string obfuscate(std::string const&) {
-    
-}
-
-inline std::string deobfuscate(std::string const&) {
-    
-}
-
-inline std::string save(GameSave const& save) {
-    std::stringstream formatter;
-    formatter
-        << save.totalScore << ' '
-        << save.scoreDelta << ' '
-        << save.stats.size << ' '
-        << save.stats.wingspan << ' '
-        << save.stats.stamina << ' '
-        << save.stats.fireStrength << ' '
-        << save.stats.fireCooldown;
-    return obfuscate(formatter.str());
-}
-
-inline GameSave load(std::string const& save) {
-    std::string str(deobfuscate(save));
-    
-}
-
+std::string obfuscate(std::string const& str);
+std::string deobfuscate(std::string const& str);
+std::string serialize(GameSave const& save);
+std::pair<bool, GameSave> deserialize(std::string const& save);
+std::pair<bool, GameSave> loadGame();
+void saveGame(GameSave const& game);
 #endif

@@ -39,6 +39,7 @@
 		20E735FD15CD091100A4F90B /* Title.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735F215CD091100A4F90B /* Title.png */; };
 		20E7360715CD5C7D00A4F90B /* TitleMus.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 20E7360615CD5C7D00A4F90B /* TitleMus.ogg */; };
 		20E7360C15CD768700A4F90B /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E7360B15CD768700A4F90B /* MainMenu.cpp */; };
+		20EF027815CE128800E86905 /* GameSave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20EF027715CE128800E86905 /* GameSave.cpp */; };
 		20FE1FBA15CCD6250055B92B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FE1FB915CCD6250055B92B /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		20E7360615CD5C7D00A4F90B /* TitleMus.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = TitleMus.ogg; sourceTree = "<group>"; };
 		20E7360815CD67EB00A4F90B /* Rect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rect.h; sourceTree = "<group>"; };
 		20E7360B15CD768700A4F90B /* MainMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenu.cpp; sourceTree = "<group>"; };
+		20EF027715CE128800E86905 /* GameSave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameSave.cpp; sourceTree = "<group>"; };
 		20FE1FB515CCD6250055B92B /* TINSGame2012.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = TINSGame2012.app; path = "Chocozumas Revenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20FE1FB915CCD6250055B92B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		20FE1FBC15CCD6250055B92B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -204,6 +206,7 @@
 				2039F88415CDF09100ABC061 /* Cave.h */,
 				2039F88315CDF09100ABC061 /* Cave.cpp */,
 				2039F88615CDF4BC00ABC061 /* GameSave.h */,
+				20EF027715CE128800E86905 /* GameSave.cpp */,
 			);
 			path = scene;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				20E7360C15CD768700A4F90B /* MainMenu.cpp in Sources */,
 				2077483D15CD51E7000EAED4 /* Dragon.cpp in Sources */,
 				2039F88515CDF09100ABC061 /* Cave.cpp in Sources */,
+				20EF027815CE128800E86905 /* GameSave.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

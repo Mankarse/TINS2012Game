@@ -31,7 +31,11 @@ Scene* MainMenu::update(InputState const& input) {
         al_stop_sample(&music);
         return 0;
     }
-    
+    std::pair<bool, GameSave> loadedSave(loadGame());
+    saveExists = loadedSave.first;
+    if (loadedSave.first) {
+        currentSave = loadedSave.second;
+    }
     for (std::vector<ALLEGRO_EVENT>::const_iterator it(input.events.begin()), end(input.events.end()); it != end; ++it)
     {
         ALLEGRO_EVENT const& event(*it);

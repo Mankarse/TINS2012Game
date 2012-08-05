@@ -5,7 +5,7 @@
 #include "Globals.h"
 #include "Rect.h"
 #include "Game.h"
-
+#include "GameSave.h"
 
 class MainMenu: public Scene {
 
@@ -17,6 +17,7 @@ public:
 private:
     std::vector<Rect> buttonPositions;
     bool saveExists;
+    GameSave currentSave;
     int selectedButton;
     int pressedButton;
     ALLEGRO_SAMPLE_ID music;
