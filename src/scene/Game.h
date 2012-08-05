@@ -79,11 +79,11 @@ public:
     }
     void drawBackground(ALLEGRO_BITMAP* image, double depth) const {
         double layer = 0.6;
-        double basePosition = (ground.getTotalSize() / 2) ;
+        double basePosition = ground.getTotalSize() / 2;
         double positionOffset = al_get_time() * 15; // Look at the clouds move! Happy now?
         Point2D screenspaceCentre (worldToScreenPoint(Point2D(basePosition + positionOffset, 300), layer));
-        //std::cout << screenspaceCentre.x << '\n';
-        if(screenCorner.y < screenspaceCentre.y - (al_get_bitmap_height(image) * 2)) {
+        std::cout << screenCorner.x << '\n';
+        if(screenCorner.y - positionOffset < screenspaceCentre.y - (al_get_bitmap_height(image) * 2)) {
             screenspaceCentre.y -= al_get_bitmap_height(image) * 4;
             al_draw_scaled_bitmap(
             image,
@@ -99,7 +99,7 @@ public:
         screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
         al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
         0);
-        if(screenCorner.x < 0)
+        if(screenCorner.x - positionOffset < 0)
         {
             screenspaceCentre = worldToScreenPoint(Point2D((-basePosition) + positionOffset, 300), layer);
             if(screenCorner.y < screenspaceCentre.y - (al_get_bitmap_height(image) * 2)) {
