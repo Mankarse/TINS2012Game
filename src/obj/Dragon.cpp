@@ -12,7 +12,7 @@
         worldPosition = Point2D(20, -50);
         stats.size = 10;
         stats.wingspan = 5;
-        stats.maxStam = 20;
+        stats.stamina = 20;
     }
     void Dragon::assignHeightmap(GroundHeightmap *newGround) {
         ground = newGround;
@@ -20,19 +20,20 @@
     
     void Dragon::physicsStep(InputState const& input) {
         currentSkin = &baby;
-        for (std::vector<ALLEGRO_EVENT>::const_iterator it(input.events.begin()), end(input.events.end()); it != end; ++it)
-        {
-            ALLEGRO_EVENT const& event(*it);
-            switch (mode) {
-                case Flying:
-                {
-                    
-                    break;
-                }
-                case Grounded:
-                {
-                    break;
-                }
+        switch (mode) {
+            case Flying:
+            {
+                velocity.y += (392.4 / 60.);
+                
+                worldPosition += velocity / 60.;
+                
+                break;
+            }
+            case Grounded:
+            {
+                velocity.x *= 0.9;
+                
+                break;
             }
         }
     }
