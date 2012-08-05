@@ -10,6 +10,7 @@
 		2039F88515CDF09100ABC061 /* Cave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2039F88315CDF09100ABC061 /* Cave.cpp */; };
 		204292B415CE239300665276 /* DragonSmallStand.png in Resources */ = {isa = PBXBuildFile; fileRef = 204292B315CE239300665276 /* DragonSmallStand.png */; };
 		204292B715CE341600665276 /* LevelFG.png in Resources */ = {isa = PBXBuildFile; fileRef = 204292B615CE341600665276 /* LevelFG.png */; };
+		204292C815CE7BC200665276 /* LevelSky.png in Resources */ = {isa = PBXBuildFile; fileRef = 204292C715CE7BC200665276 /* LevelSky.png */; };
 		2058B8A315CCE5CF00C316BB /* Viewport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2058B8A115CCE5CF00C316BB /* Viewport.cpp */; };
 		2058B8A715CCF2BD00C316BB /* GroundHeightmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2058B8A515CCF2BD00C316BB /* GroundHeightmap.cpp */; };
 		2058B8B015CCFAC700C316BB /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2058B8AE15CCFAC700C316BB /* GameObject.cpp */; };
@@ -66,6 +67,8 @@
 		204292B615CE341600665276 /* LevelFG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LevelFG.png; sourceTree = "<group>"; };
 		204292BC15CE52FE00665276 /* Renderable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Renderable.h; sourceTree = "<group>"; };
 		204292BE15CE53B100665276 /* RenderQueueSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RenderQueueSet.h; sourceTree = "<group>"; };
+		204292C515CE74F900665276 /* Enemy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
+		204292C715CE7BC200665276 /* LevelSky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LevelSky.png; sourceTree = "<group>"; };
 		2058B8A115CCE5CF00C316BB /* Viewport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Viewport.cpp; sourceTree = "<group>"; };
 		2058B8A215CCE5CF00C316BB /* Viewport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Viewport.h; sourceTree = "<group>"; };
 		2058B8A515CCF2BD00C316BB /* GroundHeightmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GroundHeightmap.cpp; sourceTree = "<group>"; };
@@ -212,6 +215,7 @@
 		205E8C2C15CCD77C00CD2AA5 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				204292C715CE7BC200665276 /* LevelSky.png */,
 				20BCD64315CE5EEE001BE033 /* CaveBackground.png */,
 				20BCD64415CE5EEE001BE033 /* CaveFlamerangeDown.png */,
 				20BCD64515CE5EEE001BE033 /* CaveFlamerangeUp.png */,
@@ -257,6 +261,7 @@
 				20EF027715CE128800E86905 /* GameSave.cpp */,
 				204292BC15CE52FE00665276 /* Renderable.h */,
 				204292BE15CE53B100665276 /* RenderQueueSet.h */,
+				204292C515CE74F900665276 /* Enemy.h */,
 			);
 			path = scene;
 			sourceTree = "<group>";
@@ -384,6 +389,7 @@
 				20BCD66C15CE5EEE001BE033 /* MenuNewGameDown.png in Resources */,
 				20BCD66D15CE5EEE001BE033 /* MenuNewGameUp.png in Resources */,
 				20BCD66E15CE5EEE001BE033 /* MenuTitle.png in Resources */,
+				204292C815CE7BC200665276 /* LevelSky.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

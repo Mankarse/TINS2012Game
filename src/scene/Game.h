@@ -9,6 +9,7 @@
 #include <vector>
 #include <iostream>
 #include "RenderQueueSet.h"
+#include "Renderable.h"
 
 template<typename T, std::size_t N>
 std::size_t length(T(&)[N]) {
@@ -76,6 +77,29 @@ public:
         al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
         0);
     }
+    void drawBackground(ALLEGRO_BITMAP* image, double depth) const {
+        //double scalingFactor = 4;
+        Point2D screenspaceCentre (worldToScreenPoint(Point2D(ground.getTotalSize() / 2,0), 0.4));
+        //std::cout << screenspaceCentre.x << '\n';
+        while (screenspaceCentre.y > al_get_display_height(al_get_current_display())) {
+            screenspaceCentre.y -= 300;
+        }
+        while (screenspaceCentre.y < 0) {
+            screenspaceCentre.y += 300;
+        }
+        al_draw_scaled_bitmap(
+        image,
+        0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
+        screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
+        al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+        0);
+        al_draw_scaled_bitmap(
+        image,
+        0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
+        screenspaceCentre.x - ((al_get_bitmap_width(image)*6)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
+        al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+        0);
+    }
     
     virtual Scene* update(InputState const& input) {
         if (std::find_if(input.events.begin(), input.events.end(), isDisplayClosedEvent) != input.events.end()) {
@@ -111,11 +135,9 @@ public:
             //screenCorner = ground.getLoopedCoordinate(screenCorner);
         }
 
-        
-        
+        // Camera control
         screenCorner = ((mouseToWorldPos(mousePosition) + player.worldPosition) * 0.5) - Point2D(al_get_display_width(al_get_current_display()) * 0.5,
             al_get_display_height(al_get_current_display()) * 0.5);
-        //screenCorner = ground.getLoopedCoordinate(screenCorner);
         
         // Enemies!
         
@@ -133,7 +155,11 @@ public:
         for (std::vector<Renderable*>::const_iterator it(queue.begin()), end(queue.end()); it != end; ++it)
         {
             Renderable const& curObject(**it);
-            drawBitmapAtWorldPoint(curObject.getBitmap(), curObject.getWorldPoint(), curObject.getDepth());
+            Point2D position(curObject.getWorldPoint());
+            // renders the object 3 times!
+            drawBitmapAtWorldPoint(curObject.getBitmap(), position, curObject.getDepth());
+            drawBitmapAtWorldPoint(curObject.getBitmap(), Point2D(position.x + ground.getTotalSize(), position.y), curObject.getDepth());
+            drawBitmapAtWorldPoint(curObject.getBitmap(), Point2D(position.x - ground.getTotalSize(), position.y), curObject.getDepth());
         }
     }
     
@@ -142,8 +168,7 @@ public:
         
         // Render each queue, in order
         // Background:
-        drawBitmapAtScreenPoint(background, Point2D(al_get_display_width(al_get_current_display()) * 0.5,
-            al_get_display_height(al_get_current_display()) * 0.5));
+        drawBackground(g_LevelSky, 0.5);
         
         renderQueue(renderQueues.farBackground);
         renderQueue(renderQueues.nearBackground);
@@ -151,7 +176,11 @@ public:
         drawBitmapAtWorldPoint(g_LevelFG, Point2D(0,0));
         drawBitmapAtWorldPoint(g_LevelFG, Point2D(ground.getTotalSize(),0));
         drawBitmapAtWorldPoint(g_LevelFG, Point2D(-ground.getTotalSize(),0));
-        
+        Point2D worldTopCorner(-ground.getTotalSize(), 300);
+        worldTopCorner = worldToScreenPoint(worldTopCorner);
+        Point2D worldBottomCorner(ground.getTotalSize() * 2, 1000);
+        worldBottomCorner = worldToScreenPoint(worldBottomCorner);
+        al_draw_filled_rectangle(worldTopCorner.x, worldTopCorner.y, worldBottomCorner.x, worldBottomCorner.y, al_map_rgb(146, 120, 94));
         renderQueue(renderQueues.middleGround);
         player.renderStep(screenCorner);
         
