@@ -5,14 +5,18 @@
 extern ALLEGRO_DISPLAY *g_display;
 
 extern ALLEGRO_BITMAP *g_CaveBackground;
+extern ALLEGRO_BITMAP *g_CaveEmbossedTile;
+extern ALLEGRO_BITMAP *g_CaveCooldownDown;
+extern ALLEGRO_BITMAP *g_CaveCooldownUp;
 extern ALLEGRO_BITMAP *g_CaveFlamerangeDown;
 extern ALLEGRO_BITMAP *g_CaveFlamerangeUp;
-extern ALLEGRO_BITMAP *g_CaveNonButtons;
 extern ALLEGRO_BITMAP *g_CaveReturnDown;
+extern ALLEGRO_BITMAP *g_CaveReturnGrey;
 extern ALLEGRO_BITMAP *g_CaveReturnUp;
 extern ALLEGRO_BITMAP *g_CaveSizeDown;
 extern ALLEGRO_BITMAP *g_CaveSizeUp;
-extern ALLEGRO_BITMAP *g_CaveTiles;
+extern ALLEGRO_BITMAP *g_CaveStaminaDown;
+extern ALLEGRO_BITMAP *g_CaveStaminaUp;
 extern ALLEGRO_BITMAP *g_CaveWingspanDown;
 extern ALLEGRO_BITMAP *g_CaveWingspanUp;
 extern ALLEGRO_BITMAP *g_DragonSmallStand;
