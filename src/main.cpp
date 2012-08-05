@@ -45,7 +45,7 @@ struct CoreAllegroInit {
 struct DisplayInit {
     ALLEGRO_DISPLAY *display;
     DisplayInit() :
-        display(al_create_display(800, 600))
+        display((al_set_new_display_option(ALLEGRO_VSYNC,1,ALLEGRO_SUGGEST), al_create_display(800, 600)))
     {
         if(!display) {
             throw LoadingException("failed to create display!\n");
