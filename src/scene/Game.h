@@ -91,8 +91,22 @@ public:
         // spawners!
         
         // Player!
-        if(player.physicsStep(input)) {
-            screenCorner = ground.getLoopedCoordinate(screenCorner);
+        switch(player.physicsStep(input)) {
+            case Left :
+            {
+                screenCorner.x -= ground.getTotalSize();
+                break;
+            }
+            case Right :
+            {
+                screenCorner.x += ground.getTotalSize();
+                break;
+            }
+            case None :
+            {
+                break;
+            }
+            //screenCorner = ground.getLoopedCoordinate(screenCorner);
         }
 
         

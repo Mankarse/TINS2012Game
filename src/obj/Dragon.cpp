@@ -7,6 +7,7 @@
 //
 
 #include "Dragon.h"
+#include <iostream>
 
     static const double airResistance = 0.997;
     static const double landResistance = 0.9;
@@ -27,10 +28,9 @@
         ground = newGround;
     }
     
-    bool Dragon::physicsStep(InputState const& input) {
+    ScreenFlipMode Dragon::physicsStep(InputState const& input) {
     
         bool shouldJump(false);
-        bool shouldFlipScreen(false);
         for (std::vector<ALLEGRO_EVENT>::const_iterator it(input.events.begin()), end(input.events.end()); it != end; ++it)
         {
             ALLEGRO_EVENT const& event(*it);
@@ -120,9 +120,11 @@
         Point2D oldWorldPosition = worldPosition;
         worldPosition = ground->getLoopedCoordinate(worldPosition);
         if(oldWorldPosition != worldPosition) {
-            shouldFlipScreen = true;
+            return oldWorldPosition.x < worldPosition.x ? Right : Left;
+            //std::cerr << "Screen flip! Time: " << al_get_time() << '\n';
+        } else {
+            return None;
         }
-        return shouldFlipScreen;
     }
     void Dragon::renderStep(Point2D screenPos) const {
         Point2D drawPos = worldPosition - screenPos;
