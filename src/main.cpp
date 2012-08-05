@@ -14,8 +14,8 @@ ALLEGRO_DISPLAY *g_display;
 
 ALLEGRO_BITMAP *g_CaveBackground;
 ALLEGRO_BITMAP *g_CaveEmbossedTile;
-ALLEGRO_BITMAP *g_CaveCooldownDown;
-ALLEGRO_BITMAP *g_CaveCooldownUp;
+ALLEGRO_BITMAP *g_CaveFlameCooldownDown;
+ALLEGRO_BITMAP *g_CaveFlameCooldownUp;
 ALLEGRO_BITMAP *g_CaveFlamerangeDown;
 ALLEGRO_BITMAP *g_CaveFlamerangeUp;
 ALLEGRO_BITMAP *g_CaveReturnDown;
@@ -174,8 +174,8 @@ struct ResourcesInit {
     ResourcesInit() :
         CaveBackground(&g_CaveBackground, "CaveBackground.png"),
         CaveEmbossedTile(&g_CaveEmbossedTile, "CaveEmbossedTile.png"),
-        CaveCooldownDown(&g_CaveCooldownDown, "CaveCooldownDown.png"),
-        CaveCooldownUp(&g_CaveCooldownUp, "CaveCooldownUp.png"),
+        CaveFlameCooldownDown(&g_CaveFlameCooldownDown, "CaveFlameCooldownDown.png"),
+        CaveFlameCooldownUp(&g_CaveFlameCooldownUp, "CaveFlameCooldownUp.png"),
         CaveFlamerangeDown(&g_CaveFlamerangeDown, "CaveFlamerangeDown.png"),
         CaveFlamerangeUp(&g_CaveFlamerangeUp, "CaveFlamerangeUp.png"),
         CaveReturnDown(&g_CaveReturnDown, "CaveReturnDown.png"),
@@ -208,8 +208,8 @@ struct ResourcesInit {
     
     BitmapInit CaveBackground;
     BitmapInit CaveEmbossedTile;
-    BitmapInit CaveCooldownDown;
-    BitmapInit CaveCooldownUp;
+    BitmapInit CaveFlameCooldownDown;
+    BitmapInit CaveFlameCooldownUp;
     BitmapInit CaveFlamerangeDown;
     BitmapInit CaveFlamerangeUp;
     BitmapInit CaveReturnDown;

@@ -6,8 +6,8 @@ extern ALLEGRO_DISPLAY *g_display;
 
 extern ALLEGRO_BITMAP *g_CaveBackground;
 extern ALLEGRO_BITMAP *g_CaveEmbossedTile;
-extern ALLEGRO_BITMAP *g_CaveCooldownDown;
-extern ALLEGRO_BITMAP *g_CaveCooldownUp;
+extern ALLEGRO_BITMAP *g_CaveFlameCooldownDown;
+extern ALLEGRO_BITMAP *g_CaveFlameCooldownUp;
 extern ALLEGRO_BITMAP *g_CaveFlamerangeDown;
 extern ALLEGRO_BITMAP *g_CaveFlamerangeUp;
 extern ALLEGRO_BITMAP *g_CaveReturnDown;
