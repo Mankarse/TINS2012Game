@@ -46,6 +46,7 @@ std::string serialize(GameSave const& save) {
     formatter
         << save.totalScore << ' '
         << save.scoreDelta << ' '
+        << save.totalPlayTime << ' '
         << save.stats.size << ' '
         << save.stats.wingspan << ' '
         << save.stats.stamina << ' '
@@ -60,6 +61,7 @@ std::pair<bool, GameSave> deserialize(std::string const& save) {
     reader
         >> retv.totalScore
         >> retv.scoreDelta
+        >> retv.totalPlayTime
         >> retv.stats.size
         >> retv.stats.wingspan
         >> retv.stats.stamina
