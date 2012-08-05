@@ -10,6 +10,7 @@
 #define TINSGame2012__GroundHeightmap
 #include <vector>
 #include <cmath>
+#include <allegro5/allegro_primitives.h>
 #include "Geometry.h"
 class GroundHeightmap {
     private:

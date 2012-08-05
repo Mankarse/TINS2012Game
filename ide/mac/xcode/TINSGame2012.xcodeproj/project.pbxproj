@@ -42,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		204292A915CDF69900665276 /* DragonStats.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DragonStats.h; sourceTree = "<group>"; };
 		2058B8A115CCE5CF00C316BB /* Viewport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Viewport.cpp; sourceTree = "<group>"; };
 		2058B8A215CCE5CF00C316BB /* Viewport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Viewport.h; sourceTree = "<group>"; };
 		2058B8A515CCF2BD00C316BB /* GroundHeightmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GroundHeightmap.cpp; sourceTree = "<group>"; };
@@ -148,6 +149,7 @@
 				2077483B15CD51E7000EAED4 /* Dragon.cpp */,
 				2077483F15CD62D6000EAED4 /* Geometry.h */,
 				20E7360815CD67EB00A4F90B /* Rect.h */,
+				204292A915CDF69900665276 /* DragonStats.h */,
 			);
 			path = obj;
 			sourceTree = "<group>";
