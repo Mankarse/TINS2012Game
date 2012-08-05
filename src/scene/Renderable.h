@@ -10,9 +10,11 @@
 #define TINSGame2012_Renderable_h
 #include <allegro5/allegro.h>
 #include "Geometry.h"
+class RenderQueueSet;
 
 class Renderable {
     public:
+    virtual void pickRenderQueue(RenderQueueSet& queues) const = 0;
     virtual ALLEGRO_BITMAP* getBitmap() const = 0;
     virtual Point2D getWorldPoint() const = 0;
     virtual double getDepth() const = 0;

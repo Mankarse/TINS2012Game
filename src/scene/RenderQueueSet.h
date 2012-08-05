@@ -9,7 +9,7 @@
 #ifndef TINSGame2012_RenderQueueSet_h
 #define TINSGame2012_RenderQueueSet_h
 #include <vector>
-#include "Renderable.h"
+class Renderable;
 
 struct RenderQueueSet {
     std::vector<Renderable*> farBackground;
