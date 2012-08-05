@@ -8,7 +8,7 @@
 #include <algorithm>
 #include "Rect.h"
 #include "Primes.h"
-#include "Game.h"
+
 
 class Cave: public Scene {
 public:

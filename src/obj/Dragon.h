@@ -65,6 +65,9 @@ class Dragon {
     void assignHeightmap(GroundHeightmap* newGround);
     ScreenFlipMode physicsStep(InputState const& input);
     void renderStep(Point2D screenPos) const;
+    
+    Dragon();
+    Dragon(DragonStats newStats);
 };
 
 

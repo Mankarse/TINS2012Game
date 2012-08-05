@@ -7,6 +7,13 @@ struct Rect {
     double y;
     double width;
     double height;
+    
+    double maxX() const {
+        return x + width;
+    }
+    double maxY() const {
+        return y + height;
+    }
 };
 
 inline Rect operator*(Rect const& l, double r) {

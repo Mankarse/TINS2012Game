@@ -8,12 +8,16 @@
 #include "Globals.h"
 #include <vector>
 #include <iostream>
+#include <memory>
 #include "RenderQueueSet.h"
 #include "Renderable.h"
 #include "StaticObject.h"
 #include "Bullet.h"
 #include "Particle.h"
 #include "Enemy.h"
+#include "GameSave.h"
+#include "Rect.h"
+#include "Cave.h"
 
 template<typename T, std::size_t N>
 std::size_t length(T(&)[N]) {
@@ -32,7 +36,7 @@ private:
     static bool isDisplayClosedEvent(ALLEGRO_EVENT const& e) {
         return e.type == ALLEGRO_EVENT_DISPLAY_CLOSE;
     }
-    
+    Rect caveRect;
     std::vector<StaticObject> staticRenderables;
     std::vector<Enemy> enemies;
     std::vector<Particle> particles;
@@ -40,7 +44,20 @@ private:
 
 public:
     Game() :
-    ground(loadGlobalHeightmap()){}
+    ground(loadGlobalHeightmap()),
+    caveRect(2250, 100, 200, 200),
+    player()
+    {
+        player.assignHeightmap(&ground);
+    }
+
+    Game(GameSave savedGame) :
+    ground(loadGlobalHeightmap()),
+    caveRect(2400, 100, 150, 150),
+    player(savedGame.stats)
+    {
+        player.assignHeightmap(&ground);
+    }
 
     Dragon player;
     Point2D screenCorner;
@@ -49,8 +66,6 @@ public:
     
     
     void init() {
-        player.init();
-        player.assignHeightmap(&ground);
         al_init_primitives_addon();
         screenCorner = Point2D(0, al_get_display_height(al_get_current_display()) * -0.8);
     }
@@ -156,6 +171,12 @@ public:
                 mousePosition.x = event.mouse.x;
                 mousePosition.y = event.mouse.y;
             }
+            if (event.type == ALLEGRO_EVENT_KEY_DOWN && event.keyboard.keycode == ALLEGRO_KEY_ENTER) {
+                GameSave save;
+                save.stats = DragonStats(player.stats);
+                std::auto_ptr<Cave> cave(new Cave(save));
+                return cave.release();
+            }
         }
         
         // spawners!
@@ -219,6 +240,16 @@ public:
         }
     }
     
+    void drawCave() const {
+        Point2D caveTopCorner(worldToScreenPoint(Point2D(caveRect.x, caveRect.y)));
+        Point2D caveBottomCorner(worldToScreenPoint(Point2D(caveRect.maxX(), caveRect.maxY())));
+        al_draw_line(caveTopCorner.x, caveTopCorner.y, caveTopCorner.x, caveBottomCorner.y, al_map_rgb(255, 0, 0), 3);
+        al_draw_line(caveTopCorner.x, caveTopCorner.y, caveBottomCorner.x, caveTopCorner.y, al_map_rgb(255, 0, 0), 3);
+        al_draw_line(caveBottomCorner.x, caveTopCorner.y, caveTopCorner.x, caveBottomCorner.y, al_map_rgb(255, 0, 0), 3);
+        al_draw_line(caveBottomCorner.x, caveBottomCorner.y, caveTopCorner.x, caveBottomCorner.y, al_map_rgb(255, 0, 0), 3);
+        
+    }
+    
     void drawingPass(RenderQueueSet* renderQueues) const {
         // Render each queue, in order
         // Background:
@@ -237,6 +268,8 @@ public:
         al_draw_filled_rectangle(worldTopCorner.x, worldTopCorner.y, worldBottomCorner.x, worldBottomCorner.y, al_map_rgb(146, 120, 94));
         renderQueue(renderQueues->middleGround);
         player.renderStep(screenCorner);
+        
+        drawCave();
         
         //ground.draw(screenCorner);
         renderQueue(renderQueues->foreground);

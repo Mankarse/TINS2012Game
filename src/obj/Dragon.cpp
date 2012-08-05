@@ -24,6 +24,29 @@
         stats.stamina = 60;
         currentStamina = stats.stamina;
     }
+    
+    Dragon::Dragon() :
+    worldPosition(0, 0),
+    mode(Flying),
+    foreLeg(7, 15),
+    hindLeg(-7, 15)
+    {
+        stats.size = 10;
+        stats.wingspan = 3;
+        stats.stamina = 60;
+        currentStamina = stats.stamina;
+    }
+    
+    Dragon::Dragon(DragonStats newStats) :
+    worldPosition(0, 0),
+    mode(Flying),
+    foreLeg(7, 15),
+    hindLeg(-7, 15),
+    stats(newStats)
+    {
+        currentStamina = stats.stamina;
+    }
+    
     void Dragon::assignHeightmap(GroundHeightmap *newGround) {
         ground = newGround;
     }

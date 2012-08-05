@@ -1,5 +1,5 @@
 #include "Cave.h"
-
+#include "Game.h"
 static DragonStats getUpgradeAmounts(unsigned prime, GameSave const& save) {
     DragonStats stats;
     stats.size = 2 * std::pow(1.1, static_cast<double>(prime));
@@ -76,8 +76,7 @@ Scene* Cave::update(InputState const& input) {
                     if (pointInRectInclusive(event.mouse.x, event.mouse.y, buttonPositions[selectedButton])) {
                         switch (selectedButton) {
                             case 0: {
-                                //TODO games loading saves.
-                                std::auto_ptr<Game> game(new Game(/*save*/));
+                                std::auto_ptr<Game> game(new Game(save));
                                 game->init();
                                 return game.release();
                             }
