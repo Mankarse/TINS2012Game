@@ -65,5 +65,8 @@ inline Point2D operator/(Point2D l, double const& r) {
 inline Point2D operator/(Point2D l, Point2D const& r) {
     return l /= r;
 }
+inline double dot(Point2D const& l, Point2D const& r) {
+    return l.x * r.x + l.y * r.y;
+}
 
 #endif

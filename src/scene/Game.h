@@ -16,7 +16,8 @@ std::size_t length(T(&)[N]) {
 }
 
 inline GroundHeightmap loadGlobalHeightmap() {
-    double points[] = {-20., -30., -10., 15., 23., 17., 5., 0};
+    double points[] = {120., 110., 70., 79., 80., 140., 270., 270., 270., 270., 270., 270, 270., 270., 270, 260., 240.,
+    100, 95, 90};
     
     return GroundHeightmap(100, static_cast<int>(length(points)), std::vector<double>(points, points + length(points)));
 }
@@ -117,6 +118,7 @@ public:
         
         
         // Heightmap
+        drawBitmapAtWorldPoint(g_LevelFG, Point2D(0,0));
         ground.draw(screenCorner);
         
         player.renderStep(screenCorner);
