@@ -16,12 +16,15 @@ ALLEGRO_BITMAP *g_ContinueGrey;
 ALLEGRO_BITMAP *g_ContinueUp;
 ALLEGRO_BITMAP *g_ExitDown;
 ALLEGRO_BITMAP *g_ExitUp;
+ALLEGRO_BITMAP *g_LevelFG;
 ALLEGRO_BITMAP *g_InstructionsDown;
 ALLEGRO_BITMAP *g_InstructionsUp;
 ALLEGRO_BITMAP *g_MenuBackground;
 ALLEGRO_BITMAP *g_NewGameDown;
 ALLEGRO_BITMAP *g_NewGameUp;
+ALLEGRO_BITMAP *g_DragonSmallStand;
 ALLEGRO_BITMAP *g_Title;
+
 
 ALLEGRO_SAMPLE *g_TitleMus;
 
@@ -152,11 +155,13 @@ struct ResourcesInit {
         ContinueUp(&g_ContinueUp, "ContinueUp.png"),
         ExitDown(&g_ExitDown, "ExitDown.png"),
         ExitUp(&g_ExitUp, "ExitUp.png"),
+        LevelFG(&g_LevelFG, "LevelFG.png"),
         InstructionsDown(&g_InstructionsDown, "InstructionsDown.png"),
         InstructionsUp(&g_InstructionsUp, "InstructionsUp.png"),
         MenuBackground(&g_MenuBackground, "MenuBackground.png"),
         NewGameDown(&g_NewGameDown, "NewGameDown.png"),
         NewGameUp(&g_NewGameUp, "NewGameUp.png"),
+        DragonSmallStand (&g_DragonSmallStand, "DragonSmallStand.png"),
         Title(&g_Title, "Title.png"),
         TitleMus(&g_TitleMus, "TitleMus.ogg")
     {
@@ -167,11 +172,13 @@ struct ResourcesInit {
     BitmapInit ContinueUp;
     BitmapInit ExitDown;
     BitmapInit ExitUp;
+    BitmapInit LevelFG;
     BitmapInit InstructionsDown;
     BitmapInit InstructionsUp;
     BitmapInit MenuBackground;
     BitmapInit NewGameDown;
     BitmapInit NewGameUp;
+    BitmapInit DragonSmallStand;
     BitmapInit Title;
     
     SampleInit TitleMus;

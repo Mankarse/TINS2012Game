@@ -10,10 +10,12 @@
 #define TINSGame2012__Dragon
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
+#include <cmath>
 #include "InputState.h"
 #include "GroundHeightmap.h"
 #include "Geometry.h"
 #include "DragonStats.h"
+#include "Globals.h"
 struct DragonSkin {
     ALLEGRO_BITMAP *body;
     ALLEGRO_BITMAP *neck;
@@ -41,6 +43,8 @@ class Dragon {
     double currentNeckRotation;
     Point2D localHeadOffest;
     double currentHeadRotation;
+    double currentStamina;
+    
     
     Point2D velocity;
     DragonMode mode;
