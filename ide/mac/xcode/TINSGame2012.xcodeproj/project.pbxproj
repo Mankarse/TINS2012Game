@@ -130,6 +130,7 @@
 		20D4681315CE86FF00D76210 /* CaveStaminaDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveStaminaDown.png; sourceTree = "<group>"; };
 		20D4681415CE86FF00D76210 /* CaveStaminaUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveStaminaUp.png; sourceTree = "<group>"; };
 		20D4681B15CE980000D76210 /* NumberSheet10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NumberSheet10.png; sourceTree = "<group>"; };
+		20D4681D15CEA07500D76210 /* Bitmap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bitmap.h; sourceTree = "<group>"; };
 		20E735E715CD06B800A4F90B /* Globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Globals.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		20E735EF15CD091100A4F90B /* MenuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBackground.png; sourceTree = "<group>"; };
 		20E7360215CD2EA000A4F90B /* Scene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
@@ -216,6 +217,7 @@
 				2058B8A415CCE5E900C316BB /* cam */,
 				2058B89F15CCE10600C316BB /* phys */,
 				20E735E715CD06B800A4F90B /* Globals.h */,
+				20D4681D15CEA07500D76210 /* Bitmap.h */,
 				207F585915CCD7E90037B9D9 /* main.cpp */,
 			);
 			name = src;

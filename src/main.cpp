@@ -10,6 +10,7 @@
 #include <allegro5/allegro_font.h>
 #include "scene/MainMenu.h"
 #include "scene/Cave.h"
+#include "Bitmap.h"
 
 ALLEGRO_DISPLAY *g_display;
 
@@ -151,10 +152,22 @@ struct BitmapInit {
     BitmapInit(ALLEGRO_BITMAP **toInitialize, char const* filename):
         toInitialize(toInitialize)
     {
-        *toInitialize = al_load_bitmap(filename);
+        Bitmap rawBitmap(al_load_bitmap(filename));
+        if (!rawBitmap.get()) {
+            throw FileLoadingException("Failed to load bitmap\n", filename);
+        }
+        int rawWidth(al_get_bitmap_width(rawBitmap.get()));
+        int rawHeight(al_get_bitmap_height(rawBitmap.get()));
+        
+        *toInitialize = al_create_bitmap(rawWidth * 4, rawHeight * 4);
+        
         if (!*toInitialize) {
             throw FileLoadingException("Failed to load bitmap\n", filename);
         }
+        
+        al_set_target_bitmap(*toInitialize);
+        al_clear_to_color(al_map_rgba(0, 0, 0, 0));
+        al_draw_scaled_bitmap(rawBitmap.get(), 0, 0, rawWidth, rawHeight, 0, 0, rawWidth*4, rawHeight*4, 0);
     }
     ~BitmapInit() {
         al_destroy_bitmap(*toInitialize);
@@ -283,7 +296,7 @@ int main(int argc, char **argv){
         return 0;
     }
     catch (FileLoadingException const& e) {
-        std::cerr << "Failed:\n";
+        std::cerr << "File Loading Failed:\n";
         std::cerr << e.what();
         std::cerr << e.filename << '\n';
         return -1;

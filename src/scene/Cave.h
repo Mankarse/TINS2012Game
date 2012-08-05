@@ -123,8 +123,11 @@ public:
     virtual void renderTo(ALLEGRO_BITMAP* target) const {
         al_set_target_bitmap(target);
         draw_element(g_CaveBackground);
+        
         draw_element(factors.empty() ? (pressedButton == 0 ? g_CaveReturnDown : g_CaveReturnUp) : g_CaveReturnGrey);
+        
         draw_element(pressedButton == 1 ? g_CaveSizeDown : g_CaveSizeUp);
+        
         draw_element(pressedButton == 2 ? g_CaveWingspanDown : g_CaveWingspanUp);
         draw_element(pressedButton == 3 ? g_CaveStaminaDown : g_CaveStaminaUp);
         draw_element(pressedButton == 4 ? g_CaveFlamerangeDown : g_CaveFlamerangeUp);
@@ -134,15 +137,16 @@ public:
         drawFactors();
     }
     void drawStats() const {
-        
+        al_draw_text(g_Font10, al_map_rgb(255, 0, 255), 100, 100, ALLEGRO_ALIGN_CENTRE, "14");
     }
+    
     void drawFactors() const {
         int x(2*4);
         int y(75*4 + stackClearance);
         ALLEGRO_BITMAP* b(g_CaveEmbossedTile);
         for (std::vector<unsigned>::const_reverse_iterator it(factors.rbegin()), end(factors.rend()); it != end; ++it) {
-            al_draw_scaled_bitmap(b, 0, 0, al_get_bitmap_width(b), al_get_bitmap_height(b), x, y, al_get_bitmap_width(b) * 4, al_get_bitmap_height(b)*4, 0);
-            y += (al_get_bitmap_height(b) + 1) * 4;
+            al_draw_scaled_bitmap(b, 0, 0, al_get_bitmap_width(b), al_get_bitmap_height(b), x, y, al_get_bitmap_width(b), al_get_bitmap_height(b), 0);
+            y += al_get_bitmap_height(b) + 4;
         }
     }
     
@@ -151,7 +155,7 @@ private:
         al_draw_scaled_bitmap(
             element,
             0, 0, al_get_bitmap_width(element), al_get_bitmap_height(element),
-            0, 0, al_get_bitmap_width(element)*4, al_get_bitmap_height(element)*4,
+            0, 0, al_get_bitmap_width(element), al_get_bitmap_height(element),
             0);
     }
 
