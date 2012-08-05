@@ -78,14 +78,18 @@ public:
         0);
     }
     void drawBackground(ALLEGRO_BITMAP* image, double depth) const {
-        //double scalingFactor = 4;
-        Point2D screenspaceCentre (worldToScreenPoint(Point2D(ground.getTotalSize() / 2,0), 0.4));
+        double layer = 0.6;
+        Point2D screenspaceCentre (worldToScreenPoint(Point2D(ground.getTotalSize() / 2, 300), layer));
         //std::cout << screenspaceCentre.x << '\n';
-        while (screenspaceCentre.y > al_get_display_height(al_get_current_display())) {
-            screenspaceCentre.y -= 300;
-        }
-        while (screenspaceCentre.y < 0) {
-            screenspaceCentre.y += 300;
+        if(screenCorner.y < screenspaceCentre.y - (al_get_bitmap_height(image) * 2)) {
+            screenspaceCentre.y -= al_get_bitmap_height(image) * 4;
+            al_draw_scaled_bitmap(
+            image,
+            0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
+            screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
+            al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+            0);
+            screenspaceCentre.y += al_get_bitmap_height(image) * 4;
         }
         al_draw_scaled_bitmap(
         image,
@@ -93,12 +97,46 @@ public:
         screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
         al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
         0);
-        al_draw_scaled_bitmap(
-        image,
-        0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-        screenspaceCentre.x - ((al_get_bitmap_width(image)*6)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
-        al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
-        0);
+        if(screenCorner.x < 0)
+        {
+            screenspaceCentre = worldToScreenPoint(Point2D(-(ground.getTotalSize() / 2), 300), layer);
+            if(screenCorner.y < screenspaceCentre.y - (al_get_bitmap_height(image) * 2)) {
+                screenspaceCentre.y -= al_get_bitmap_height(image) * 4;
+                al_draw_scaled_bitmap(
+                image,
+                0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
+                screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
+                al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+                0);
+                screenspaceCentre.y += al_get_bitmap_height(image) * 4;
+            }
+            al_draw_scaled_bitmap(
+            image,
+            0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
+            screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
+            al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+            0);
+        }
+        if(screenCorner.x + al_get_display_width(al_get_current_display()) > ground.getTotalSize() / 2)
+        {
+            screenspaceCentre = worldToScreenPoint(Point2D((ground.getTotalSize() * 1.5), 300), layer);
+            if(screenCorner.y < screenspaceCentre.y - (al_get_bitmap_height(image) * 2)) {
+                screenspaceCentre.y -= al_get_bitmap_height(image) * 4;
+                al_draw_scaled_bitmap(
+                image,
+                0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
+                screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
+                al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+                0);
+                screenspaceCentre.y += al_get_bitmap_height(image) * 4;
+            }
+            al_draw_scaled_bitmap(
+            image,
+            0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
+            screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
+            al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+            0);
+        }
     }
     
     virtual Scene* update(InputState const& input) {
