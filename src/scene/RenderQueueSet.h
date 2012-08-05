@@ -12,10 +12,10 @@
 class Renderable;
 
 struct RenderQueueSet {
-    std::vector<Renderable*> farBackground;
-    std::vector<Renderable*> nearBackground;
-    std::vector<Renderable*> middleGround;
-    std::vector<Renderable*> foreground;
+    std::vector<Renderable const*> farBackground;
+    std::vector<Renderable const*> nearBackground;
+    std::vector<Renderable const*> middleGround;
+    std::vector<Renderable const*> foreground;
 };
 
 #endif
