@@ -33,12 +33,10 @@
 		20BCD65915CE5EEE001BE033 /* CaveBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 20BCD64315CE5EEE001BE033 /* CaveBackground.png */; };
 		20BCD65A15CE5EEE001BE033 /* CaveFlamerangeDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 20BCD64415CE5EEE001BE033 /* CaveFlamerangeDown.png */; };
 		20BCD65B15CE5EEE001BE033 /* CaveFlamerangeUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 20BCD64515CE5EEE001BE033 /* CaveFlamerangeUp.png */; };
-		20BCD65C15CE5EEE001BE033 /* CaveNonButtons.png in Resources */ = {isa = PBXBuildFile; fileRef = 20BCD64615CE5EEE001BE033 /* CaveNonButtons.png */; };
 		20BCD65D15CE5EEE001BE033 /* CaveReturnDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 20BCD64715CE5EEE001BE033 /* CaveReturnDown.png */; };
 		20BCD65E15CE5EEE001BE033 /* CaveReturnUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 20BCD64815CE5EEE001BE033 /* CaveReturnUp.png */; };
 		20BCD65F15CE5EEE001BE033 /* CaveSizeDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 20BCD64915CE5EEE001BE033 /* CaveSizeDown.png */; };
 		20BCD66015CE5EEE001BE033 /* CaveSizeUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 20BCD64A15CE5EEE001BE033 /* CaveSizeUp.png */; };
-		20BCD66115CE5EEE001BE033 /* CaveTiles.png in Resources */ = {isa = PBXBuildFile; fileRef = 20BCD64B15CE5EEE001BE033 /* CaveTiles.png */; };
 		20BCD66215CE5EEE001BE033 /* CaveWingspanDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 20BCD64C15CE5EEE001BE033 /* CaveWingspanDown.png */; };
 		20BCD66315CE5EEE001BE033 /* CaveWingspanUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 20BCD64D15CE5EEE001BE033 /* CaveWingspanUp.png */; };
 		20BCD66415CE5EEE001BE033 /* MenuContinueDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 20BCD64E15CE5EEE001BE033 /* MenuContinueDown.png */; };
@@ -52,6 +50,12 @@
 		20BCD66C15CE5EEE001BE033 /* MenuNewGameDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 20BCD65615CE5EEE001BE033 /* MenuNewGameDown.png */; };
 		20BCD66D15CE5EEE001BE033 /* MenuNewGameUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 20BCD65715CE5EEE001BE033 /* MenuNewGameUp.png */; };
 		20BCD66E15CE5EEE001BE033 /* MenuTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = 20BCD65815CE5EEE001BE033 /* MenuTitle.png */; };
+		20D4681515CE86FF00D76210 /* CaveEmbossedTile.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D4680F15CE86FF00D76210 /* CaveEmbossedTile.png */; };
+		20D4681615CE86FF00D76210 /* CaveFlameCooldownDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D4681015CE86FF00D76210 /* CaveFlameCooldownDown.png */; };
+		20D4681715CE86FF00D76210 /* CaveFlameCooldownUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D4681115CE86FF00D76210 /* CaveFlameCooldownUp.png */; };
+		20D4681815CE86FF00D76210 /* CaveReturnGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D4681215CE86FF00D76210 /* CaveReturnGrey.png */; };
+		20D4681915CE86FF00D76210 /* CaveStaminaDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D4681315CE86FF00D76210 /* CaveStaminaDown.png */; };
+		20D4681A15CE86FF00D76210 /* CaveStaminaUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D4681415CE86FF00D76210 /* CaveStaminaUp.png */; };
 		20E735FA15CD091100A4F90B /* MenuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735EF15CD091100A4F90B /* MenuBackground.png */; };
 		20E7360C15CD768700A4F90B /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E7360B15CD768700A4F90B /* MainMenu.cpp */; };
 		20EF027815CE128800E86905 /* GameSave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20EF027715CE128800E86905 /* GameSave.cpp */; };
@@ -101,12 +105,10 @@
 		20BCD64315CE5EEE001BE033 /* CaveBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveBackground.png; sourceTree = "<group>"; };
 		20BCD64415CE5EEE001BE033 /* CaveFlamerangeDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveFlamerangeDown.png; sourceTree = "<group>"; };
 		20BCD64515CE5EEE001BE033 /* CaveFlamerangeUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveFlamerangeUp.png; sourceTree = "<group>"; };
-		20BCD64615CE5EEE001BE033 /* CaveNonButtons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveNonButtons.png; sourceTree = "<group>"; };
 		20BCD64715CE5EEE001BE033 /* CaveReturnDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveReturnDown.png; sourceTree = "<group>"; };
 		20BCD64815CE5EEE001BE033 /* CaveReturnUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveReturnUp.png; sourceTree = "<group>"; };
 		20BCD64915CE5EEE001BE033 /* CaveSizeDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveSizeDown.png; sourceTree = "<group>"; };
 		20BCD64A15CE5EEE001BE033 /* CaveSizeUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveSizeUp.png; sourceTree = "<group>"; };
-		20BCD64B15CE5EEE001BE033 /* CaveTiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveTiles.png; sourceTree = "<group>"; };
 		20BCD64C15CE5EEE001BE033 /* CaveWingspanDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveWingspanDown.png; sourceTree = "<group>"; };
 		20BCD64D15CE5EEE001BE033 /* CaveWingspanUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveWingspanUp.png; sourceTree = "<group>"; };
 		20BCD64E15CE5EEE001BE033 /* MenuContinueDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuContinueDown.png; sourceTree = "<group>"; };
@@ -120,6 +122,12 @@
 		20BCD65615CE5EEE001BE033 /* MenuNewGameDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuNewGameDown.png; sourceTree = "<group>"; };
 		20BCD65715CE5EEE001BE033 /* MenuNewGameUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuNewGameUp.png; sourceTree = "<group>"; };
 		20BCD65815CE5EEE001BE033 /* MenuTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuTitle.png; sourceTree = "<group>"; };
+		20D4680F15CE86FF00D76210 /* CaveEmbossedTile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveEmbossedTile.png; sourceTree = "<group>"; };
+		20D4681015CE86FF00D76210 /* CaveFlameCooldownDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveFlameCooldownDown.png; sourceTree = "<group>"; };
+		20D4681115CE86FF00D76210 /* CaveFlameCooldownUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveFlameCooldownUp.png; sourceTree = "<group>"; };
+		20D4681215CE86FF00D76210 /* CaveReturnGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveReturnGrey.png; sourceTree = "<group>"; };
+		20D4681315CE86FF00D76210 /* CaveStaminaDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveStaminaDown.png; sourceTree = "<group>"; };
+		20D4681415CE86FF00D76210 /* CaveStaminaUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveStaminaUp.png; sourceTree = "<group>"; };
 		20E735E715CD06B800A4F90B /* Globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Globals.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		20E735EF15CD091100A4F90B /* MenuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBackground.png; sourceTree = "<group>"; };
 		20E7360215CD2EA000A4F90B /* Scene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
@@ -215,16 +223,20 @@
 		205E8C2C15CCD77C00CD2AA5 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				20D4680F15CE86FF00D76210 /* CaveEmbossedTile.png */,
+				20D4681015CE86FF00D76210 /* CaveFlameCooldownDown.png */,
+				20D4681115CE86FF00D76210 /* CaveFlameCooldownUp.png */,
+				20D4681215CE86FF00D76210 /* CaveReturnGrey.png */,
+				20D4681315CE86FF00D76210 /* CaveStaminaDown.png */,
+				20D4681415CE86FF00D76210 /* CaveStaminaUp.png */,
 				204292C715CE7BC200665276 /* LevelSky.png */,
 				20BCD64315CE5EEE001BE033 /* CaveBackground.png */,
 				20BCD64415CE5EEE001BE033 /* CaveFlamerangeDown.png */,
 				20BCD64515CE5EEE001BE033 /* CaveFlamerangeUp.png */,
-				20BCD64615CE5EEE001BE033 /* CaveNonButtons.png */,
 				20BCD64715CE5EEE001BE033 /* CaveReturnDown.png */,
 				20BCD64815CE5EEE001BE033 /* CaveReturnUp.png */,
 				20BCD64915CE5EEE001BE033 /* CaveSizeDown.png */,
 				20BCD64A15CE5EEE001BE033 /* CaveSizeUp.png */,
-				20BCD64B15CE5EEE001BE033 /* CaveTiles.png */,
 				20BCD64C15CE5EEE001BE033 /* CaveWingspanDown.png */,
 				20BCD64D15CE5EEE001BE033 /* CaveWingspanUp.png */,
 				20BCD64E15CE5EEE001BE033 /* MenuContinueDown.png */,
@@ -370,12 +382,10 @@
 				20BCD65915CE5EEE001BE033 /* CaveBackground.png in Resources */,
 				20BCD65A15CE5EEE001BE033 /* CaveFlamerangeDown.png in Resources */,
 				20BCD65B15CE5EEE001BE033 /* CaveFlamerangeUp.png in Resources */,
-				20BCD65C15CE5EEE001BE033 /* CaveNonButtons.png in Resources */,
 				20BCD65D15CE5EEE001BE033 /* CaveReturnDown.png in Resources */,
 				20BCD65E15CE5EEE001BE033 /* CaveReturnUp.png in Resources */,
 				20BCD65F15CE5EEE001BE033 /* CaveSizeDown.png in Resources */,
 				20BCD66015CE5EEE001BE033 /* CaveSizeUp.png in Resources */,
-				20BCD66115CE5EEE001BE033 /* CaveTiles.png in Resources */,
 				20BCD66215CE5EEE001BE033 /* CaveWingspanDown.png in Resources */,
 				20BCD66315CE5EEE001BE033 /* CaveWingspanUp.png in Resources */,
 				20BCD66415CE5EEE001BE033 /* MenuContinueDown.png in Resources */,
@@ -390,6 +400,12 @@
 				20BCD66D15CE5EEE001BE033 /* MenuNewGameUp.png in Resources */,
 				20BCD66E15CE5EEE001BE033 /* MenuTitle.png in Resources */,
 				204292C815CE7BC200665276 /* LevelSky.png in Resources */,
+				20D4681515CE86FF00D76210 /* CaveEmbossedTile.png in Resources */,
+				20D4681615CE86FF00D76210 /* CaveFlameCooldownDown.png in Resources */,
+				20D4681715CE86FF00D76210 /* CaveFlameCooldownUp.png in Resources */,
+				20D4681815CE86FF00D76210 /* CaveReturnGrey.png in Resources */,
+				20D4681915CE86FF00D76210 /* CaveStaminaDown.png in Resources */,
+				20D4681A15CE86FF00D76210 /* CaveStaminaUp.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,14 +13,18 @@
 ALLEGRO_DISPLAY *g_display;
 
 ALLEGRO_BITMAP *g_CaveBackground;
+ALLEGRO_BITMAP *g_CaveEmbossedTile;
+ALLEGRO_BITMAP *g_CaveFlameCooldownDown;
+ALLEGRO_BITMAP *g_CaveFlameCooldownUp;
 ALLEGRO_BITMAP *g_CaveFlamerangeDown;
 ALLEGRO_BITMAP *g_CaveFlamerangeUp;
-ALLEGRO_BITMAP *g_CaveNonButtons;
 ALLEGRO_BITMAP *g_CaveReturnDown;
+ALLEGRO_BITMAP *g_CaveReturnGrey;
 ALLEGRO_BITMAP *g_CaveReturnUp;
 ALLEGRO_BITMAP *g_CaveSizeDown;
 ALLEGRO_BITMAP *g_CaveSizeUp;
-ALLEGRO_BITMAP *g_CaveTiles;
+ALLEGRO_BITMAP *g_CaveStaminaDown;
+ALLEGRO_BITMAP *g_CaveStaminaUp;
 ALLEGRO_BITMAP *g_CaveWingspanDown;
 ALLEGRO_BITMAP *g_CaveWingspanUp;
 ALLEGRO_BITMAP *g_DragonSmallStand;
@@ -169,14 +173,18 @@ struct SampleInit {
 struct ResourcesInit {
     ResourcesInit() :
         CaveBackground(&g_CaveBackground, "CaveBackground.png"),
+        CaveEmbossedTile(&g_CaveEmbossedTile, "CaveEmbossedTile.png"),
+        CaveFlameCooldownDown(&g_CaveFlameCooldownDown, "CaveFlameCooldownDown.png"),
+        CaveFlameCooldownUp(&g_CaveFlameCooldownUp, "CaveFlameCooldownUp.png"),
         CaveFlamerangeDown(&g_CaveFlamerangeDown, "CaveFlamerangeDown.png"),
         CaveFlamerangeUp(&g_CaveFlamerangeUp, "CaveFlamerangeUp.png"),
-        CaveNonButtons(&g_CaveNonButtons, "CaveNonButtons.png"),
         CaveReturnDown(&g_CaveReturnDown, "CaveReturnDown.png"),
         CaveReturnUp(&g_CaveReturnUp, "CaveReturnUp.png"),
+        CaveReturnGrey(&g_CaveReturnGrey, "CaveReturnGrey.png"),
         CaveSizeDown(&g_CaveSizeDown, "CaveSizeDown.png"),
         CaveSizeUp(&g_CaveSizeUp, "CaveSizeUp.png"),
-        CaveTiles(&g_CaveTiles, "CaveTiles.png"),
+        CaveStaminaDown(&g_CaveStaminaDown, "CaveStaminaDown.png"),
+        CaveStaminaUp(&g_CaveStaminaUp, "CaveStaminaUp.png"),
         CaveWingspanDown(&g_CaveWingspanDown, "CaveWingspanDown.png"),
         CaveWingspanUp(&g_CaveWingspanUp, "CaveWingspanUp.png"),
         DragonSmallStand(&g_DragonSmallStand, "DragonSmallStand.png"),
@@ -199,14 +207,18 @@ struct ResourcesInit {
     ~ResourcesInit() {}
     
     BitmapInit CaveBackground;
+    BitmapInit CaveEmbossedTile;
+    BitmapInit CaveFlameCooldownDown;
+    BitmapInit CaveFlameCooldownUp;
     BitmapInit CaveFlamerangeDown;
     BitmapInit CaveFlamerangeUp;
-    BitmapInit CaveNonButtons;
     BitmapInit CaveReturnDown;
+    BitmapInit CaveReturnGrey;
     BitmapInit CaveReturnUp;
     BitmapInit CaveSizeDown;
     BitmapInit CaveSizeUp;
-    BitmapInit CaveTiles;
+    BitmapInit CaveStaminaDown;
+    BitmapInit CaveStaminaUp;
     BitmapInit CaveWingspanDown;
     BitmapInit CaveWingspanUp;
     BitmapInit DragonSmallStand;

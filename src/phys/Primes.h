@@ -3,6 +3,6 @@
 
 #include <vector>
 
-inline std::vector<unsigned> factorize(unsigned n);
+std::vector<unsigned> factorize(unsigned n);
 
 #endif
