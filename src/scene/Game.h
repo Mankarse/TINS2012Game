@@ -10,6 +10,10 @@
 #include <iostream>
 #include "RenderQueueSet.h"
 #include "Renderable.h"
+#include "StaticObject.h"
+#include "Bullet.h"
+#include "Particle.h"
+#include "Enemy.h"
 
 template<typename T, std::size_t N>
 std::size_t length(T(&)[N]) {
@@ -29,9 +33,10 @@ private:
         return e.type == ALLEGRO_EVENT_DISPLAY_CLOSE;
     }
     
-    RenderQueueSet renderQueues;
-
-    ALLEGRO_BITMAP* background;
+    std::vector<StaticObject> staticRenderables;
+    std::vector<Enemy> enemies;
+    std::vector<Particle> particles;
+    std::vector<Bullet> bullets;
 
 public:
     Game() :
@@ -47,7 +52,6 @@ public:
         player.init();
         player.assignHeightmap(&ground);
         al_init_primitives_addon();
-        background = g_MenuBackground;
         screenCorner = Point2D(0, al_get_display_height(al_get_current_display()) * -0.8);
     }
     
@@ -65,16 +69,16 @@ public:
         al_draw_scaled_bitmap(
         image,
         0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-        screenPos.x - ((al_get_bitmap_width(image)*2) * layer), screenPos.y - ((al_get_bitmap_height(image)*2) * layer),
-        al_get_bitmap_width(image)*4 * layer, al_get_bitmap_height(image)*4 * layer,
+        screenPos.x - ((al_get_bitmap_width(image)*0.5) * layer), screenPos.y - ((al_get_bitmap_height(image)*0.5) * layer),
+        al_get_bitmap_width(image) * layer, al_get_bitmap_height(image) * layer,
         0);
     }
     void drawBitmapAtScreenPoint(ALLEGRO_BITMAP* image, Point2D point) const {
         al_draw_scaled_bitmap(
         image,
         0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-        point.x - ((al_get_bitmap_width(image)*2)), point.y - ((al_get_bitmap_height(image)*2)),
-        al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+        point.x - ((al_get_bitmap_width(image)*0.5)), point.y - ((al_get_bitmap_height(image)*0.5)),
+        al_get_bitmap_width(image), al_get_bitmap_height(image),
         0);
     }
     void drawBackground(ALLEGRO_BITMAP* image, double depth) const {
@@ -82,61 +86,61 @@ public:
         double basePosition = ground.getTotalSize() / 2;
         double positionOffset = al_get_time() * 15; // Look at the clouds move! Happy now?
         Point2D screenspaceCentre (worldToScreenPoint(Point2D(basePosition + positionOffset, 300), layer));
-        std::cout << screenCorner.x << '\n';
-        if(screenCorner.y - positionOffset < screenspaceCentre.y - (al_get_bitmap_height(image) * 2)) {
-            screenspaceCentre.y -= al_get_bitmap_height(image) * 4;
+        //std::cout << screenCorner.x << '\n';
+        if(screenCorner.y - positionOffset < screenspaceCentre.y - (al_get_bitmap_height(image) * 0.5)) {
+            screenspaceCentre.y -= al_get_bitmap_height(image);
             al_draw_scaled_bitmap(
             image,
             0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-            screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
-            al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+            screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y - ((al_get_bitmap_height(image)*0.5)),
+            al_get_bitmap_width(image)*4, al_get_bitmap_height(image),
             0);
-            screenspaceCentre.y += al_get_bitmap_height(image) * 4;
+            screenspaceCentre.y += al_get_bitmap_height(image);
         }
         al_draw_scaled_bitmap(
         image,
         0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-        screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
-        al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+        screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y - ((al_get_bitmap_height(image)*0.5)),
+        al_get_bitmap_width(image), al_get_bitmap_height(image),
         0);
         if(screenCorner.x - positionOffset < 0)
         {
             screenspaceCentre = worldToScreenPoint(Point2D((-basePosition) + positionOffset, 300), layer);
-            if(screenCorner.y < screenspaceCentre.y - (al_get_bitmap_height(image) * 2)) {
-                screenspaceCentre.y -= al_get_bitmap_height(image) * 4;
+            if(screenCorner.y < screenspaceCentre.y - (al_get_bitmap_height(image) * 0.5)) {
+                screenspaceCentre.y -= al_get_bitmap_height(image);
                 al_draw_scaled_bitmap(
                 image,
                 0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-                screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
-                al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+                screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y - ((al_get_bitmap_height(image)*0.5)),
+                al_get_bitmap_width(image)*4, al_get_bitmap_height(image),
                 0);
-                screenspaceCentre.y += al_get_bitmap_height(image) * 4;
+                screenspaceCentre.y += al_get_bitmap_height(image);
             }
             al_draw_scaled_bitmap(
             image,
             0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-            screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
-            al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+            screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y - ((al_get_bitmap_height(image)*0.5)),
+            al_get_bitmap_width(image), al_get_bitmap_height(image),
             0);
         }
         if(screenCorner.x + al_get_display_width(al_get_current_display()) > ground.getTotalSize() / 2)
         {
             screenspaceCentre = worldToScreenPoint(Point2D((basePosition + ground.getTotalSize() + positionOffset), 300), layer);
-            if(screenCorner.y < screenspaceCentre.y - (al_get_bitmap_height(image) * 2)) {
-                screenspaceCentre.y -= al_get_bitmap_height(image) * 4;
+            if(screenCorner.y < screenspaceCentre.y - (al_get_bitmap_height(image) * 0.5)) {
+                screenspaceCentre.y -= al_get_bitmap_height(image);
                 al_draw_scaled_bitmap(
                 image,
                 0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-                screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
-                al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+                screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y - ((al_get_bitmap_height(image)*0.5)),
+                al_get_bitmap_width(image)*4, al_get_bitmap_height(image),
                 0);
-                screenspaceCentre.y += al_get_bitmap_height(image) * 4;
+                screenspaceCentre.y += al_get_bitmap_height(image);
             }
             al_draw_scaled_bitmap(
             image,
             0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-            screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
-            al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+            screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y - ((al_get_bitmap_height(image)*0.5)),
+            al_get_bitmap_width(image), al_get_bitmap_height(image),
             0);
         }
     }
@@ -180,7 +184,11 @@ public:
             al_get_display_height(al_get_current_display()) * 0.5);
         
         // Enemies!
-        
+        for(std::vector<Enemy>::iterator it(enemies.begin()), end(enemies.end()); it != end; ++it)
+        {
+            Enemy& curEnemy(*it);
+            curEnemy.update(bullets, particles, player);
+        }
         // My bullets!
         
         // Their bullets!
@@ -191,8 +199,8 @@ public:
         return this;
     }
     
-    void renderQueue(std::vector<Renderable*> const& queue) const {
-        for (std::vector<Renderable*>::const_iterator it(queue.begin()), end(queue.end()); it != end; ++it)
+    void renderQueue(std::vector<Renderable const*> const& queue) const {
+        for (std::vector<Renderable const*>::const_iterator it(queue.begin()), end(queue.end()); it != end; ++it)
         {
             Renderable const& curObject(**it);
             Point2D position(curObject.getWorldPoint());
@@ -203,15 +211,21 @@ public:
         }
     }
     
-    virtual void renderTo(ALLEGRO_BITMAP* target) const {
-        // Collect renderables, add to queues
-        
+    void preRender(RenderQueueSet* renderQueues) const {
+        for (std::vector<StaticObject>::const_iterator it(staticRenderables.begin()), end(staticRenderables.end()); it != end; ++it)
+        {
+            StaticObject const& curObject(*it);
+            curObject.pickRenderQueue(*renderQueues);
+        }
+    }
+    
+    void drawingPass(RenderQueueSet* renderQueues) const {
         // Render each queue, in order
         // Background:
         drawBackground(g_LevelSky, 0.5);
         
-        renderQueue(renderQueues.farBackground);
-        renderQueue(renderQueues.nearBackground);
+        renderQueue(renderQueues->farBackground);
+        renderQueue(renderQueues->nearBackground);
         // Heightmap
         drawBitmapAtWorldPoint(g_LevelFG, Point2D(0,0));
         drawBitmapAtWorldPoint(g_LevelFG, Point2D(ground.getTotalSize(),0));
@@ -221,11 +235,22 @@ public:
         Point2D worldBottomCorner(ground.getTotalSize() * 2, 1000);
         worldBottomCorner = worldToScreenPoint(worldBottomCorner);
         al_draw_filled_rectangle(worldTopCorner.x, worldTopCorner.y, worldBottomCorner.x, worldBottomCorner.y, al_map_rgb(146, 120, 94));
-        renderQueue(renderQueues.middleGround);
+        renderQueue(renderQueues->middleGround);
         player.renderStep(screenCorner);
         
         //ground.draw(screenCorner);
-        renderQueue(renderQueues.foreground);
+        renderQueue(renderQueues->foreground);
+    }
+    
+    virtual void renderTo(ALLEGRO_BITMAP* target) const {
+        // Collect renderables, add to queues
+        // Background objects
+        RenderQueueSet renderQueues;
+        preRender(&renderQueues);
+        
+        // Now, render the collected queues
+        drawingPass(&renderQueues);
+
     }
 };
 

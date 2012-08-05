@@ -12,15 +12,15 @@
 #include "GroundHeightMap.h"
 #include "Renderable.h"
 #include "Dragon.h"
+#include "Bullet.h"
+#include "Particle.h"
 class Enemy : Renderable{
     private:
-    GroundHeightMap* heightmap;
+    GroundHeightmap* heightmap;
     
     public:
     virtual void update(std::vector<Bullet>& bulletlist, std::vector<Particle>& particleList, Dragon& player) = 0;
-    void assignHeightmap(GroundHeightMap* newHeights) {
-        heightmap = newHeights;
-    }
+    
 };
 
 #endif
