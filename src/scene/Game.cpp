@@ -1,4 +1,6 @@
 #include "Game.h"
+#include "Spawner.h"
+#include "Hut.h"
 template<typename T, std::size_t N>
 static std::size_t length(T(&)[N]) {
     return N;
@@ -15,6 +17,12 @@ static Rect cavePosition() {
     return Rect(2250, 100, 200, 200);
 }
 
+static std::vector<Spawner> createSpawners() {
+    std::vector<Spawner> spawners;
+    spawners.push_back(Spawner(new Hut(Point2D(2500, 0))));
+    return spawners;
+}
+
 static bool isDisplayClosedEvent(ALLEGRO_EVENT const& e) {
     return e.type == ALLEGRO_EVENT_DISPLAY_CLOSE;
 }
@@ -22,6 +30,7 @@ static bool isDisplayClosedEvent(ALLEGRO_EVENT const& e) {
 Game::Game() :
     ground(loadGlobalHeightmap()),
     caveRect(cavePosition()),
+    spawners(createSpawners()),
     player()
 {
     player.assignHeightmap(&ground);
@@ -152,6 +161,12 @@ Scene* Game::update(InputState const& input) {
     mousePosition.y = al_get_mouse_state_axis(&input.mouseState, 1);
     // spawners!
     
+    for (std::vector<Spawner>::iterator it(spawners.begin()), end(spawners.end()); it != end; ++it)
+    {
+        Spawner& curSpawner(*it);
+        std::vector<Enemy> newEnemies(curSpawner.update(totalPlayTime));
+        enemies.insert(enemies.end(), newEnemies.begin(), newEnemies.end());
+    }
     // Player!
     switch(player.physicsStep(input)) {
         case Left :
@@ -168,7 +183,6 @@ Scene* Game::update(InputState const& input) {
         {
             break;
         }
-        //screenCorner = ground.getLoopedCoordinate(screenCorner);
     }
 
     // Camera control
@@ -179,6 +193,10 @@ Scene* Game::update(InputState const& input) {
     for(std::vector<Enemy>::iterator it(enemies.begin()), end(enemies.end()); it != end; ++it)
     {
         Enemy& curEnemy(*it);
+        if(!curEnemy.hasHeightmap())
+        {
+            curEnemy.assignHeightmap(ground);
+        }
         curEnemy.update(bullets, particles, player);
     }
     // My bullets!
@@ -208,6 +226,16 @@ void Game::preRender(RenderQueueSet* renderQueues) const {
     {
         StaticObject const& curObject(*it);
         curObject.pickRenderQueue(*renderQueues);
+    }
+    for (std::vector<Spawner>::const_iterator it(spawners.begin()), end(spawners.end()); it != end; ++it)
+    {
+        Spawner const& curSpawn(*it);
+        curSpawn.pickRenderQueue(*renderQueues);
+    }
+    for (std::vector<Enemy>::const_iterator it(enemies.begin()), end(enemies.end()); it != end; ++it)
+    {
+        Enemy const& curEnemy(*it);
+        curEnemy.pickRenderQueue(*renderQueues);
     }
 }
 

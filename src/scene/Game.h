@@ -18,6 +18,8 @@
 #include "GameSave.h"
 #include "Rect.h"
 #include "Cave.h"
+#include "Spawner.h"
+#include "Hut.h"
 
 class Game:public Scene {
 public:
@@ -36,6 +38,7 @@ private:
     std::vector<Enemy> enemies;
     std::vector<Particle> particles;
     std::vector<Bullet> bullets;
+    std::vector<Spawner> spawners;
     
     Dragon player;
     Point2D screenCorner;
@@ -48,6 +51,7 @@ private:
     void drawBitmapAtScreenPoint(ALLEGRO_BITMAP* image, Point2D point) const;
     void drawBackground(ALLEGRO_BITMAP* image, double depth) const;
     
+    double totalPlayTime;
 
     
     void renderQueue(std::vector<Renderable const*> const& queue) const;
