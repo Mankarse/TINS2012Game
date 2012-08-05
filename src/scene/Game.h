@@ -8,7 +8,7 @@
 #include "Globals.h"
 #include <vector>
 #include <iostream>
-
+#include "RenderQueueSet.h"
 
 template<typename T, std::size_t N>
 std::size_t length(T(&)[N]) {
@@ -16,8 +16,8 @@ std::size_t length(T(&)[N]) {
 }
 
 inline GroundHeightmap loadGlobalHeightmap() {
-    double points[] = {120., 110., 70., 79., 90., 170., 270., 270., 270., 270., 270., 270, 270., 270., 270, 260., 240.,
-    100, 95, 90, 100, 190, 280, 285, 285};
+    double points[] = {120., 110., 70., 79., 95., 190., 270., 270., 270., 270., 270., 270, 270., 270., 270, 260., 240.,
+    100, 95, 90, 100, 190, 280, 285, 283, 280, 260, 230, 180, 110, 70, 75, 120, 170, 200, 140, 110, 110, 95, 105};
     
     return GroundHeightmap(100, static_cast<int>(length(points)), std::vector<double>(points, points + length(points)));
 }
@@ -27,6 +27,8 @@ private:
     static bool isDisplayClosedEvent(ALLEGRO_EVENT const& e) {
         return e.type == ALLEGRO_EVENT_DISPLAY_CLOSE;
     }
+    
+    RenderQueueSet renderQueues;
 
     ALLEGRO_BITMAP* background;
 
@@ -91,8 +93,22 @@ public:
         // spawners!
         
         // Player!
-        if(player.physicsStep(input)) {
-            screenCorner = ground.getLoopedCoordinate(screenCorner);
+        switch(player.physicsStep(input)) {
+            case Left :
+            {
+                screenCorner.x -= ground.getTotalSize();
+                break;
+            }
+            case Right :
+            {
+                screenCorner.x += ground.getTotalSize();
+                break;
+            }
+            case None :
+            {
+                break;
+            }
+            //screenCorner = ground.getLoopedCoordinate(screenCorner);
         }
 
         
@@ -112,6 +128,15 @@ public:
         // Clean up dead things
         return this;
     }
+    
+    void renderQueue(std::vector<Renderable*> const& queue) const {
+        for (std::vector<Renderable*>::const_iterator it(queue.begin()), end(queue.end()); it != end; ++it)
+        {
+            Renderable const& curObject(**it);
+            drawBitmapAtWorldPoint(curObject.getBitmap(), curObject.getWorldPoint(), curObject.getDepth());
+        }
+    }
+    
     virtual void renderTo(ALLEGRO_BITMAP* target) const {
         // Collect renderables, add to queues
         
@@ -120,12 +145,18 @@ public:
         drawBitmapAtScreenPoint(background, Point2D(al_get_display_width(al_get_current_display()) * 0.5,
             al_get_display_height(al_get_current_display()) * 0.5));
         
-        
+        renderQueue(renderQueues.farBackground);
+        renderQueue(renderQueues.nearBackground);
         // Heightmap
         drawBitmapAtWorldPoint(g_LevelFG, Point2D(0,0));
-        ground.draw(screenCorner);
+        drawBitmapAtWorldPoint(g_LevelFG, Point2D(ground.getTotalSize(),0));
+        drawBitmapAtWorldPoint(g_LevelFG, Point2D(-ground.getTotalSize(),0));
         
+        renderQueue(renderQueues.middleGround);
         player.renderStep(screenCorner);
+        
+        //ground.draw(screenCorner);
+        renderQueue(renderQueues.foreground);
     }
 };
 

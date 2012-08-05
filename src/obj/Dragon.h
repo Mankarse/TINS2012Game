@@ -26,6 +26,12 @@ enum DragonMode {
     Flying,
 };
 
+enum ScreenFlipMode {
+    Left,
+    Right,
+    None
+};
+
 class Dragon {
     private:
     DragonSkin baby;
@@ -57,7 +63,7 @@ class Dragon {
     Point2D worldPosition;
     void init();
     void assignHeightmap(GroundHeightmap* newGround);
-    bool physicsStep(InputState const& input);
+    ScreenFlipMode physicsStep(InputState const& input);
     void renderStep(Point2D screenPos) const;
 };
 
