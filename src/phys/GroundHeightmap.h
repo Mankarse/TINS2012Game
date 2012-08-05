@@ -22,8 +22,9 @@ class GroundHeightmap {
     GroundHeightmap(int newRes, int newWidth, std::vector<double> const& newData);
     void draw(Point2D screenPos) const;
     double getInterpolatedPoint(double xPos) const;
+    double getInterpolatedWorldPoint(double xPos) const;
     
-    
+    double get(double xPos) const;
 };
 
 #endif /* defined(__TINSGame2012__GroundHeightmap__) */

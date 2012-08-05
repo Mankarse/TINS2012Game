@@ -45,6 +45,9 @@ class Dragon {
     Point2D velocity;
     DragonMode mode;
     
+    Point2D foreLeg;
+    Point2D hindLeg;
+    
     public:
     DragonStats stats;
     Point2D worldPosition;
