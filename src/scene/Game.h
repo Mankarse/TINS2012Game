@@ -8,7 +8,7 @@
 #include "Globals.h"
 #include <vector>
 #include <iostream>
-
+#include "RenderQueueSet.h";
 
 template<typename T, std::size_t N>
 std::size_t length(T(&)[N]) {
@@ -27,6 +27,8 @@ private:
     static bool isDisplayClosedEvent(ALLEGRO_EVENT const& e) {
         return e.type == ALLEGRO_EVENT_DISPLAY_CLOSE;
     }
+    
+    RenderQueueSet renderQueues;
 
     ALLEGRO_BITMAP* background;
 
@@ -126,6 +128,15 @@ public:
         // Clean up dead things
         return this;
     }
+    
+    void renderQueue(std::vector<Renderable*> const& queue) const {
+        for (std::vector<Renderable*>::const_iterator it(queue.begin()), end(queue.end()); it != end; ++it)
+        {
+            Renderable const& curObject(**it);
+            drawBitmapAtWorldPoint(curObject.getBitmap(), curObject.getWorldPoint(), curObject.getDepth());
+        }
+    }
+    
     virtual void renderTo(ALLEGRO_BITMAP* target) const {
         // Collect renderables, add to queues
         
@@ -134,12 +145,16 @@ public:
         drawBitmapAtScreenPoint(background, Point2D(al_get_display_width(al_get_current_display()) * 0.5,
             al_get_display_height(al_get_current_display()) * 0.5));
         
-        
+        renderQueue(renderQueues.farBackground);
+        renderQueue(renderQueues.nearBackground);
         // Heightmap
         drawBitmapAtWorldPoint(g_LevelFG, Point2D(0,0));
-        ground.draw(screenCorner);
         
+        renderQueue(renderQueues.middleGround);
         player.renderStep(screenCorner);
+        
+        ground.draw(screenCorner);
+        renderQueue(renderQueues.foreground);
     }
 };
 

@@ -53,6 +53,8 @@
 		204292A915CDF69900665276 /* DragonStats.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DragonStats.h; sourceTree = "<group>"; };
 		204292B315CE239300665276 /* DragonSmallStand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DragonSmallStand.png; sourceTree = "<group>"; };
 		204292B615CE341600665276 /* LevelFG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LevelFG.png; sourceTree = "<group>"; };
+		204292BC15CE52FE00665276 /* Renderable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Renderable.h; sourceTree = "<group>"; };
+		204292BE15CE53B100665276 /* RenderQueueSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RenderQueueSet.h; sourceTree = "<group>"; };
 		2058B8A115CCE5CF00C316BB /* Viewport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Viewport.cpp; sourceTree = "<group>"; };
 		2058B8A215CCE5CF00C316BB /* Viewport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Viewport.h; sourceTree = "<group>"; };
 		2058B8A515CCF2BD00C316BB /* GroundHeightmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GroundHeightmap.cpp; sourceTree = "<group>"; };
@@ -220,6 +222,8 @@
 				2039F88315CDF09100ABC061 /* Cave.cpp */,
 				2039F88615CDF4BC00ABC061 /* GameSave.h */,
 				20EF027715CE128800E86905 /* GameSave.cpp */,
+				204292BC15CE52FE00665276 /* Renderable.h */,
+				204292BE15CE53B100665276 /* RenderQueueSet.h */,
 			);
 			path = scene;
 			sourceTree = "<group>";
