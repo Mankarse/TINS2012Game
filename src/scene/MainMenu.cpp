@@ -44,6 +44,7 @@ Scene* MainMenu::update(InputState const& input) {
                     switch (selectedButton) {
                         case 1: {
                             std::auto_ptr<Game> game(new Game());
+                            game->init();
                             al_stop_sample(&music);
                             return game.release();
                         }

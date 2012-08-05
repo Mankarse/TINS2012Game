@@ -1,6 +1,8 @@
 #ifndef TINSGame2012__Cave
 #define TINSGame2012__Cave
 #include "Scene.h"
+#include "GameSave.h"
+
 class Cave: public Scene {
 public:
     Cave(GameSave const& save) {
