@@ -2,6 +2,7 @@
 #define TINSGame2012_Globals_h
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_audio.h>
+#include <allegro5/allegro_font.h>
 extern ALLEGRO_DISPLAY *g_display;
 
 extern ALLEGRO_BITMAP *g_CaveBackground;
@@ -33,6 +34,9 @@ extern ALLEGRO_BITMAP *g_MenuInstructionsUp;
 extern ALLEGRO_BITMAP *g_MenuNewGameDown;
 extern ALLEGRO_BITMAP *g_MenuNewGameUp;
 extern ALLEGRO_BITMAP *g_MenuTitle;
+extern ALLEGRO_BITMAP *g_NumberSheet10;
+
+extern ALLEGRO_FONT *g_Font10;
 
 extern ALLEGRO_SAMPLE *g_MenuMus;
 

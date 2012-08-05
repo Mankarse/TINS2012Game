@@ -7,6 +7,7 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
+#include <allegro5/allegro_font.h>
 #include "scene/MainMenu.h"
 #include "scene/Cave.h"
 
@@ -41,6 +42,9 @@ ALLEGRO_BITMAP *g_MenuInstructionsUp;
 ALLEGRO_BITMAP *g_MenuNewGameDown;
 ALLEGRO_BITMAP *g_MenuNewGameUp;
 ALLEGRO_BITMAP *g_MenuTitle;
+ALLEGRO_BITMAP *g_NumberSheet10;
+
+ALLEGRO_FONT *g_Font10;
 
 ALLEGRO_SAMPLE *g_MenuMus;
 
@@ -126,6 +130,11 @@ struct AudioCodecInit {
     }
 };
 
+struct AllegroFontInit {
+    AllegroFontInit() {
+        al_init_font_addon();
+    }
+};
 
 struct AllegroInit {
     CoreAllegroInit coreAllegro;
@@ -135,6 +144,7 @@ struct AllegroInit {
     AudioInit audio;
     AudioSamplesInit samples;
     AudioCodecInit acodecs;
+    AllegroFontInit afont;
 };
 
 struct BitmapInit {
@@ -170,6 +180,18 @@ struct SampleInit {
     ALLEGRO_SAMPLE **toInitialize;
 };
 
+struct FontInit {
+    FontInit(ALLEGRO_FONT** toInitialize, ALLEGRO_BITMAP* sourceBitmap, int rangec, int const* rangev) :
+        toInitialize(toInitialize)
+    {
+        *toInitialize = al_grab_font_from_bitmap(g_NumberSheet10, rangec, const_cast<int*>(rangev));
+    }
+    private:
+    ALLEGRO_FONT** toInitialize;
+};
+
+static const int font10Range[] = {46, 57};
+
 struct ResourcesInit {
     ResourcesInit() :
         CaveBackground(&g_CaveBackground, "CaveBackground.png"),
@@ -201,6 +223,8 @@ struct ResourcesInit {
         MenuNewGameDown(&g_MenuNewGameDown, "MenuNewGameDown.png"),
         MenuNewGameUp(&g_MenuNewGameUp, "MenuNewGameUp.png"),
         MenuTitle(&g_MenuTitle, "MenuTitle.png"),
+        NumberSheet10(&g_NumberSheet10, "NumberSheet10.png"),
+        Font10(&g_Font10, g_NumberSheet10, 1, font10Range),
         MenuMus(&g_MenuMus, "MenuMus.ogg")
     {
     }
@@ -235,7 +259,8 @@ struct ResourcesInit {
     BitmapInit MenuNewGameDown;
     BitmapInit MenuNewGameUp;
     BitmapInit MenuTitle;
-    
+    BitmapInit NumberSheet10;
+    FontInit Font10;
     SampleInit MenuMus;
 };
 

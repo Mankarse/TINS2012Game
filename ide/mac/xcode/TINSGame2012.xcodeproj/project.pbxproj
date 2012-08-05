@@ -56,6 +56,7 @@
 		20D4681815CE86FF00D76210 /* CaveReturnGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D4681215CE86FF00D76210 /* CaveReturnGrey.png */; };
 		20D4681915CE86FF00D76210 /* CaveStaminaDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D4681315CE86FF00D76210 /* CaveStaminaDown.png */; };
 		20D4681A15CE86FF00D76210 /* CaveStaminaUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D4681415CE86FF00D76210 /* CaveStaminaUp.png */; };
+		20D4681C15CE980000D76210 /* NumberSheet10.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D4681B15CE980000D76210 /* NumberSheet10.png */; };
 		20E735FA15CD091100A4F90B /* MenuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735EF15CD091100A4F90B /* MenuBackground.png */; };
 		20E7360C15CD768700A4F90B /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E7360B15CD768700A4F90B /* MainMenu.cpp */; };
 		20EF027815CE128800E86905 /* GameSave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20EF027715CE128800E86905 /* GameSave.cpp */; };
@@ -128,6 +129,7 @@
 		20D4681215CE86FF00D76210 /* CaveReturnGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveReturnGrey.png; sourceTree = "<group>"; };
 		20D4681315CE86FF00D76210 /* CaveStaminaDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveStaminaDown.png; sourceTree = "<group>"; };
 		20D4681415CE86FF00D76210 /* CaveStaminaUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaveStaminaUp.png; sourceTree = "<group>"; };
+		20D4681B15CE980000D76210 /* NumberSheet10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NumberSheet10.png; sourceTree = "<group>"; };
 		20E735E715CD06B800A4F90B /* Globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Globals.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		20E735EF15CD091100A4F90B /* MenuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBackground.png; sourceTree = "<group>"; };
 		20E7360215CD2EA000A4F90B /* Scene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 		205E8C2C15CCD77C00CD2AA5 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				20D4681B15CE980000D76210 /* NumberSheet10.png */,
 				20D4680F15CE86FF00D76210 /* CaveEmbossedTile.png */,
 				20D4681015CE86FF00D76210 /* CaveFlameCooldownDown.png */,
 				20D4681115CE86FF00D76210 /* CaveFlameCooldownUp.png */,
@@ -406,6 +409,7 @@
 				20D4681815CE86FF00D76210 /* CaveReturnGrey.png in Resources */,
 				20D4681915CE86FF00D76210 /* CaveStaminaDown.png in Resources */,
 				20D4681A15CE86FF00D76210 /* CaveStaminaUp.png in Resources */,
+				20D4681C15CE980000D76210 /* NumberSheet10.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
