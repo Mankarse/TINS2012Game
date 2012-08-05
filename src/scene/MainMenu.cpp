@@ -85,7 +85,7 @@ static void draw_element(ALLEGRO_BITMAP * element) {
     al_draw_scaled_bitmap(
         element,
         0, 0, al_get_bitmap_width(element), al_get_bitmap_height(element),
-        0, 0, al_get_bitmap_width(element)*4, al_get_bitmap_height(element)*4,
+        0, 0, al_get_bitmap_width(element), al_get_bitmap_height(element),
         0);
 }
 
