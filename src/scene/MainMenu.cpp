@@ -21,7 +21,7 @@ MainMenu::MainMenu() :
     pressedButton(-1)
 {}
 void MainMenu::init() {
-    al_play_sample(g_TitleMus, 1, 0, 1, ALLEGRO_PLAYMODE_LOOP, &music);
+    al_play_sample(g_MenuMus, 1, 0, 1, ALLEGRO_PLAYMODE_LOOP, &music);
 }
 Scene* MainMenu::update(InputState const& input) {
     if (std::find_if(
@@ -93,11 +93,11 @@ void MainMenu::renderTo(ALLEGRO_BITMAP* target) const {
     al_set_target_bitmap(target);
     
     draw_element(g_MenuBackground);
-    draw_element(g_Title);
+    draw_element(g_MenuTitle);
     
-    draw_element(pressedButton == 0 ? g_InstructionsDown : g_InstructionsUp);
-    draw_element(pressedButton == 1 ? g_NewGameDown : g_NewGameUp);
-    draw_element(saveExists ? (pressedButton == 2 ? g_ContinueDown : g_ContinueUp) : g_ContinueGrey);
-    draw_element(pressedButton == 3 ? g_ExitDown : g_ExitUp);
+    draw_element(pressedButton == 0 ? g_MenuInstructionsDown : g_MenuInstructionsUp);
+    draw_element(pressedButton == 1 ? g_MenuNewGameDown : g_MenuNewGameUp);
+    draw_element(saveExists ? (pressedButton == 2 ? g_MenuContinueDown : g_MenuContinueUp) : g_MenuContinueGrey);
+    draw_element(pressedButton == 3 ? g_MenuExitDown : g_MenuExitUp);
 }
 

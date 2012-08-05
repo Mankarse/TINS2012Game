@@ -8,30 +8,47 @@
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
 #include "scene/MainMenu.h"
+#include "scene/Cave.h"
 
 ALLEGRO_DISPLAY *g_display;
 
-ALLEGRO_BITMAP *g_ContinueDown;
-ALLEGRO_BITMAP *g_ContinueGrey;
-ALLEGRO_BITMAP *g_ContinueUp;
-ALLEGRO_BITMAP *g_ExitDown;
-ALLEGRO_BITMAP *g_ExitUp;
-ALLEGRO_BITMAP *g_LevelFG;
-ALLEGRO_BITMAP *g_InstructionsDown;
-ALLEGRO_BITMAP *g_InstructionsUp;
-ALLEGRO_BITMAP *g_MenuBackground;
-ALLEGRO_BITMAP *g_NewGameDown;
-ALLEGRO_BITMAP *g_NewGameUp;
+ALLEGRO_BITMAP *g_CaveBackground;
+ALLEGRO_BITMAP *g_CaveFlamerangeDown;
+ALLEGRO_BITMAP *g_CaveFlamerangeUp;
+ALLEGRO_BITMAP *g_CaveNonButtons;
+ALLEGRO_BITMAP *g_CaveReturnDown;
+ALLEGRO_BITMAP *g_CaveReturnUp;
+ALLEGRO_BITMAP *g_CaveSizeDown;
+ALLEGRO_BITMAP *g_CaveSizeUp;
+ALLEGRO_BITMAP *g_CaveTiles;
+ALLEGRO_BITMAP *g_CaveWingspanDown;
+ALLEGRO_BITMAP *g_CaveWingspanUp;
 ALLEGRO_BITMAP *g_DragonSmallStand;
-ALLEGRO_BITMAP *g_Title;
+ALLEGRO_BITMAP *g_LevelFG;
+ALLEGRO_BITMAP *g_MenuBackground;
+ALLEGRO_BITMAP *g_MenuContinueDown;
+ALLEGRO_BITMAP *g_MenuContinueGrey;
+ALLEGRO_BITMAP *g_MenuContinueUp;
+ALLEGRO_BITMAP *g_MenuExitDown;
+ALLEGRO_BITMAP *g_MenuExitUp;
+ALLEGRO_BITMAP *g_MenuInstructionsDown;
+ALLEGRO_BITMAP *g_MenuInstructionsUp;
+ALLEGRO_BITMAP *g_MenuNewGameDown;
+ALLEGRO_BITMAP *g_MenuNewGameUp;
+ALLEGRO_BITMAP *g_MenuTitle;
 
+ALLEGRO_SAMPLE *g_MenuMus;
 
-ALLEGRO_SAMPLE *g_TitleMus;
-
-struct LoadingException : std::exception {
+struct LoadingException : virtual std::exception {
     LoadingException(char const* what):what_message(what){}
     char const *what() const throw(){return what_message;}
-    char const* what_message;
+    char const *what_message;
+};
+
+struct FileLoadingException : LoadingException {
+    FileLoadingException(char const* type, char const* filename): LoadingException(type), filename(filename){}
+    char const *what() const throw() { return what_message; }
+    char const *filename;
 };
 
 struct CoreAllegroInit {
@@ -121,7 +138,7 @@ struct BitmapInit {
     {
         *toInitialize = al_load_bitmap(filename);
         if (!*toInitialize) {
-            throw LoadingException("Failed to load bitmap\n");
+            throw FileLoadingException("Failed to load bitmap\n", filename);
         }
     }
     ~BitmapInit() {
@@ -138,7 +155,7 @@ struct SampleInit {
     {
         *toInitialize = al_load_sample(filename);
         if (!*toInitialize) {
-            throw LoadingException("Failed to load sample\n");
+            throw FileLoadingException("Failed to load sample\n", filename);
         }
     }
     ~SampleInit() {
@@ -150,38 +167,61 @@ struct SampleInit {
 
 struct ResourcesInit {
     ResourcesInit() :
-        ContinueDown(&g_ContinueDown, "ContinueDown.png"),
-        ContinueGrey(&g_ContinueGrey, "ContinueGrey.png"),
-        ContinueUp(&g_ContinueUp, "ContinueUp.png"),
-        ExitDown(&g_ExitDown, "ExitDown.png"),
-        ExitUp(&g_ExitUp, "ExitUp.png"),
-        LevelFG(&g_LevelFG, "LevelFG.png"),
-        InstructionsDown(&g_InstructionsDown, "InstructionsDown.png"),
-        InstructionsUp(&g_InstructionsUp, "InstructionsUp.png"),
+        CaveBackground(&g_CaveBackground, "CaveBackground.png"),
+        CaveFlamerangeDown(&g_CaveFlamerangeDown, "CaveFlamerangeDown.png"),
+        CaveFlamerangeUp(&g_CaveFlamerangeUp, "CaveFlamerangeUp.png"),
+        CaveNonButtons(&g_CaveNonButtons, "CaveNonButtons.png"),
+        CaveReturnDown(&g_CaveReturnDown, "CaveReturnDown.png"),
+        CaveReturnUp(&g_CaveReturnUp, "CaveReturnUp.png"),
+        CaveSizeDown(&g_CaveSizeDown, "CaveSizeDown.png"),
+        CaveSizeUp(&g_CaveSizeUp, "CaveSizeUp.png"),
+        CaveTiles(&g_CaveTiles, "CaveTiles.png"),
+        CaveWingspanDown(&g_CaveWingspanDown, "CaveWingspanDown.png"),
+        CaveWingspanUp(&g_CaveWingspanUp, "CaveWingspanUp.png"),
+        DragonSmallStand(&g_DragonSmallStand, "DragonSmallStand.png"),
+        LevelFG(&g_LevelFG, "levelFG.png"),
         MenuBackground(&g_MenuBackground, "MenuBackground.png"),
-        NewGameDown(&g_NewGameDown, "NewGameDown.png"),
-        NewGameUp(&g_NewGameUp, "NewGameUp.png"),
-        DragonSmallStand (&g_DragonSmallStand, "DragonSmallStand.png"),
-        Title(&g_Title, "Title.png"),
-        TitleMus(&g_TitleMus, "TitleMus.ogg")
+        MenuContinueDown(&g_MenuContinueDown, "MenuContinueDown.png"),
+        MenuContinueGrey(&g_MenuContinueGrey, "MenuContinueGrey.png"),
+        MenuContinueUp(&g_MenuContinueUp, "MenuContinueUp.png"),
+        MenuExitDown(&g_MenuExitDown, "MenuExitDown.png"),
+        MenuExitUp(&g_MenuExitUp, "MenuExitUp.png"),
+        MenuInstructionsDown(&g_MenuInstructionsDown, "MenuInstructionsDown.png"),
+        MenuInstructionsUp(&g_MenuInstructionsUp, "MenuInstructionsUp.png"),
+        MenuNewGameDown(&g_MenuNewGameDown, "MenuNewGameDown.png"),
+        MenuNewGameUp(&g_MenuNewGameUp, "MenuNewGameUp.png"),
+        MenuTitle(&g_MenuTitle, "MenuTitle.png"),
+        MenuMus(&g_MenuMus, "MenuMus.ogg")
     {
     }
     ~ResourcesInit() {}
-    BitmapInit ContinueDown;
-    BitmapInit ContinueGrey;
-    BitmapInit ContinueUp;
-    BitmapInit ExitDown;
-    BitmapInit ExitUp;
-    BitmapInit LevelFG;
-    BitmapInit InstructionsDown;
-    BitmapInit InstructionsUp;
-    BitmapInit MenuBackground;
-    BitmapInit NewGameDown;
-    BitmapInit NewGameUp;
-    BitmapInit DragonSmallStand;
-    BitmapInit Title;
     
-    SampleInit TitleMus;
+    BitmapInit CaveBackground;
+    BitmapInit CaveFlamerangeDown;
+    BitmapInit CaveFlamerangeUp;
+    BitmapInit CaveNonButtons;
+    BitmapInit CaveReturnDown;
+    BitmapInit CaveReturnUp;
+    BitmapInit CaveSizeDown;
+    BitmapInit CaveSizeUp;
+    BitmapInit CaveTiles;
+    BitmapInit CaveWingspanDown;
+    BitmapInit CaveWingspanUp;
+    BitmapInit DragonSmallStand;
+    BitmapInit LevelFG;
+    BitmapInit MenuBackground;
+    BitmapInit MenuContinueDown;
+    BitmapInit MenuContinueGrey;
+    BitmapInit MenuContinueUp;
+    BitmapInit MenuExitDown;
+    BitmapInit MenuExitUp;
+    BitmapInit MenuInstructionsDown;
+    BitmapInit MenuInstructionsUp;
+    BitmapInit MenuNewGameDown;
+    BitmapInit MenuNewGameUp;
+    BitmapInit MenuTitle;
+    
+    SampleInit MenuMus;
 };
 
 struct Initializer {
@@ -201,9 +241,20 @@ int main(int argc, char **argv){
         mainLoop(std::auto_ptr<Scene>(mainMenu.release()));
         
         return 0;
-    } catch (std::exception const& e) {
-        std::cout << "Failed:\n";
-        std::cout << e.what();
+    }
+    catch (FileLoadingException const& e) {
+        std::cerr << "Failed:\n";
+        std::cerr << e.what();
+        std::cerr << e.filename << '\n';
+        return -1;
+    }
+    catch (std::exception const& e) {
+        std::cerr << "Failed:\n";
+        std::cerr << e.what();
+        return -1;
+    }
+    catch (...) {
+        std::cerr << "Failed for unknown reasons.\n";
         return -1;
     }
 }
