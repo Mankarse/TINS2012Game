@@ -1,14 +1,14 @@
-//
-//  Cave.h
-//  TINSGame2012
-//
-//  Created by Evan Wallace on 5/08/12.
-//
-//
-
-#ifndef __TINSGame2012__Cave__
-#define __TINSGame2012__Cave__
-
-#include <iostream>
-
-#endif /* defined(__TINSGame2012__Cave__) */
+#ifndef TINSGame2012__Cave
+#define TINSGame2012__Cave
+#include "Scene.h"
+class Cave: public Scene {
+public:
+    Cave(GameSave const& save) {
+        
+    }
+    virtual Scene* update(InputState const& input);
+    virtual void renderTo(ALLEGRO_BITMAP* target) const;
+private:
+    
+};
+#endif

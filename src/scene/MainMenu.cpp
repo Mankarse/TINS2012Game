@@ -90,7 +90,6 @@ void MainMenu::renderTo(ALLEGRO_BITMAP* target) const {
     draw_element(g_MenuBackground);
     draw_element(g_Title);
     
-    
     draw_element(pressedButton == 0 ? g_InstructionsDown : g_InstructionsUp);
     draw_element(pressedButton == 1 ? g_NewGameDown : g_NewGameUp);
     draw_element(saveExists ? (pressedButton == 2 ? g_ContinueDown : g_ContinueUp) : g_ContinueGrey);

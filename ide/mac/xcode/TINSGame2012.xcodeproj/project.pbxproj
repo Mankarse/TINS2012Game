@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2039F88515CDF09100ABC061 /* Cave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2039F88315CDF09100ABC061 /* Cave.cpp */; };
 		2058B8A315CCE5CF00C316BB /* Viewport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2058B8A115CCE5CF00C316BB /* Viewport.cpp */; };
 		2058B8A715CCF2BD00C316BB /* GroundHeightmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2058B8A515CCF2BD00C316BB /* GroundHeightmap.cpp */; };
 		2058B8B015CCFAC700C316BB /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2058B8AE15CCFAC700C316BB /* GameObject.cpp */; };
@@ -42,6 +43,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2039F88315CDF09100ABC061 /* Cave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cave.cpp; sourceTree = "<group>"; };
+		2039F88415CDF09100ABC061 /* Cave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cave.h; sourceTree = "<group>"; };
+		2039F88615CDF4BC00ABC061 /* GameSave.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameSave.h; sourceTree = "<group>"; };
 		2058B8A115CCE5CF00C316BB /* Viewport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Viewport.cpp; sourceTree = "<group>"; };
 		2058B8A215CCE5CF00C316BB /* Viewport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Viewport.h; sourceTree = "<group>"; };
 		2058B8A515CCF2BD00C316BB /* GroundHeightmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GroundHeightmap.cpp; sourceTree = "<group>"; };
@@ -195,6 +199,9 @@
 				20E7360B15CD768700A4F90B /* MainMenu.cpp */,
 				20E7360415CD30F300A4F90B /* InputState.h */,
 				20E7360515CD465100A4F90B /* Game.h */,
+				2039F88415CDF09100ABC061 /* Cave.h */,
+				2039F88315CDF09100ABC061 /* Cave.cpp */,
+				2039F88615CDF4BC00ABC061 /* GameSave.h */,
 			);
 			path = scene;
 			sourceTree = "<group>";
@@ -327,6 +334,7 @@
 				2058B8B615CD105C00C316BB /* Engine.cpp in Sources */,
 				20E7360C15CD768700A4F90B /* MainMenu.cpp in Sources */,
 				2077483D15CD51E7000EAED4 /* Dragon.cpp in Sources */,
+				2039F88515CDF09100ABC061 /* Cave.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
