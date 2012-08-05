@@ -24,7 +24,9 @@ class GroundHeightmap {
     double getInterpolatedPoint(double xPos) const;
     double getInterpolatedWorldPoint(double xPos) const;
     
-    double get(double xPos) const;
+    // A
+    
+    //double getGradient(double xPos) const;
 };
 
 #endif /* defined(__TINSGame2012__GroundHeightmap__) */
