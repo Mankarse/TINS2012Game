@@ -11,6 +11,6 @@ public:
     virtual Scene* update(InputState const& input);
     virtual void renderTo(ALLEGRO_BITMAP* target) const;
 private:
-    
+    GameSave save;
 };
 #endif

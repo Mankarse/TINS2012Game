@@ -28,6 +28,7 @@
 		207F586F15CCDB410037B9D9 /* liballegro_primitives.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F586415CCDB410037B9D9 /* liballegro_primitives.5.0.7.dylib */; };
 		207F587015CCDB410037B9D9 /* liballegro_ttf.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F586515CCDB410037B9D9 /* liballegro_ttf.5.0.7.dylib */; };
 		207F587115CCDB410037B9D9 /* liballegro.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F586615CCDB410037B9D9 /* liballegro.5.0.7.dylib */; };
+		20BCD63915CE462F001BE033 /* Primes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD63815CE462E001BE033 /* Primes.cpp */; };
 		20E735F315CD091100A4F90B /* ContinueDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735E815CD091100A4F90B /* ContinueDown.png */; };
 		20E735F415CD091100A4F90B /* ContinueGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735E915CD091100A4F90B /* ContinueGrey.png */; };
 		20E735F515CD091100A4F90B /* ContinueUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735EA15CD091100A4F90B /* ContinueUp.png */; };
@@ -78,6 +79,9 @@
 		207F586415CCDB410037B9D9 /* liballegro_primitives.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_primitives.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_primitives.5.0.7.dylib; sourceTree = "<group>"; };
 		207F586515CCDB410037B9D9 /* liballegro_ttf.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro_ttf.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro_ttf.5.0.7.dylib; sourceTree = "<group>"; };
 		207F586615CCDB410037B9D9 /* liballegro.5.0.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liballegro.5.0.7.dylib; path = ../../../ext/allegro/lib/liballegro.5.0.7.dylib; sourceTree = "<group>"; };
+		20BCD63215CE25E4001BE033 /* Primes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Primes.h; sourceTree = "<group>"; };
+		20BCD63715CE4609001BE033 /* AllPrimes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllPrimes.h; sourceTree = "<group>"; };
+		20BCD63815CE462E001BE033 /* Primes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Primes.cpp; sourceTree = "<group>"; };
 		20E735E715CD06B800A4F90B /* Globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Globals.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		20E735E815CD091100A4F90B /* ContinueDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContinueDown.png; sourceTree = "<group>"; };
 		20E735E915CD091100A4F90B /* ContinueGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContinueGrey.png; sourceTree = "<group>"; };
@@ -131,6 +135,9 @@
 		2058B89F15CCE10600C316BB /* phys */ = {
 			isa = PBXGroup;
 			children = (
+				20BCD63715CE4609001BE033 /* AllPrimes.h */,
+				20BCD63215CE25E4001BE033 /* Primes.h */,
+				20BCD63815CE462E001BE033 /* Primes.cpp */,
 				2058B8A615CCF2BD00C316BB /* GroundHeightmap.h */,
 				2058B8A515CCF2BD00C316BB /* GroundHeightmap.cpp */,
 				2058B8B515CD105C00C316BB /* Engine.h */,
@@ -349,6 +356,7 @@
 				2077483D15CD51E7000EAED4 /* Dragon.cpp in Sources */,
 				2039F88515CDF09100ABC061 /* Cave.cpp in Sources */,
 				20EF027815CE128800E86905 /* GameSave.cpp in Sources */,
+				20BCD63915CE462F001BE033 /* Primes.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
