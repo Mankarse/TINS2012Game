@@ -23,7 +23,8 @@ class GroundHeightmap {
     void draw(Point2D screenPos) const;
     double getInterpolatedPoint(double xPos) const;
     double getInterpolatedWorldPoint(double xPos) const;
-    
+    Point2D getLoopedCoordinate(Point2D const& originalPoint) const;
+    double getTotalSize() const;
     // A
     
     //double getGradient(double xPos) const;

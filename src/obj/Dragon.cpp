@@ -27,9 +27,10 @@
         ground = newGround;
     }
     
-    void Dragon::physicsStep(InputState const& input) {
+    bool Dragon::physicsStep(InputState const& input) {
     
         bool shouldJump(false);
+        bool shouldFlipScreen(false);
         for (std::vector<ALLEGRO_EVENT>::const_iterator it(input.events.begin()), end(input.events.end()); it != end; ++it)
         {
             ALLEGRO_EVENT const& event(*it);
@@ -114,7 +115,14 @@
                 worldPosition.y = ground->getInterpolatedWorldPoint(worldPosition.x + foreLeg.x) - foreLeg.y;
                 break;
             }
+            
         }
+        Point2D oldWorldPosition = worldPosition;
+        worldPosition = ground->getLoopedCoordinate(worldPosition);
+        if(oldWorldPosition != worldPosition) {
+            shouldFlipScreen = true;
+        }
+        return shouldFlipScreen;
     }
     void Dragon::renderStep(Point2D screenPos) const {
         Point2D drawPos = worldPosition - screenPos;

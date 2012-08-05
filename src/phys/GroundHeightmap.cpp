@@ -7,6 +7,7 @@
 //
 
 #include "GroundHeightmap.h"
+#include <iostream>
 
 GroundHeightmap::GroundHeightmap(int newRes, int newWidth, std::vector<double> const& newData):
     resolution(newRes),
@@ -33,15 +34,42 @@ void GroundHeightmap::draw(Point2D screenPos) const {
 }
     
 double GroundHeightmap::getInterpolatedPoint(double xPos) const{
-    double p1;
-    double p2;
-    double proportion;
-    p1 = data[(int)floor(xPos) % data.size()];
-    p2 = data[(int)ceil(xPos) % data.size()];
-    proportion = xPos - floor(xPos);
+    long i1(((long)floor(xPos)) % (long)data.size());
+    long i2(((long)ceil(xPos)) % (long)data.size());
+
+    if(i1 < 0) {
+        i1 += data.size();
+    }
+    if(i2 < 0) {
+        i2 += data.size();
+    }
+    //std::cout << "i1 " << i1 << '\n';
+    //std::cout << "i2 " << i2 << '\n';
+    double p1(data[i1]);
+    double p2(data[i2]);
+    //std::cerr << "p1: " << p1 << "\n";
+    //std::cerr << "p2: " << p2 << "\n";
+    double proportion(xPos - floor(xPos));
     return p1 + ((p2 - p1) * proportion);
 }
 
 double GroundHeightmap::getInterpolatedWorldPoint(double xPos) const{
     return getInterpolatedPoint(xPos / resolution);
 }
+
+Point2D GroundHeightmap::getLoopedCoordinate(Point2D const& originalPoint) const {
+    double curPos = originalPoint.x;
+    while (curPos > getTotalSize()) {
+        curPos -= getTotalSize();
+    }
+    while (curPos < 0) {
+        curPos += getTotalSize();
+    }
+    return Point2D(curPos, originalPoint.y);
+}
+
+double GroundHeightmap::getTotalSize() const {
+    return width * resolution;
+}
+
+

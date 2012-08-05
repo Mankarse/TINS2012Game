@@ -57,7 +57,7 @@ class Dragon {
     Point2D worldPosition;
     void init();
     void assignHeightmap(GroundHeightmap* newGround);
-    void physicsStep(InputState const& input);
+    bool physicsStep(InputState const& input);
     void renderStep(Point2D screenPos) const;
 };
 

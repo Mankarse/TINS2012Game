@@ -7,7 +7,7 @@
 #include <allegro5/allegro.h>
 #include "Globals.h"
 #include <vector>
-
+#include <iostream>
 
 
 template<typename T, std::size_t N>
@@ -16,8 +16,8 @@ std::size_t length(T(&)[N]) {
 }
 
 inline GroundHeightmap loadGlobalHeightmap() {
-    double points[] = {120., 110., 70., 79., 80., 140., 270., 270., 270., 270., 270., 270, 270., 270., 270, 260., 240.,
-    100, 95, 90};
+    double points[] = {120., 110., 70., 79., 90., 170., 270., 270., 270., 270., 270., 270, 270., 270., 270, 260., 240.,
+    100, 95, 90, 100, 190, 280, 285, 285};
     
     return GroundHeightmap(100, static_cast<int>(length(points)), std::vector<double>(points, points + length(points)));
 }
@@ -49,7 +49,8 @@ public:
     }
     
     Point2D mouseToWorldPos(Point2D const& mousePosition) const {
-        return mousePosition + screenCorner;
+        Point2D retV(mousePosition + screenCorner);
+        return retV;
     }
     
     Point2D worldToScreenPoint(Point2D const& worldPosition, double layer = 1) const {
@@ -90,12 +91,15 @@ public:
         // spawners!
         
         // Player!
-        player.physicsStep(input);
-        
+        if(player.physicsStep(input)) {
+            screenCorner = ground.getLoopedCoordinate(screenCorner);
+        }
+
         
         
         screenCorner = ((mouseToWorldPos(mousePosition) + player.worldPosition) * 0.5) - Point2D(al_get_display_width(al_get_current_display()) * 0.5,
             al_get_display_height(al_get_current_display()) * 0.5);
+        //screenCorner = ground.getLoopedCoordinate(screenCorner);
         
         // Enemies!
         
