@@ -75,6 +75,8 @@
 		204292C515CE74F900665276 /* Enemy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 		204292C715CE7BC200665276 /* LevelSky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LevelSky.png; sourceTree = "<group>"; };
 		204292D115CEA1FE00665276 /* StaticObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StaticObject.h; sourceTree = "<group>"; };
+		204292D715CEAEF000665276 /* Bullet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
+		204292D915CEAFFC00665276 /* Particle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
 		2058B8A115CCE5CF00C316BB /* Viewport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Viewport.cpp; sourceTree = "<group>"; };
 		2058B8A215CCE5CF00C316BB /* Viewport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Viewport.h; sourceTree = "<group>"; };
 		2058B8A515CCF2BD00C316BB /* GroundHeightmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GroundHeightmap.cpp; sourceTree = "<group>"; };
@@ -281,6 +283,8 @@
 				204292BE15CE53B100665276 /* RenderQueueSet.h */,
 				204292C515CE74F900665276 /* Enemy.h */,
 				204292D115CEA1FE00665276 /* StaticObject.h */,
+				204292D715CEAEF000665276 /* Bullet.h */,
+				204292D915CEAFFC00665276 /* Particle.h */,
 			);
 			path = scene;
 			sourceTree = "<group>";

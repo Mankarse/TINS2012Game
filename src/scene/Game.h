@@ -11,6 +11,9 @@
 #include "RenderQueueSet.h"
 #include "Renderable.h"
 #include "StaticObject.h"
+#include "Bullet.h"
+#include "Particle.h"
+#include "Enemy.h"
 
 template<typename T, std::size_t N>
 std::size_t length(T(&)[N]) {
@@ -31,6 +34,9 @@ private:
     }
     
     std::vector<StaticObject> staticRenderables;
+    std::vector<Enemy> enemies;
+    std::vector<Particle> particles;
+    std::vector<Bullet> bullets;
 
 public:
     Game() :
@@ -178,7 +184,11 @@ public:
             al_get_display_height(al_get_current_display()) * 0.5);
         
         // Enemies!
-        
+        for(std::vector<Enemy>::iterator it(enemies.begin()), end(enemies.end()); it != end; ++it)
+        {
+            Enemy& curEnemy(*it);
+            curEnemy.update(bullets, particles, player);
+        }
         // My bullets!
         
         // Their bullets!

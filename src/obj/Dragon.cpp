@@ -97,7 +97,11 @@
             }
             case Grounded:
             {
-                currentStamina += ((stats.stamina * (1 / staminaRegenTime)) / 60);
+                if(currentStamina < stats.stamina) {
+                    currentStamina += ((stats.stamina * (1 / staminaRegenTime)) / 60);
+                } else {
+                    currentStamina = stats.stamina;
+                }
                 velocity.x *= landResistance;
                 if(al_key_down(&input.keyboardState, ALLEGRO_KEY_D)) {
                     velocity.x += 20;
