@@ -63,16 +63,16 @@ public:
         al_draw_scaled_bitmap(
         image,
         0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-        screenPos.x - ((al_get_bitmap_width(image)*2) * layer), screenPos.y - ((al_get_bitmap_height(image)*2) * layer),
-        al_get_bitmap_width(image)*4 * layer, al_get_bitmap_height(image)*4 * layer,
+        screenPos.x - ((al_get_bitmap_width(image)*0.5) * layer), screenPos.y - ((al_get_bitmap_height(image)*0.5) * layer),
+        al_get_bitmap_width(image) * layer, al_get_bitmap_height(image) * layer,
         0);
     }
     void drawBitmapAtScreenPoint(ALLEGRO_BITMAP* image, Point2D point) const {
         al_draw_scaled_bitmap(
         image,
         0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-        point.x - ((al_get_bitmap_width(image)*2)), point.y - ((al_get_bitmap_height(image)*2)),
-        al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+        point.x - ((al_get_bitmap_width(image)*0.5)), point.y - ((al_get_bitmap_height(image)*0.5)),
+        al_get_bitmap_width(image), al_get_bitmap_height(image),
         0);
     }
     void drawBackground(ALLEGRO_BITMAP* image, double depth) const {
@@ -81,60 +81,60 @@ public:
         double positionOffset = al_get_time() * 15; // Look at the clouds move! Happy now?
         Point2D screenspaceCentre (worldToScreenPoint(Point2D(basePosition + positionOffset, 300), layer));
         //std::cout << screenCorner.x << '\n';
-        if(screenCorner.y - positionOffset < screenspaceCentre.y - (al_get_bitmap_height(image) * 2)) {
-            screenspaceCentre.y -= al_get_bitmap_height(image) * 4;
+        if(screenCorner.y - positionOffset < screenspaceCentre.y - (al_get_bitmap_height(image) * 0.5)) {
+            screenspaceCentre.y -= al_get_bitmap_height(image);
             al_draw_scaled_bitmap(
             image,
             0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-            screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
-            al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+            screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y - ((al_get_bitmap_height(image)*0.5)),
+            al_get_bitmap_width(image)*4, al_get_bitmap_height(image),
             0);
-            screenspaceCentre.y += al_get_bitmap_height(image) * 4;
+            screenspaceCentre.y += al_get_bitmap_height(image);
         }
         al_draw_scaled_bitmap(
         image,
         0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-        screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
-        al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+        screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y - ((al_get_bitmap_height(image)*0.5)),
+        al_get_bitmap_width(image), al_get_bitmap_height(image),
         0);
         if(screenCorner.x - positionOffset < 0)
         {
             screenspaceCentre = worldToScreenPoint(Point2D((-basePosition) + positionOffset, 300), layer);
-            if(screenCorner.y < screenspaceCentre.y - (al_get_bitmap_height(image) * 2)) {
-                screenspaceCentre.y -= al_get_bitmap_height(image) * 4;
+            if(screenCorner.y < screenspaceCentre.y - (al_get_bitmap_height(image) * 0.5)) {
+                screenspaceCentre.y -= al_get_bitmap_height(image);
                 al_draw_scaled_bitmap(
                 image,
                 0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-                screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
-                al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+                screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y - ((al_get_bitmap_height(image)*0.5)),
+                al_get_bitmap_width(image)*4, al_get_bitmap_height(image),
                 0);
-                screenspaceCentre.y += al_get_bitmap_height(image) * 4;
+                screenspaceCentre.y += al_get_bitmap_height(image);
             }
             al_draw_scaled_bitmap(
             image,
             0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-            screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
-            al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+            screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y - ((al_get_bitmap_height(image)*0.5)),
+            al_get_bitmap_width(image), al_get_bitmap_height(image),
             0);
         }
         if(screenCorner.x + al_get_display_width(al_get_current_display()) > ground.getTotalSize() / 2)
         {
             screenspaceCentre = worldToScreenPoint(Point2D((basePosition + ground.getTotalSize() + positionOffset), 300), layer);
-            if(screenCorner.y < screenspaceCentre.y - (al_get_bitmap_height(image) * 2)) {
-                screenspaceCentre.y -= al_get_bitmap_height(image) * 4;
+            if(screenCorner.y < screenspaceCentre.y - (al_get_bitmap_height(image) * 0.5)) {
+                screenspaceCentre.y -= al_get_bitmap_height(image);
                 al_draw_scaled_bitmap(
                 image,
                 0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-                screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
-                al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+                screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y - ((al_get_bitmap_height(image)*0.5)),
+                al_get_bitmap_width(image)*4, al_get_bitmap_height(image),
                 0);
-                screenspaceCentre.y += al_get_bitmap_height(image) * 4;
+                screenspaceCentre.y += al_get_bitmap_height(image);
             }
             al_draw_scaled_bitmap(
             image,
             0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-            screenspaceCentre.x - ((al_get_bitmap_width(image)*2)), screenspaceCentre.y - ((al_get_bitmap_height(image)*2)),
-            al_get_bitmap_width(image)*4, al_get_bitmap_height(image)*4,
+            screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y - ((al_get_bitmap_height(image)*0.5)),
+            al_get_bitmap_width(image), al_get_bitmap_height(image),
             0);
         }
     }
@@ -214,8 +214,8 @@ public:
         // Background:
         drawBackground(g_LevelSky, 0.5);
         
-        renderQueue(renderQueues.farBackground);
-        renderQueue(renderQueues.nearBackground);
+        renderQueue(renderQueues->farBackground);
+        renderQueue(renderQueues->nearBackground);
         // Heightmap
         drawBitmapAtWorldPoint(g_LevelFG, Point2D(0,0));
         drawBitmapAtWorldPoint(g_LevelFG, Point2D(ground.getTotalSize(),0));
@@ -225,11 +225,11 @@ public:
         Point2D worldBottomCorner(ground.getTotalSize() * 2, 1000);
         worldBottomCorner = worldToScreenPoint(worldBottomCorner);
         al_draw_filled_rectangle(worldTopCorner.x, worldTopCorner.y, worldBottomCorner.x, worldBottomCorner.y, al_map_rgb(146, 120, 94));
-        renderQueue(renderQueues.middleGround);
+        renderQueue(renderQueues->middleGround);
         player.renderStep(screenCorner);
         
         //ground.draw(screenCorner);
-        renderQueue(renderQueues.foreground);
+        renderQueue(renderQueues->foreground);
     }
     
     virtual void renderTo(ALLEGRO_BITMAP* target) const {
