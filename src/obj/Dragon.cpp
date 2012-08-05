@@ -15,7 +15,7 @@
     static const double staminaRegenTime = 5.;
 
     void Dragon::init() {
-        worldPosition = Point2D(2000, 0);
+        worldPosition = Point2D(0, 0);
         mode = Flying;
         foreLeg = Point2D(7, 15);
         hindLeg = Point2D(-7, 15);
@@ -130,3 +130,4 @@
         Point2D drawPos = worldPosition - screenPos;
         al_draw_filled_rectangle(drawPos.x - 20, drawPos.y - 15, drawPos.x + 20, drawPos.y + 15, al_map_rgb(50, 160, 170));
     }
+    

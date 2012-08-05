@@ -8,7 +8,7 @@
 #include "Globals.h"
 #include <vector>
 #include <iostream>
-#include "RenderQueueSet.h";
+#include "RenderQueueSet.h"
 
 template<typename T, std::size_t N>
 std::size_t length(T(&)[N]) {
@@ -16,8 +16,8 @@ std::size_t length(T(&)[N]) {
 }
 
 inline GroundHeightmap loadGlobalHeightmap() {
-    double points[] = {120., 110., 70., 79., 90., 170., 270., 270., 270., 270., 270., 270, 270., 270., 270, 260., 240.,
-    100, 95, 90, 100, 190, 280, 285, 285};
+    double points[] = {120., 110., 70., 79., 95., 190., 270., 270., 270., 270., 270., 270, 270., 270., 270, 260., 240.,
+    100, 95, 90, 100, 190, 280, 285, 283, 280, 260, 230, 180, 110, 70, 75, 120, 170, 200, 140, 110, 110, 95, 105};
     
     return GroundHeightmap(100, static_cast<int>(length(points)), std::vector<double>(points, points + length(points)));
 }
@@ -149,11 +149,13 @@ public:
         renderQueue(renderQueues.nearBackground);
         // Heightmap
         drawBitmapAtWorldPoint(g_LevelFG, Point2D(0,0));
+        drawBitmapAtWorldPoint(g_LevelFG, Point2D(ground.getTotalSize(),0));
+        drawBitmapAtWorldPoint(g_LevelFG, Point2D(-ground.getTotalSize(),0));
         
         renderQueue(renderQueues.middleGround);
         player.renderStep(screenCorner);
         
-        ground.draw(screenCorner);
+        //ground.draw(screenCorner);
         renderQueue(renderQueues.foreground);
     }
 };
