@@ -15,6 +15,7 @@
 #include "Enemy.h"
 #include "Dragon.h"
 #include "GroundHeightmap.h"
+#include <iostream>
 class Dragon;
 
 class DragonFlame : public BulletImplementation, private Renderable
@@ -26,24 +27,30 @@ class DragonFlame : public BulletImplementation, private Renderable
     double startTime;
     SimpleAnimation anim;
     bool hitThing;
+    bool grounded;
     GroundHeightmap* ground;
     public:
     virtual void update(Dragon& player) {} // Friendly bullet, not implemented
     
     virtual void update(std::vector<Enemy>& enemies) {
         worldPosition += velocity / 60.;
-        velocity.y += (392.4 / 60.);
+        if(!grounded)
+        {
+            velocity.y += (392.4 / 60.);
+        }
         velocity *= 0.99;
         for (std::vector<Enemy>::iterator it(enemies.begin()), end(enemies.end()); it != end; ++it) {
-            Enemy curEnemy(*it);
+            Enemy& curEnemy(*it);
             if(pointInRectInclusive(worldPosition.x, worldPosition.y, curEnemy.getBoundingBox())) {
                 curEnemy.takeHit(0, Point2D());
                 hitThing = true;
             }
         }
-        if(ground->getInterpolatedWorldPoint(worldPosition.x) > worldPosition.y)
+        if(!grounded && ground->getInterpolatedWorldPoint(worldPosition.x) < worldPosition.y)
         {
-            hitThing = true;
+            velocity = Point2D();
+            worldPosition += Point2D((double)(rand() % 1000) / 100., (double)(rand() % 1000) / 100.);
+            grounded = true;
         }
         if(al_get_time() > lifeTime + startTime) {
             hitThing = true;
@@ -59,7 +66,8 @@ class DragonFlame : public BulletImplementation, private Renderable
         hitThing(false),
         anim(7, "Flame"),
         lifeTime(newLife),
-        startTime(al_get_time())
+        startTime(al_get_time()),
+        grounded(false)
     {}
     
     virtual void pickRenderQueue(RenderQueueSet& queues) const {
@@ -72,7 +80,7 @@ class DragonFlame : public BulletImplementation, private Renderable
         return worldPosition;
     }
     virtual double getDepth() const{
-        return 1 + lerp(0, 0.2, (al_get_time() - startTime) / lifeTime);
+        return 1;
     }
     virtual bool shouldDie() const {
         return hitThing;

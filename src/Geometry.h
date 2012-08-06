@@ -91,5 +91,8 @@ inline Point2D rotate(Point2D const& input, double amount) {
 inline double lerp(double const& l, double const& r, double amount) {
     return l + ((r - l) * amount);
 }
+inline Point2D operator-(Point2D const& obj) {
+    return Point2D(-obj.x, -obj.y);
+}
 
 #endif

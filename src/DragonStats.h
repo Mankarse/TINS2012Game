@@ -6,8 +6,8 @@ struct DragonStats{
         size(30),
         wingspan(5),
         stamina(40),
-        fireStrength(100),
-        fireCooldown(100)
+        fireStrength(500),
+        fireCooldown(10)
     {
     }
     DragonStats(double size, double wingspan, double stamina, double fireStrength, double fireCooldown) :

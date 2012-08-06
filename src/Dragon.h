@@ -23,7 +23,7 @@ struct DragonSkin {
     DragonSkin() :
     run(10, "dragonsmallrun"),
     dive(10, "DragonSmallDive"),
-    glide(10, "DragonSmallGlide"),
+    glide(5, "DragonSmallGlide"),
     flap(10, "DragonSmallFly"),
     jump(15, "DragonSmallJump"),
     stand(g_Bitmaps["DragonSmallStand"])
@@ -60,12 +60,16 @@ class Dragon {
     Point2D hindLeg;
     
     double jumpTime;
+    double flapTime;
     bool isBreathing;
+    bool isDiving;
     
     void renderRotated(ALLEGRO_BITMAP* image, Point2D screenPos, int flags = 0) const;
-    void fireBreath(Point2D mainVelocity, double lifeTime, std::vector<Bullet> bulletList) const;
+    void fireBreath(Point2D mainVelocity, double lifeTime, std::vector<Bullet>& bulletList) const;
     public:
     GameSave save;
+    
+    ALLEGRO_SAMPLE_ID fireBreathID;
     
     double currentStamina;
     double currentHealth;
@@ -74,10 +78,12 @@ class Dragon {
     Point2D worldPosition;
     
     void assignHeightmap(GroundHeightmap* newGround);
-    ScreenFlipMode physicsStep(InputState const& input, Point2D const& screenCorner, std::vector<Bullet> bulletList);
+    ScreenFlipMode physicsStep(InputState const& input, Point2D const& screenCorner, std::vector<Bullet>& bulletList);
     void renderStep(Point2D screenPos) const;
     Point2D foreLegWorldPos() const;
     Point2D hindLegWorldPos() const;
+    Point2D headWorldPos() const;
+    
     
     
     Dragon();

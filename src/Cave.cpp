@@ -5,7 +5,7 @@ static DragonStats getUpgradeAmounts(unsigned prime, GameSave const& save) {
     stats.size = 0.1 * std::pow(static_cast<double>(prime), 1.04);
     stats.wingspan = 0.1 * std::pow(static_cast<double>(prime), 1.01);
     stats.stamina = 0.1 * std::pow(static_cast<double>(prime), 1.02);
-    stats.fireStrength = 0.1 * std::pow(static_cast<double>(prime), 1.01);
+    stats.fireStrength = 0.4 * std::pow(static_cast<double>(prime), 1.03);
     stats.fireCooldown = 0.1 * std::pow(static_cast<double>(prime), 1.015);
     return stats;
 }

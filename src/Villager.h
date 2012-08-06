@@ -84,8 +84,11 @@ class Villager : public EnemyImplementation, private Renderable {
     }
     
     virtual void takeHit(double damage, Point2D vector) {
-        wasStomped = true;
+        if(!wasStomped) {
+            beginTerror();
+        }
         
+        wasStomped = true;
     }
     virtual Rect getBoundingBox() const {
         return Rect(getWorldPoint().x - 10, getWorldPoint().y - 15, 20, 30);
