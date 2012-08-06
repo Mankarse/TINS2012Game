@@ -96,7 +96,9 @@ struct DisplayInit {
     }
     ~DisplayInit() {
         g_display = 0;
-        al_destroy_display(display);
+        if (display) {
+            al_destroy_display(display);
+        }
     }
 };
 
@@ -186,6 +188,7 @@ struct BitmapInit {
     }
     ~BitmapInit() {
         al_destroy_bitmap(*toInitialize);
+        *toInitialize = 0;
     }
     private:
     ALLEGRO_BITMAP **toInitialize;
@@ -203,6 +206,7 @@ struct SampleInit {
     }
     ~SampleInit() {
         al_destroy_sample(*toInitialize);
+        *toInitialize = 0;
     }
     private:
     ALLEGRO_SAMPLE **toInitialize;
@@ -325,10 +329,11 @@ struct ResourcesInit {
 };
 
 struct Initializer {
+    Initializer(){}
     AllegroInit allegroInit;
     DisplayInit displayInit;
     ResourcesInit resourcesInit;
-    RandInit rand;
+    RandInit randInit;
 };
 
 void mainLoop(std::auto_ptr<Scene> screen);
