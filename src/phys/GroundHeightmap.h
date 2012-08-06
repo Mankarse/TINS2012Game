@@ -25,7 +25,7 @@ class GroundHeightmap {
     double getInterpolatedWorldPoint(double xPos) const;
     Point2D getLoopedCoordinate(Point2D const& originalPoint) const;
     double getTotalSize() const;
-    // A
+    bool linecast(Point2D const& startPoint, Point2D const& endPoint) const;
     
     //double getGradient(double xPos) const;
 };

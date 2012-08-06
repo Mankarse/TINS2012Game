@@ -15,7 +15,7 @@ class Hut : public SpawnerImplementation, private Renderable
         if(playTime >= lastSpawn + timeToNextSpawn){
             spawned.push_back(Enemy(new Villager(worldPosition.x)));
             lastSpawn = playTime;
-            timeToNextSpawn = 120;
+            timeToNextSpawn = 2;
         }
         return spawned;
     }

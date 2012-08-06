@@ -4,6 +4,7 @@
 #include <exception>
 #include <allegro5/allegro.h>
 #include <memory>
+#include <cstdlib>
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
@@ -204,6 +205,12 @@ struct FontInit {
     ALLEGRO_FONT** toInitialize;
 };
 
+struct RandInit {
+    RandInit() {
+        srand((unsigned)time(NULL));
+    }
+};
+
 static const int font10Range[] = {43, 43, 46, 57};
 
 struct ResourcesInit {
@@ -284,6 +291,7 @@ struct Initializer {
     AllegroInit allegroInit;
     DisplayInit displayInit;
     ResourcesInit resourcesInit;
+    RandInit rand;
 };
 
 void mainLoop(std::auto_ptr<Scene> screen);

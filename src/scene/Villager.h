@@ -3,11 +3,11 @@
 #include "Enemy.h"
 #include "Renderable.h"
 #include "Globals.h"
+#include <cstdlib>
 class Villager : public EnemyImplementation, private Renderable {
     private:
     double currentPos;
     double currentVel;
-    double fearLevel;
     double viewDistance;
     double fearCooldown;
     double currentCooldown;
@@ -15,16 +15,15 @@ class Villager : public EnemyImplementation, private Renderable {
     public:
     Villager(double startPos) :
         currentPos(startPos),
-        currentVel(0),
-        fearLevel(0),
+        currentVel(rand() % 100 > 50 ? -40 : 40),
         viewDistance(1000),
-        fearCooldown(600),
+        fearCooldown(10),
         currentCooldown(0),
         heightmap(0)
     {}
     
     virtual void update(std::vector<Bullet>& bulletlist, std::vector<Particle>& particleList, Dragon& player){
-        
+        currentPos += currentVel / 60;
     }
     
     virtual bool hasHeightMap() const{
