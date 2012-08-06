@@ -50,6 +50,19 @@ ALLEGRO_BITMAP *g_NumberSheet10;
 ALLEGRO_FONT *g_Font10;
 
 ALLEGRO_SAMPLE *g_MenuMus;
+ALLEGRO_SAMPLE *g_DragonRoar;
+ALLEGRO_SAMPLE *g_FireLoop;
+ALLEGRO_SAMPLE *g_Footstep1;
+ALLEGRO_SAMPLE *g_Footstep2;
+ALLEGRO_SAMPLE *g_Footstep3;
+ALLEGRO_SAMPLE *g_Footstep4;
+ALLEGRO_SAMPLE *g_GameMus;
+ALLEGRO_SAMPLE *g_Lazor;
+ALLEGRO_SAMPLE *g_Screams1;
+ALLEGRO_SAMPLE *g_Screams2;
+ALLEGRO_SAMPLE *g_Screams3;
+ALLEGRO_SAMPLE *g_Screams4;
+
 
 struct LoadingException : virtual std::exception {
     LoadingException(char const* what):what_message(what){}
@@ -247,7 +260,19 @@ struct ResourcesInit {
         MenuTitle(&g_MenuTitle, "MenuTitle.png"),
         NumberSheet10(&g_NumberSheet10, "NumberSheet10.png"),
         Font10(&g_Font10, g_NumberSheet10, 2, font10Range),
-        MenuMus(&g_MenuMus, "MenuMus.ogg")
+        MenuMus(&g_MenuMus, "MenuMus.ogg"),
+        DragonRoar(&g_DragonRoar, "DragonRoar.ogg"),
+        FireLoop(&g_FireLoop, "FireLoop.ogg"),
+        Footstep1(&g_Footstep1, "Footstep1.ogg"),
+        Footstep2(&g_Footstep2, "Footstep2.ogg"),
+        Footstep3(&g_Footstep3, "Footstep3.ogg"),
+        Footstep4(&g_Footstep4, "Footstpe4.ogg"),
+        GameMus(&g_GameMus, "GameMus.ogg"),
+        Lazor(&g_Lazor, "Lazor.ogg"),
+        Screams1(&g_Screams1, "Screams1.ogg"),
+        Screams2(&g_Screams2, "Screams2.ogg"),
+        Screams3(&g_Screams3, "Screams3.ogg"),
+        Screams4(&g_Screams4, "Screams4.ogg")
     {
     }
     ~ResourcesInit() {}
@@ -285,6 +310,18 @@ struct ResourcesInit {
     BitmapInit NumberSheet10;
     FontInit Font10;
     SampleInit MenuMus;
+    SampleInit DragonRoar;
+    SampleInit FireLoop;
+    SampleInit Footstep1;
+    SampleInit Footstep2;
+    SampleInit Footstep3;
+    SampleInit Footstep4;
+    SampleInit GameMus;
+    SampleInit Lazor;
+    SampleInit Screams1;
+    SampleInit Screams2;
+    SampleInit Screams3;
+    SampleInit Screams4;
 };
 
 struct Initializer {
