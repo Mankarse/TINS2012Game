@@ -12,10 +12,31 @@
 #include <vector>
 #include <cmath>
 #include "Geometry.h"
+/*
 struct DragonFrame {
     ALLEGRO_BITMAP* frame;
     Point2D pixelOffset;
+    DragonFrame(ALLEGRO_BITMAP* image, Point2D pos) :
+    frame(image),
+    pixelOffset(pos)
+    {}
+    
 }
+static std::vector<DragonFrame> loadDragonFramesFromFilename(std::string namePrefix)
+{
+    std::vector<DragonFrame> retV;
+    int curIndex(0);
+    std::stringstream formatter;
+    formatter << namePrefix;
+    formatter << curIndex++;
+    while (g_Bitmaps.find(formatter.str()) != g_Bitmaps.end())
+    {
+        retV.push_back(DragonFrame(g_Bitmaps[formatter.str()], ));
+        formatter << namePrefix;
+        formatter << curIndex++;
+    }
+    return retV;
+}*/
 
 class DragonAnimation {
     private:
