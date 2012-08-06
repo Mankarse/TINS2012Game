@@ -37,10 +37,10 @@ double GroundHeightmap::getInterpolatedPoint(double xPos) const{
     long i1(((long)floor(xPos)) % (long)data.size());
     long i2(((long)ceil(xPos)) % (long)data.size());
 
-    if(i1 < 0) {
+    while(i1 < 0) {
         i1 += data.size();
     }
-    if(i2 < 0) {
+    while(i2 < 0) {
         i2 += data.size();
     }
     //std::cout << "i1 " << i1 << '\n';
@@ -70,6 +70,62 @@ Point2D GroundHeightmap::getLoopedCoordinate(Point2D const& originalPoint) const
 
 double GroundHeightmap::getTotalSize() const {
     return width * resolution;
+}
+
+bool GroundHeightmap::linecast(Point2D const& startPoint, Point2D const& endPoint) const {
+    Point2D resolutionScalar(resolution, 1);
+    Point2D leftPoint(startPoint.x < endPoint.x ? startPoint / resolutionScalar : endPoint / resolutionScalar);
+    Point2D rightPoint(startPoint.x > endPoint.x ? startPoint / resolutionScalar : endPoint / resolutionScalar);
+    for(long i = (long)floor(leftPoint.x); i <= (long)floor(rightPoint.x); ++i)
+    {
+        long currentIndex(i % (long)data.size());
+        //std::cout << "Current index: " << currentIndex << '\n';
+        long nextIndex((i + 1) % (long)data.size());
+        //std::cout << "Next index: " << nextIndex << '\n';
+        while(currentIndex < 0) {
+            currentIndex += data.size();
+        }
+        while(nextIndex < 0) {
+            nextIndex += data.size();
+        }
+        if((startPoint.y < endPoint.y ? startPoint.y : endPoint.y)
+            >
+            (data[currentIndex] > data[nextIndex] ? data[currentIndex] : data[nextIndex]))
+        {
+            continue;
+        }
+        Point2D curLineStart(i, data[currentIndex]);
+        Point2D curLineEnd(i + 1, data[nextIndex]);
+        double denominator(
+            ((rightPoint.y - leftPoint.y) * (curLineEnd.x - curLineStart.x)) -
+            ((rightPoint.x - leftPoint.x) * (curLineEnd.y - curLineStart.y)));
+        if(denominator == 0) {
+            continue;
+        }
+        double numeA(
+            ((rightPoint.x - leftPoint.x) * (curLineStart.y - leftPoint.y)) -
+            ((rightPoint.y - leftPoint.y) * (curLineStart.x - leftPoint.x))
+        );
+        double numeB(
+            ((curLineEnd.x - curLineStart.x) * (curLineStart.y - leftPoint.y)) -
+            ((curLineEnd.y - curLineStart.y) * (curLineStart.x - leftPoint.x))
+        );
+        double ua = numeA / denominator;
+        double ub = numeB / denominator;
+        
+        if(ua >= 0 && ua <= 1 && ub >= 0 && ub <= 1)
+        {
+            /*
+            al_draw_filled_circle(((curLineStart.x + ua * (curLineEnd.x - curLineStart.x)) * resolution) - screenCorner.x,
+                (curLineStart.y + ua * (curLineEnd.y - curLineStart.y)) - screenCorner.y, 4, al_map_rgb(0, 0, 255));
+             */   
+            //intersection = Point2D((curLineStart.x + ua * (curLineEnd.x - curLineStart.x) + i) * resolution,
+            //curLineStart.y + ua * (curLineEnd.y - curLineStart.y));
+            return true;
+        }
+        
+    }
+    return false;
 }
 
 

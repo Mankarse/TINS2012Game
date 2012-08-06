@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "Spawner.h"
 #include "Hut.h"
+#include "StaticObject.h"
 template<typename T, std::size_t N>
 static std::size_t length(T(&)[N]) {
     return N;
@@ -23,6 +24,12 @@ static std::vector<Spawner> createSpawners() {
     return spawners;
 }
 
+static std::vector<StaticObject> createStaticObjects() {
+    std::vector<StaticObject> staticObjs;
+    staticObjs.push_back(StaticObject(*new StaticObject(g_LevelFG, Point2D(), 1, Middle)));
+    return staticObjs;
+}
+
 static bool isDisplayClosedEvent(ALLEGRO_EVENT const& e) {
     return e.type == ALLEGRO_EVENT_DISPLAY_CLOSE;
 }
@@ -31,6 +38,7 @@ Game::Game() :
     ground(loadGlobalHeightmap()),
     caveRect(cavePosition()),
     spawners(createSpawners()),
+    staticRenderables(createStaticObjects()),
     player()
 {
     player.assignHeightmap(&ground);
@@ -39,6 +47,8 @@ Game::Game() :
 Game::Game(GameSave savedGame) :
     ground(loadGlobalHeightmap()),
     caveRect(cavePosition()),
+    spawners(createSpawners()),
+    staticRenderables(createStaticObjects()),
     player(savedGame.stats)
 {
     player.assignHeightmap(&ground);
@@ -46,7 +56,6 @@ Game::Game(GameSave savedGame) :
 
 void Game::init() {
     al_init_primitives_addon();
-    screenCorner = Point2D(0, al_get_display_height(al_get_current_display()) * -0.8);
 }
 
 Point2D Game::mouseToWorldPos(Point2D const& mousePosition) const {
@@ -251,15 +260,12 @@ void Game::drawCave() const {
 
 void Game::drawingPass(RenderQueueSet* renderQueues) const {
     // Render each queue, in order
-    // Background:
+    // Sky:
     drawBackground(g_LevelSky, 0.5);
     
     renderQueue(renderQueues->farBackground);
     renderQueue(renderQueues->nearBackground);
-    // Heightmap
-    drawBitmapAtWorldPoint(g_LevelFG, Point2D(0,0));
-    drawBitmapAtWorldPoint(g_LevelFG, Point2D(ground.getTotalSize(),0));
-    drawBitmapAtWorldPoint(g_LevelFG, Point2D(-ground.getTotalSize(),0));
+    // Underground:
     Point2D worldTopCorner(-ground.getTotalSize(), 300);
     worldTopCorner = worldToScreenPoint(worldTopCorner);
     Point2D worldBottomCorner(ground.getTotalSize() * 2, 1000);
@@ -272,6 +278,18 @@ void Game::drawingPass(RenderQueueSet* renderQueues) const {
     
     //ground.draw(screenCorner);
     renderQueue(renderQueues->foreground);
+    /*
+    ALLEGRO_COLOR lineCol;
+    Point2D intersect;
+    if(ground.linecast(mouseToWorldPos(mousePosition), player.worldPosition)) {
+        lineCol = al_map_rgb(255, 0, 0);
+    } else {
+        lineCol = al_map_rgb(0, 255, 0);
+    }
+    Point2D screenStart(mousePosition);
+    Point2D screenEnd(worldToScreenPoint(player.worldPosition));
+    al_draw_line(screenStart.x, screenStart.y, screenEnd.x, screenEnd.y, lineCol, 3);
+    */
 }
 
 void Game::renderTo(ALLEGRO_BITMAP* target) const {
