@@ -11,6 +11,7 @@
 
 enum RenderLayer {
     FarBG,
+    MidBG,
     NearBG,
     Middle,
     FG
@@ -35,6 +36,11 @@ class StaticObject : Renderable {
             case FarBG:
             {
                 queues.farBackground.push_back(this);
+                break;
+            }
+            case MidBG:
+            {
+                queues.midBackground.push_back(this);
                 break;
             }
             case NearBG:

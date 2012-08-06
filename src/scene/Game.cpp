@@ -19,7 +19,7 @@ static GroundHeightmap loadGlobalHeightmap() {
 }
 
 static Rect cavePosition() {
-    return Rect(2250, 100, 200, 200);
+    return Rect(2700, 100, 200, 200);
 }
 
 static std::vector<Spawner> createSpawners() {
@@ -31,6 +31,9 @@ static std::vector<Spawner> createSpawners() {
 static std::vector<StaticObject> createStaticObjects() {
     std::vector<StaticObject> staticObjs;
     staticObjs.push_back(StaticObject(g_Bitmaps["LevelFG"], Point2D(), 1, Middle));
+    staticObjs.push_back(StaticObject(g_Bitmaps["Mountains"], Point2D(0, 300), 0.6, FarBG));
+    
+    staticObjs.push_back(StaticObject(g_Bitmaps["Cave"], Point2D(2800, 100), 0.95, NearBG));
     return staticObjs;
 }
 
@@ -46,6 +49,7 @@ Game::Game() :
     player()
 {
     player.assignHeightmap(&ground);
+    player.worldPosition = Point2D(caveRect.x + caveRect.width / 2, caveRect.y + caveRect.height * 0.7);
 }
 
 Game::Game(GameSave savedGame) :
@@ -56,6 +60,7 @@ Game::Game(GameSave savedGame) :
     player(savedGame)
 {
     player.assignHeightmap(&ground);
+    player.worldPosition = Point2D(caveRect.x + caveRect.width / 2, caveRect.y + caveRect.height * 0.7);
 }
 
 void Game::init() {
@@ -296,6 +301,8 @@ void Game::drawingPass(RenderQueueSet& renderQueues) const {
     drawBackground(g_Bitmaps["LevelSky"], 0.5);
     
     renderQueue(renderQueues.farBackground);
+    
+    renderQueue(renderQueues.midBackground);
     renderQueue(renderQueues.nearBackground);
     // Underground:
     Point2D worldTopCorner(-ground.getTotalSize(), 300);
@@ -303,6 +310,7 @@ void Game::drawingPass(RenderQueueSet& renderQueues) const {
     Point2D worldBottomCorner(ground.getTotalSize() * 2, 1000);
     worldBottomCorner = worldToScreenPoint(worldBottomCorner);
     al_draw_filled_rectangle(worldTopCorner.x, worldTopCorner.y, worldBottomCorner.x, worldBottomCorner.y, al_map_rgb(146, 120, 94));
+    
     renderQueue(renderQueues.middleGround);
     player.renderStep(screenCorner);
     

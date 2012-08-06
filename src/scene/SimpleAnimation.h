@@ -38,10 +38,10 @@ class SimpleAnimation {
     
     public:
     ALLEGRO_BITMAP* getCurrentFrame(double currentTime) const{
-        if(frames.size() == 0) {
-            return 0;
-        }
         long curFrame((long)floor((currentTime - timeOffset) / frameTime) % (long)frames.size());
+        
+        std::cout << "Frame: " << (long)floor((currentTime - timeOffset) / frameTime)<< '\n';
+        std::cout << "Framecount: " << (long)floor((currentTime - timeOffset) / (long)frames.size())<< '\n';
         return frames[curFrame];
     }
     ALLEGRO_BITMAP* getCurrentFrame() const {
@@ -55,7 +55,7 @@ class SimpleAnimation {
     }
     
     SimpleAnimation(double frameRate, std::string fileName) :
-    frameTime(1/frameRate),
+    frameTime(1./frameRate),
     timeOffset(al_get_time()),
     frames(loadFramesFromFilename(fileName))
     {}
