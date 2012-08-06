@@ -2,11 +2,11 @@
 #include "Game.h"
 static DragonStats getUpgradeAmounts(unsigned prime, GameSave const& save) {
     DragonStats stats;
-    stats.size = 1 * std::pow(static_cast<double>(prime), 1.04);
-    stats.wingspan = 1 * std::pow(static_cast<double>(prime), 0.1);
-    stats.stamina = 1 * std::pow(static_cast<double>(prime), 1.2);
-    stats.fireStrength = 1 * std::pow(static_cast<double>(prime), 1.1);
-    stats.fireCooldown = 1 * std::pow(static_cast<double>(prime), 1.15);
+    stats.size = 0.1 * std::pow(static_cast<double>(prime), 1.04);
+    stats.wingspan = 0.1 * std::pow(static_cast<double>(prime), 1.01);
+    stats.stamina = 0.1 * std::pow(static_cast<double>(prime), 1.02);
+    stats.fireStrength = 0.1 * std::pow(static_cast<double>(prime), 1.01);
+    stats.fireCooldown = 0.1 * std::pow(static_cast<double>(prime), 1.015);
     return stats;
 }
 

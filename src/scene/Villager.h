@@ -32,17 +32,17 @@ class Villager : public EnemyImplementation, private Renderable {
         switch(rand() % 4) {
             case (0):
             {
-                al_play_sample(g_Screams2, 2, 0, 1, ALLEGRO_PLAYMODE_ONCE, 0);
+                al_play_sample(g_Samples["Screams1"], 2, 0, 1, ALLEGRO_PLAYMODE_ONCE, 0);
                 break;
             }
             case (1):
             {
-                al_play_sample(g_Screams3, 2, 0, 1, ALLEGRO_PLAYMODE_ONCE, 0);
+                al_play_sample(g_Samples["Screams2"], 2, 0, 1, ALLEGRO_PLAYMODE_ONCE, 0);
                 break;
             }
             case (2):
             {
-                al_play_sample(g_Screams4, 2, 0, 1, ALLEGRO_PLAYMODE_ONCE, 0);
+                al_play_sample(g_Samples["Screams3"], 2, 0, 1, ALLEGRO_PLAYMODE_ONCE, 0);
                 break;
             }
         }

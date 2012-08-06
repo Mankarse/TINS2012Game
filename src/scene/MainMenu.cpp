@@ -22,7 +22,7 @@ MainMenu::MainMenu() :
     pressedButton(-1)
 {}
 void MainMenu::init() {
-    al_play_sample(g_MenuMus, 1, 0, 1, ALLEGRO_PLAYMODE_LOOP, &music);
+    al_play_sample(g_Samples["MenuMus"], 1, 0, 1, ALLEGRO_PLAYMODE_LOOP, &music);
 }
 Scene* MainMenu::update(InputState const& input) {
     if (std::find_if(

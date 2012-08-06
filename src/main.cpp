@@ -18,24 +18,11 @@
 #include "Filesystem.h"
 
 std::map<std::string, ALLEGRO_BITMAP*> g_Bitmaps;
+std::map<std::string, ALLEGRO_SAMPLE*> g_Samples;
 
 ALLEGRO_DISPLAY *g_display;
 
 ALLEGRO_FONT *g_Font10;
-
-ALLEGRO_SAMPLE *g_MenuMus;
-ALLEGRO_SAMPLE *g_DragonRoar;
-ALLEGRO_SAMPLE *g_FireLoop;
-ALLEGRO_SAMPLE *g_Footstep1;
-ALLEGRO_SAMPLE *g_Footstep2;
-ALLEGRO_SAMPLE *g_Footstep3;
-ALLEGRO_SAMPLE *g_Footstep4;
-ALLEGRO_SAMPLE *g_GameMus;
-ALLEGRO_SAMPLE *g_Lazor;
-ALLEGRO_SAMPLE *g_Screams1;
-ALLEGRO_SAMPLE *g_Screams2;
-ALLEGRO_SAMPLE *g_Screams3;
-ALLEGRO_SAMPLE *g_Screams4;
 
 
 struct LoadingException : virtual std::exception {
@@ -208,8 +195,6 @@ struct RandInit {
     }
 };
 
-
-
 struct BitmapManager {
     BitmapManager() : bitmap() {}
     ALLEGRO_BITMAP* init(char const* filename) {
@@ -229,73 +214,81 @@ struct BitmapManager {
     ALLEGRO_BITMAP *bitmap;
 };
 
+ALLEGRO_SAMPLE* loadSample(char const* filename){
+    ALLEGRO_SAMPLE* sample = al_load_sample(filename);
+    if (!sample) {
+        throw FileLoadingException("Failed to load sample\n", filename);
+    }
+    return sample;
+}
+
+struct SampleManager {
+    SampleManager() : sample() {}
+    ALLEGRO_SAMPLE* init(char const* filename) {
+        return sample = loadSample(filename);
+    }
+    SampleManager(SampleManager const& o): sample() {
+        assert(!o.sample);
+    }
+    SampleManager& operator=(SampleManager const& o) {
+        assert(!o.sample);
+        assert(!sample);
+        return *this;
+    }
+    ~SampleManager() {
+        if (sample) {
+            al_destroy_sample(sample);
+        }
+    }
+    ALLEGRO_SAMPLE *sample;
+};
+
 bool endsWith(std::string const& haystack, std::string const& needle) {
     return haystack.size()>=needle.size() && haystack.substr(haystack.size()-needle.size())==needle.c_str();
 }
 
-struct BitmapsInit {
-
-BitmapsInit() {
-    FilesystemEntry resourceDirectory(al_create_fs_entry("."));
-    if (!resourceDirectory.get()) {
-        throw LoadingException("Could not init resources directory");
-    }
-    DirectoryManager directory(resourceDirectory.get());
-    if (!directory.is_open()) { throw LoadingException("Could not open resources directory"); }
-    
-    FilesystemEntry resourceFile;
-    while (resourceFile.reset(al_read_directory(resourceDirectory.get())), resourceFile.get()) {
-        std::string filename(al_get_fs_entry_name(resourceFile.get()));
+struct SmartInit {
+    SmartInit() {
+        FilesystemEntry resourceDirectory(al_create_fs_entry("."));
+        if (!resourceDirectory.get()) {
+            throw LoadingException("Could not init resources directory");
+        }
+        DirectoryManager directory(resourceDirectory.get());
+        if (!directory.is_open()) { throw LoadingException("Could not open resources directory"); }
         
-        if (endsWith(filename,std::string(".png"))) {
-            filename = filename.substr(2);
-            bitmapManagers.push_back(BitmapManager());
-            g_Bitmaps[filename.substr(0,filename.size()-4)]=bitmapManagers.back().init(filename.c_str());
+        FilesystemEntry resourceFile;
+        while (resourceFile.reset(al_read_directory(resourceDirectory.get())), resourceFile.get()) {
+            std::string filename(al_get_fs_entry_name(resourceFile.get()));
+            
+            if (endsWith(filename,std::string(".png"))) {
+                filename = filename.substr(2);
+                bitmapManagers.push_back(BitmapManager());
+                g_Bitmaps[filename.substr(0,filename.size()-4)]=bitmapManagers.back().init(filename.c_str());
+            }
+            if (endsWith(filename, std::string(".ogg"))) {
+                filename = filename.substr(2);
+                sampleManagers.push_back(SampleManager());
+                g_Samples[filename.substr(0,filename.size()-4)]=sampleManagers.back().init(filename.c_str());
+            }
         }
     }
-}
-//Using std::list because insertion does not invaliate iterators.
-std::list<BitmapManager> bitmapManagers;
+    //Using std::list because insertion does not invaliate iterators.
+    std::list<BitmapManager> bitmapManagers;
+    std::list<SampleManager> sampleManagers;
 };
 
 static const int font10Range[] = {43, 43, 46, 57};
 
 struct ResourcesInit {
     ResourcesInit() :
-        bitmaps(),
-        Font10(&g_Font10, g_Bitmaps["NumberSheet10"], 2, font10Range),
-        MenuMus(&g_MenuMus, "MenuMus.ogg"),
-        DragonRoar(&g_DragonRoar, "DragonRoar.ogg"),
-        FireLoop(&g_FireLoop, "FireLoop.ogg"),
-        Footstep1(&g_Footstep1, "Footstep1.ogg"),
-        Footstep2(&g_Footstep2, "Footstep2.ogg"),
-        Footstep3(&g_Footstep3, "Footstep3.ogg"),
-        Footstep4(&g_Footstep4, "Footstep4.ogg"),
-        GameMus(&g_GameMus, "GameMus.ogg"),
-        Lazor(&g_Lazor, "Lazor.ogg"),
-        Screams1(&g_Screams1, "Screams1.ogg"),
-        Screams2(&g_Screams2, "Screams2.ogg"),
-        Screams3(&g_Screams3, "Screams3.ogg"),
-        Screams4(&g_Screams4, "Screams4.ogg")
+        init(),
+        Font10(&g_Font10, g_Bitmaps["NumberSheet10"], 2, font10Range)
     {
     }
     
-    BitmapsInit bitmaps;
+    SmartInit init;
 
     FontInit Font10;
-    SampleInit MenuMus;
-    SampleInit DragonRoar;
-    SampleInit FireLoop;
-    SampleInit Footstep1;
-    SampleInit Footstep2;
-    SampleInit Footstep3;
-    SampleInit Footstep4;
-    SampleInit GameMus;
-    SampleInit Lazor;
-    SampleInit Screams1;
-    SampleInit Screams2;
-    SampleInit Screams3;
-    SampleInit Screams4;
 };
 
 struct Initializer {
