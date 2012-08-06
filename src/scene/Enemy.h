@@ -22,6 +22,7 @@ public:
     virtual bool hasHeightMap() const=0;
     virtual void assignHeightMap(GroundHeightmap const& newMap)=0;
     virtual void pickRenderQueue(RenderQueueSet& queues) const = 0;
+    virtual bool shouldDie() const = 0;
     virtual EnemyImplementation* clone() const=0;
     virtual ~EnemyImplementation(){}
 };
@@ -43,6 +44,9 @@ class Enemy {
     }
     void pickRenderQueue(RenderQueueSet& queues) const {
         impl->pickRenderQueue(queues);
+    }
+    bool shouldDie() const {
+        return impl->shouldDie();
     }
 private:
     clone_ptr<EnemyImplementation> impl;

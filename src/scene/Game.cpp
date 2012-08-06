@@ -30,7 +30,7 @@ static std::vector<Spawner> createSpawners() {
 
 static std::vector<StaticObject> createStaticObjects() {
     std::vector<StaticObject> staticObjs;
-    staticObjs.push_back(StaticObject(*new StaticObject(g_LevelFG, Point2D(), 1, Middle)));
+    staticObjs.push_back(StaticObject(g_LevelFG, Point2D(), 1, Middle));
     return staticObjs;
 }
 
@@ -148,6 +148,10 @@ void Game::drawBackground(ALLEGRO_BITMAP* image, double depth) const {
     }
 }
 
+bool shouldRemove(Enemy const& check) {
+    return check.shouldDie();
+}
+
 Scene* Game::update(InputState const& input) {
     if (std::find_if(input.events.begin(), input.events.end(), isDisplayClosedEvent) != input.events.end()) {
         return 0;
@@ -216,6 +220,7 @@ Scene* Game::update(InputState const& input) {
     // Particle effects update
     
     // Clean up dead things
+    enemies.erase(std::remove_if(enemies.begin(), enemies.end(), shouldRemove), enemies.end());
     return this;
 }
 
