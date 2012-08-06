@@ -18,6 +18,8 @@
 #include "DragonStats.h"
 #include "GameSave.h"
 #include "SimpleAnimation.h"
+#include "DragonFlame.h"
+#include <vector>
 struct DragonSkin {
     SimpleAnimation run;
     SimpleAnimation dive;
@@ -31,7 +33,7 @@ struct DragonSkin {
     dive(10, "DragonSmallDive"),
     glide(10, "DragonSmallGlide"),
     flap(10, "DragonSmallFly"),
-    jump(10, "DragonSmallJump"),
+    jump(15, "DragonSmallJump"),
     stand(g_Bitmaps["DragonSmallStand"])
     {}
 };
@@ -68,7 +70,7 @@ class Dragon {
     double jumpTime;
     
     void renderRotated(ALLEGRO_BITMAP* image, Point2D screenPos, int flags = 0) const;
-    
+    void fireBreath(Point2D mainDirection, Point2D mainVelocity, double lifeTime, std::vector<Bullet> const& bulletList) const;
     public:
     GameSave save;
     

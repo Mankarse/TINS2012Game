@@ -15,6 +15,7 @@
 #include "Bullet.h"
 #include "Particle.h"
 #include "clone_ptr.h"
+#include "Rect.h"
 
 class EnemyImplementation {
 public:
@@ -23,6 +24,8 @@ public:
     virtual void assignHeightMap(GroundHeightmap const& newMap)=0;
     virtual void pickRenderQueue(RenderQueueSet& queues) const = 0;
     virtual bool shouldDie() const = 0;
+    virtual Rect getBoundingBox() const = 0;
+    virtual void takeHit(double damage, Point2D vector) = 0;
     virtual EnemyImplementation* clone() const=0;
     virtual ~EnemyImplementation(){}
 };
@@ -45,8 +48,15 @@ class Enemy {
     void pickRenderQueue(RenderQueueSet& queues) const {
         impl->pickRenderQueue(queues);
     }
+    Rect getBoundingBox() const {
+        return impl->getBoundingBox();
+    }
     bool shouldDie() const {
         return impl->shouldDie();
+    }
+    
+    void takeHit(double damage, Point2D vector) {
+        return impl->takeHit(damage, vector);
     }
 private:
     clone_ptr<EnemyImplementation> impl;

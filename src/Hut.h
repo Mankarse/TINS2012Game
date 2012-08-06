@@ -8,14 +8,13 @@ class Hut : public SpawnerImplementation, private Renderable
     Point2D worldPosition;
     double lastSpawn;
     double timeToNextSpawn;
-    ALLEGRO_BITMAP* image;
     public:
     virtual std::vector<Enemy> update(double playTime) {
         std::vector<Enemy> spawned;
         if(playTime >= lastSpawn + timeToNextSpawn){
             spawned.push_back(Enemy(new Villager(worldPosition.x)));
             lastSpawn = playTime;
-            timeToNextSpawn = 2;
+            timeToNextSpawn = rand() % 20 + 10;
         }
         return spawned;
     }
@@ -25,15 +24,12 @@ class Hut : public SpawnerImplementation, private Renderable
     explicit Hut(Point2D const& position):
         worldPosition(position),
         lastSpawn(0),
-        timeToNextSpawn(0),
-        image(g_Bitmaps["CaveEmbossedTile"])
+        timeToNextSpawn(0)
     {}
     
-    virtual void pickRenderQueue(RenderQueueSet& queues) const {
-        queues.middleGround.push_back(this);
-    }
+    virtual void pickRenderQueue(RenderQueueSet& queues) const {}
     virtual ALLEGRO_BITMAP* getBitmap() const{
-        return image;
+        return 0;
     }
     virtual Point2D getWorldPoint() const{
         return worldPosition;

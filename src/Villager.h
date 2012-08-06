@@ -76,12 +76,19 @@ class Villager : public EnemyImplementation, private Renderable {
             }
         }
         
-        if(pointInRectInclusive(player.foreLegWorldPos().x, player.foreLegWorldPos().y,
-        Rect(getWorldPoint().x - 10, getWorldPoint().y - 15, 20, 30))) {
+        if(pointInRectInclusive(player.foreLegWorldPos().x, player.foreLegWorldPos().y, getBoundingBox())) {
             player.save.scoreDelta += 2;
             player.save.totalScore += 2;
             wasStomped = true;
         }
+    }
+    
+    virtual void takeHit(double damage, Point2D vector) {
+        wasStomped = true;
+        
+    }
+    virtual Rect getBoundingBox() const {
+        return Rect(getWorldPoint().x - 10, getWorldPoint().y - 15, 20, 30);
     }
     
     virtual bool hasHeightMap() const{

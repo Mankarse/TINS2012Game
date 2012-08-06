@@ -25,7 +25,15 @@ static Rect cavePosition() {
 
 static std::vector<Spawner> createSpawners() {
     std::vector<Spawner> spawners;
-    spawners.push_back(Spawner(new Hut(Point2D(2500, 0))));
+    spawners.push_back(Spawner(new Hut(Point2D(700 - 2400, 0))));
+    spawners.push_back(Spawner(new Hut(Point2D(1188 - 2400, 0))));
+    spawners.push_back(Spawner(new Hut(Point2D(1632 - 2400, 0))));
+    spawners.push_back(Spawner(new Hut(Point2D(2188 - 2400, 0))));
+    spawners.push_back(Spawner(new Hut(Point2D(2636 - 2400, 0))));
+    spawners.push_back(Spawner(new Hut(Point2D(3988 - 2400, 0))));
+    spawners.push_back(Spawner(new Hut(Point2D(4120 - 2400, 0))));
+    spawners.push_back(Spawner(new Hut(Point2D(4292 - 2400, 0))));
+    spawners.push_back(Spawner(new Hut(Point2D(4640 - 2400, 0))));
     return spawners;
 }
 
@@ -244,12 +252,20 @@ Scene* Game::update(InputState const& input) {
         {
             curEnemy.assignHeightmap(ground);
         }
-        curEnemy.update(bullets, particles, player);
+        curEnemy.update(enemyBullets, particles, player);
     }
     // My bullets!
-    
+    for (std::vector<Bullet>::iterator it(friendlyBullets.begin()), end(friendlyBullets.end()); it != end; ++it)
+    {
+        Bullet& curBullet(*it);
+        curBullet.update(enemies);
+    }
     // Their bullets!
-    
+    for (std::vector<Bullet>::iterator it(enemyBullets.begin()), end(enemyBullets.end()); it != end; ++it)
+    {
+        Bullet& curBullet(*it);
+        curBullet.update(player);
+    }
     // Particle effects update
     
     // Clean up dead things
@@ -288,6 +304,17 @@ void Game::preRender(RenderQueueSet& renderQueues) const {
         Enemy const& curEnemy(*it);
         curEnemy.pickRenderQueue(renderQueues);
     }
+    for (std::vector<Bullet>::const_iterator it(friendlyBullets.begin()), end(friendlyBullets.end()); it != end; ++it)
+    {
+        Bullet const& curBullet(*it);
+        curBullet.pickRenderQueue(renderQueues);
+    }
+    for (std::vector<Bullet>::const_iterator it(enemyBullets.begin()), end(enemyBullets.end()); it != end; ++it)
+    {
+        Bullet const& curBullet(*it);
+        curBullet.pickRenderQueue(renderQueues);
+    }
+
 }
 
 void Game::drawCave() const {
@@ -350,7 +377,7 @@ void Game::drawingPass(RenderQueueSet& renderQueues) const {
     renderQueue(renderQueues.midBackground);
     renderQueue(renderQueues.nearBackground);
     // Underground:
-    Point2D worldTopCorner(-ground.getTotalSize(), 300);
+    Point2D worldTopCorner(-ground.getTotalSize(), 290);
     worldTopCorner = worldToScreenPoint(worldTopCorner);
     Point2D worldBottomCorner(ground.getTotalSize() * 2, 1000);
     worldBottomCorner = worldToScreenPoint(worldBottomCorner);

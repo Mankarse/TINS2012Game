@@ -158,6 +158,7 @@ ScreenFlipMode Dragon::physicsStep(InputState const& input, Point2D const& scree
     }
     Point2D oldWorldPosition = worldPosition;
     worldPosition = ground->getLoopedCoordinate(worldPosition);
+    std::cerr << "World Position: " << worldPosition.x << '\n';
     if(oldWorldPosition != worldPosition) {
         return oldWorldPosition.x < worldPosition.x ? Right : Left;
         //std::cerr << "Screen flip! Time: " << al_get_time() << '\n';
@@ -172,6 +173,8 @@ void Dragon::renderRotated(ALLEGRO_BITMAP* image, Point2D screenPos, int flags) 
     drawPos.x, drawPos.y, currentRotation, flags);
     
 }
+
+
 
 void Dragon::renderStep(Point2D screenPos) const {
     int flags = 0;
@@ -202,6 +205,11 @@ void Dragon::renderStep(Point2D screenPos) const {
     //Point2D drawPos = worldPosition - screenPos;
     //al_draw_filled_rectangle(drawPos.x - 20, drawPos.y - 15, drawPos.x + 20, drawPos.y + 15, al_map_rgb(50, 160, 170));
 }
+
+void Dragon::fireBreath(Point2D mainDirection, Point2D mainVelocity, double lifeTime, std::vector<Bullet> const& bulletList) const {
+    
+}
+    
 Point2D Dragon::foreLegWorldPos() const {
     return worldPosition + rotate(foreLeg, currentRotation);
 }
