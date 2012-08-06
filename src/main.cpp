@@ -1,6 +1,7 @@
 #include "Globals.h"
 
 #include <iostream>
+#include <fstream>
 #include <exception>
 #include <allegro5/allegro.h>
 #include <memory>
@@ -17,8 +18,8 @@
 #include "Timer.h"
 #include "Filesystem.h"
 
-std::map<std::string, ALLEGRO_BITMAP*> g_Bitmaps;
-std::map<std::string, ALLEGRO_SAMPLE*> g_Samples;
+StrictMap<std::string, ALLEGRO_BITMAP*> g_Bitmaps;
+StrictMap<std::string, ALLEGRO_SAMPLE*> g_Samples;
 
 ALLEGRO_DISPLAY *g_display;
 
@@ -197,8 +198,8 @@ struct RandInit {
 
 struct BitmapManager {
     BitmapManager() : bitmap() {}
-    ALLEGRO_BITMAP* init(char const* filename) {
-        return bitmap = loadAndScaleBitmap(filename);
+    ALLEGRO_BITMAP* init(ALLEGRO_BITMAP* const bitmap) {
+        return this->bitmap = bitmap;
     }
     BitmapManager(BitmapManager const& o): bitmap() {
         assert(!o.bitmap);
@@ -263,12 +264,12 @@ struct SmartInit {
             if (endsWith(filename,std::string(".png"))) {
                 filename = filename.substr(2);
                 bitmapManagers.push_back(BitmapManager());
-                g_Bitmaps[filename.substr(0,filename.size()-4)]=bitmapManagers.back().init(filename.c_str());
+                g_Bitmaps.insert(std::make_pair(filename.substr(0,filename.size()-4), bitmapManagers.back().init(loadAndScaleBitmap(filename.c_str()))));
             }
             if (endsWith(filename, std::string(".ogg"))) {
                 filename = filename.substr(2);
                 sampleManagers.push_back(SampleManager());
-                g_Samples[filename.substr(0,filename.size()-4)]=sampleManagers.back().init(filename.c_str());
+                g_Samples.insert(std::make_pair(filename.substr(0,filename.size()-4), sampleManagers.back().init(filename.c_str())));
             }
         }
     }
@@ -277,17 +278,44 @@ struct SmartInit {
     std::list<SampleManager> sampleManagers;
 };
 
+static ALLEGRO_BITMAP* loadSubBitmap(ALLEGRO_BITMAP* parent, int x, int y, int w, int h) {
+    Bitmap bitmap(al_create_sub_bitmap(parent, x, y, w, h));
+    if (!bitmap.get()) {
+        throw LoadingException("Failed at splitting bitmap.");
+    }
+    return bitmap.release();
+}
+
+struct SpritesInit {
+    SpritesInit() {
+        std::ifstream spriteManifest("SpriteSheet.txt");
+        while (spriteManifest) {
+            std::string name;
+            std::string eq;
+            int x;
+            int y;
+            int width;
+            int height;
+            spriteManifest >> name >> eq >> x >> y >> width >> height;
+            bitmapManagers.push_back(BitmapManager());
+            g_Bitmaps.insert(std::make_pair(name, bitmapManagers.back().init(loadSubBitmap(g_Bitmaps["SpriteSheet"], x*4, y*4, width*4, height*4))));
+        }
+    }
+    std::list<BitmapManager> bitmapManagers;
+};
+
 static const int font10Range[] = {43, 43, 46, 57};
 
 struct ResourcesInit {
     ResourcesInit() :
         init(),
-        Font10(&g_Font10, g_Bitmaps["NumberSheet10"], 2, font10Range)
+        Font10(&g_Font10, g_Bitmaps["NumberSheet10"], 2, font10Range),
+        sprites()
     {
     }
     
     SmartInit init;
-
+    SpritesInit sprites;
     FontInit Font10;
 };
 

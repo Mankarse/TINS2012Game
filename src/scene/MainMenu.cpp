@@ -87,23 +87,15 @@ Scene* MainMenu::update(InputState const& input) {
     return this;
 }
 
-static void draw_element(ALLEGRO_BITMAP * element) {
-    al_draw_scaled_bitmap(
-        element,
-        0, 0, al_get_bitmap_width(element), al_get_bitmap_height(element),
-        0, 0, al_get_bitmap_width(element), al_get_bitmap_height(element),
-        0);
-}
-
 void MainMenu::renderTo(ALLEGRO_BITMAP* target) const {
     al_set_target_bitmap(target);
     
-    draw_element(g_Bitmaps["MenuBackground"]);
-    draw_element(g_Bitmaps["MenuTitle"]);
+    al_draw_bitmap(g_Bitmaps["MenuBackground"], 0, 0, 0);
+    al_draw_bitmap(g_Bitmaps["MenuTitle"], 0, 0, 0);
     
-    //draw_element(pressedButton == 0 ? g_Bitmaps["MenuInstructionsDown"] : g_Bitmaps["MenuInstructionsUp"]);
-    draw_element(pressedButton == 1 ? g_Bitmaps["MenuNewGameDown"] : g_Bitmaps["MenuNewGameUp"]);
-    draw_element(saveExists ? (pressedButton == 2 ? g_Bitmaps["MenuContinueDown"] : g_Bitmaps["MenuContinueUp"]) : g_Bitmaps["MenuContinueGrey"]);
-    draw_element(pressedButton == 3 ? g_Bitmaps["MenuExitDown"] : g_Bitmaps["MenuExitUp"]);
+    //al_draw_bitmap(pressedButton == 0 ? g_Bitmaps["MenuInstructionsDown"] : g_Bitmaps["MenuInstructionsUp"], 60*4, 47*4, 0);
+    al_draw_bitmap(pressedButton == 1 ? g_Bitmaps["MenuNewGameDown"] : g_Bitmaps["MenuNewGameUp"], 63*4, 73*4, 0);
+    al_draw_bitmap(saveExists ? (pressedButton == 2 ? g_Bitmaps["MenuContinueDown"] : g_Bitmaps["MenuContinueUp"]) : g_Bitmaps["MenuContinueGrey"], 47*4, 100*4, 0);
+    al_draw_bitmap(pressedButton == 3 ? g_Bitmaps["MenuExitDown"] : g_Bitmaps["MenuExitUp"], 85*4, 126*4, 0);
 }
 
