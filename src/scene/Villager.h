@@ -30,17 +30,17 @@ class Villager : public EnemyImplementation, private Renderable {
         switch(rand() % 4) {
             case (0):
             {
-                al_play_sample(g_Screams2, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, 0);
+                al_play_sample(g_Screams2, 2, 0, 1, ALLEGRO_PLAYMODE_ONCE, 0);
                 break;
             }
             case (1):
             {
-                al_play_sample(g_Screams3, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, 0);
+                al_play_sample(g_Screams3, 2, 0, 1, ALLEGRO_PLAYMODE_ONCE, 0);
                 break;
             }
             case (2):
             {
-                al_play_sample(g_Screams4, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, 0);
+                al_play_sample(g_Screams4, 2, 0, 1, ALLEGRO_PLAYMODE_ONCE, 0);
                 break;
             }
         }
@@ -62,6 +62,8 @@ class Villager : public EnemyImplementation, private Renderable {
             if(!heightmap->linecast(getWorldPoint(), player.worldPosition)) {
                 if(fearCooldown <= 0)
                 {
+                    player.save.scoreDelta += 2;
+                    player.save.totalScore += 2;
                     beginTerror();
                 }
                 fearCooldown = 10;

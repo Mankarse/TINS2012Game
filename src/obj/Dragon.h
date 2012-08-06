@@ -15,6 +15,7 @@
 #include "GroundHeightmap.h"
 #include "Geometry.h"
 #include "DragonStats.h"
+#include "GameSave.h"
 #include "Globals.h"
 struct DragonSkin {
     ALLEGRO_BITMAP *body;
@@ -49,7 +50,7 @@ class Dragon {
     double currentNeckRotation;
     Point2D localHeadOffest;
     double currentHeadRotation;
-    double currentStamina;
+
     
     
     Point2D velocity;
@@ -59,15 +60,21 @@ class Dragon {
     Point2D hindLeg;
     
     public:
-    DragonStats stats;
+    GameSave save;
+    
+    double currentStamina;
+    double currentHealth;
+    double currentCooldown;
+    
     Point2D worldPosition;
-    void init();
+    
+    
     void assignHeightmap(GroundHeightmap* newGround);
     ScreenFlipMode physicsStep(InputState const& input);
     void renderStep(Point2D screenPos) const;
     
     Dragon();
-    Dragon(DragonStats newStats);
+    Dragon(GameSave const& newStats);
 };
 
 

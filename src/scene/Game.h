@@ -44,15 +44,13 @@ private:
     Point2D screenCorner;
     Point2D mousePosition;
     GroundHeightmap ground;
+    ALLEGRO_SAMPLE_ID music;
     Point2D mouseToWorldPos(Point2D const& mousePosition) const;
     
     Point2D worldToScreenPoint(Point2D const& worldPosition, double layer = 1) const;
     void drawBitmapAtWorldPoint(ALLEGRO_BITMAP* image, Point2D point, double layer = 1) const;
     void drawBitmapAtScreenPoint(ALLEGRO_BITMAP* image, Point2D point) const;
     void drawBackground(ALLEGRO_BITMAP* image, double depth) const;
-    
-    double totalPlayTime;
-
     
     void renderQueue(std::vector<Renderable const*> const& queue) const;
     void preRender(RenderQueueSet* renderQueues) const;

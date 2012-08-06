@@ -6,31 +6,28 @@ static const double landResistance = 0.9;
 static const double flightCost = 15.;
 static const double staminaRegenTime = 5.;
 
-void Dragon::init() {
-    worldPosition = Point2D(0, 0);
-    mode = Flying;
-    foreLeg = Point2D(7, 15);
-    hindLeg = Point2D(-7, 15);
-    currentStamina = stats.stamina;
-}
-
 Dragon::Dragon() :
+    save(0, 0, 0, DragonStats()),
     worldPosition(0, 0),
     mode(Flying),
     foreLeg(7, 15),
     hindLeg(-7, 15)
 {
-    currentStamina = stats.stamina;
+    currentStamina = save.stats.stamina;
+    currentHealth = save.stats.size;
+    currentCooldown = save.stats.fireCooldown;
 }
 
-Dragon::Dragon(DragonStats newStats) :
+Dragon::Dragon(GameSave const& newSave) :
     worldPosition(0, 0),
     mode(Flying),
     foreLeg(7, 15),
     hindLeg(-7, 15),
-    stats(newStats)
+    save(newSave)
 {
-    currentStamina = stats.stamina;
+    currentStamina = save.stats.stamina;
+    currentHealth = save.stats.size;
+    currentCooldown = save.stats.fireCooldown;
 }
 
 void Dragon::assignHeightmap(GroundHeightmap *newGround) {
@@ -57,14 +54,14 @@ ScreenFlipMode Dragon::physicsStep(InputState const& input) {
             
             if(shouldJump && currentStamina > flightCost)
             {
-                velocity.y -= 100 * stats.wingspan;
+                velocity.y -= 100 * save.stats.wingspan;
                 if(al_key_down(&input.keyboardState, ALLEGRO_KEY_D)) {
-                    velocity.x += 50 * stats.wingspan;
-                    velocity.y += 50 * stats.wingspan;
+                    velocity.x += 50 * save.stats.wingspan;
+                    velocity.y += 50 * save.stats.wingspan;
                 }
                 if(al_key_down(&input.keyboardState, ALLEGRO_KEY_A)) {
-                    velocity.x -= 50 * stats.wingspan;
-                    velocity.y += 50 * stats.wingspan;
+                    velocity.x -= 50 * save.stats.wingspan;
+                    velocity.y += 50 * save.stats.wingspan;
                 }
                 currentStamina -= flightCost;
             }
@@ -106,10 +103,10 @@ ScreenFlipMode Dragon::physicsStep(InputState const& input) {
         }
         case Grounded:
         {
-            if(currentStamina < stats.stamina) {
-                currentStamina += ((stats.stamina * (1 / staminaRegenTime)) / 60);
+            if(currentStamina < save.stats.stamina) {
+                currentStamina += ((save.stats.stamina * (1 / staminaRegenTime)) / 60);
             } else {
-                currentStamina = stats.stamina;
+                currentStamina = save.stats.stamina;
             }
             velocity.x *= landResistance;
             if(al_key_down(&input.keyboardState, ALLEGRO_KEY_D)) {
@@ -120,7 +117,7 @@ ScreenFlipMode Dragon::physicsStep(InputState const& input) {
             }
             if(shouldJump && currentStamina > flightCost)
             {
-                velocity.y -= 100 * stats.wingspan;
+                velocity.y -= 100 * save.stats.wingspan;
                 currentStamina -= flightCost;
                 mode = Flying;
             }

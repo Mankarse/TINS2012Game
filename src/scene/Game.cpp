@@ -49,14 +49,14 @@ Game::Game(GameSave savedGame) :
     caveRect(cavePosition()),
     spawners(createSpawners()),
     staticRenderables(createStaticObjects()),
-    player(savedGame.stats)
+    player(savedGame)
 {
     player.assignHeightmap(&ground);
 }
 
 void Game::init() {
     al_init_primitives_addon();
-    al_play_sample(g_GameMus, 0.5, 0, 1, ALLEGRO_PLAYMODE_LOOP, 0);
+    al_play_sample(g_GameMus, 0.4, 0, 1, ALLEGRO_PLAYMODE_LOOP, &music);
 }
 
 Point2D Game::mouseToWorldPos(Point2D const& mousePosition) const {
@@ -157,26 +157,22 @@ Scene* Game::update(InputState const& input) {
     {
         ALLEGRO_EVENT const& event(*it);
         if (event.type == ALLEGRO_EVENT_KEY_DOWN && event.keyboard.keycode == ALLEGRO_KEY_ENTER) {
-            GameSave save;
-            save.stats = DragonStats(player.stats);
-            save.totalPlayTime = totalPlayTime;
-            save.totalScore = 55;
-            save.scoreDelta = 67;
-            saveGame(save);
-            std::auto_ptr<Cave> cave(new Cave(save));
+            saveGame(player.save);
+            std::auto_ptr<Cave> cave(new Cave(player.save));
+            al_stop_sample(&music);
             return cave.release();
         }
     }
     mousePosition.x = al_get_mouse_state_axis(&input.mouseState, 0);
     mousePosition.y = al_get_mouse_state_axis(&input.mouseState, 1);
-    totalPlayTime += 1. / 60.;
+    player.save.totalPlayTime += 1. / 60.;
     //std::cout << "Play Time: " << totalPlayTime << '\n';
     // spawners!
     
     for (std::vector<Spawner>::iterator it(spawners.begin()), end(spawners.end()); it != end; ++it)
     {
         Spawner& curSpawner(*it);
-        std::vector<Enemy> newEnemies(curSpawner.update(totalPlayTime));
+        std::vector<Enemy> newEnemies(curSpawner.update(player.save.totalPlayTime));
         enemies.insert(enemies.end(), newEnemies.begin(), newEnemies.end());
     }
     // Player!
@@ -275,6 +271,9 @@ static void drawUI(
     int position(0);
     for (std::vector<unsigned>::reverse_iterator it(factors.rbegin()), end(factors.rend()); it != end; ++it) {
         int increment;
+        //Here we assume that all characters are 16 pixels wide...
+        //This is clearly false, but fixing it means working out the details
+        //of the variable width font.
         char const* formatStr = "%d%n";
         al_draw_textf(g_Font10, al_map_rgb(0, 0, 0), 34*4 + position * 16, 30*4, 0, formatStr, *it, &increment);
         position += increment + 1;
@@ -302,7 +301,7 @@ void Game::drawingPass(RenderQueueSet* renderQueues) const {
     //ground.draw(screenCorner);
     renderQueue(renderQueues->foreground);
     
-    drawUI(30,24,2,2,2,2,2,2);
+    drawUI(player.save.totalScore,player.save.scoreDelta,player.currentHealth,player.save.stats.size,player.currentStamina,player.save.stats.stamina,player.currentCooldown,player.save.stats.fireCooldown);
 }
 
 void Game::renderTo(ALLEGRO_BITMAP* target) const {

@@ -17,6 +17,7 @@ static std::vector<Rect> loadButtonPositions() {
 MainMenu::MainMenu() :
     buttonPositions(loadButtonPositions()),
     saveExists(false),
+    currentSave(-1,-1,-1,DragonStats(-1,-1,-1,-1,-1)),
     selectedButton(-1),
     pressedButton(-1)
 {}

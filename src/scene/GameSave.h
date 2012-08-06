@@ -4,6 +4,9 @@
 #include <utility>
 #include "DragonStats.h"
 struct GameSave {
+    GameSave(unsigned totalScore, unsigned scoreDelta, unsigned totalPlayTime, DragonStats const& stats) :
+        totalScore(totalScore), scoreDelta(scoreDelta), totalPlayTime(totalPlayTime), stats(stats)
+    {}
     unsigned totalScore;
     unsigned scoreDelta;
     double totalPlayTime;

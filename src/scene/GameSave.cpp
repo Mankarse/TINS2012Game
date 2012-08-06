@@ -57,21 +57,21 @@ std::string serialize(GameSave const& save) {
 
 std::pair<bool, GameSave> deserialize(std::string const& save) {
     std::stringstream reader(save);
-    GameSave retv;
+    GameSave retV(0,0,0,DragonStats(0,0,0,0,0));
     reader
-        >> retv.totalScore
-        >> retv.scoreDelta
-        >> retv.totalPlayTime
-        >> retv.stats.size
-        >> retv.stats.wingspan
-        >> retv.stats.stamina
-        >> retv.stats.fireStrength
-        >> retv.stats.fireCooldown;
-    return std::make_pair(!reader.fail(), retv);
+        >> retV.totalScore
+        >> retV.scoreDelta
+        >> retV.totalPlayTime
+        >> retV.stats.size
+        >> retV.stats.wingspan
+        >> retV.stats.stamina
+        >> retV.stats.fireStrength
+        >> retV.stats.fireCooldown;
+    return std::make_pair(!reader.fail(), retV);
 }
 
 std::pair<bool, GameSave> loadGame() {
-    GameSave retV;
+    GameSave retV(0,0,0,DragonStats(0,0,0,0,0));
     std::vector<char> vec;
     std::ifstream file;
     file.open("savegame.sav");
