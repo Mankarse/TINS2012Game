@@ -51,7 +51,7 @@ class Villager : public EnemyImplementation, private Renderable {
     }
     
     virtual void update(std::vector<Bullet>& bulletlist, std::vector<Particle>& particleList, Dragon& player){
-        currentPos += currentVel / 60;
+        currentPos += (currentVel / 60) /* (1 - dot(heightmap->getVector(currentPos), Point2D(0, -1)))*/;
         currentPos = heightmap->getLoopedOrdinate(currentPos);
         if(fearCooldown > 0) {
             fearCooldown -= 1./60.;

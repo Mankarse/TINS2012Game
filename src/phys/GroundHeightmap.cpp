@@ -82,6 +82,41 @@ double GroundHeightmap::getTotalSize() const {
     return width * resolution;
 }
 
+double GroundHeightmap::getGradient(double worldPoint) const {
+    long i1(((long)floor(worldPoint)) % (long)data.size());
+    long i2(((long)ceil(worldPoint)) % (long)data.size());
+
+    while(i1 < 0) {
+        i1 += data.size();
+    }
+    while(i2 < 0) {
+        i2 += data.size();
+    }
+    //std::cout << "i1 " << i1 << '\n';
+    //std::cout << "i2 " << i2 << '\n';
+    double p1(data[i1]);
+    double p2(data[i2]);
+    return gradient(Point2D(i1, p1), Point2D(i2,p2));
+}
+
+
+Point2D GroundHeightmap::getVector(double worldPoint) const {
+    long i1(((long)floor(worldPoint)) % (long)data.size());
+    long i2(((long)ceil(worldPoint)) % (long)data.size());
+
+    while(i1 < 0) {
+        i1 += data.size();
+    }
+    while(i2 < 0) {
+        i2 += data.size();
+    }
+    //std::cout << "i1 " << i1 << '\n';
+    //std::cout << "i2 " << i2 << '\n';
+    double p1(data[i1]);
+    double p2(data[i2]);
+    return Point2D(i2,p2) - Point2D(i1, p1);
+}
+
 bool GroundHeightmap::linecast(Point2D const& startPoint, Point2D const& endPoint) const {
     Point2D resolutionScalar(resolution, 1);
     Point2D leftPoint(startPoint.x < endPoint.x ? startPoint / resolutionScalar : endPoint / resolutionScalar);
