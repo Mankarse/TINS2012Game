@@ -12,8 +12,8 @@
 struct Point2D {
     double x;
     double y;
-    Point2D(double newX = 0, double newY = 0) : x(newX), y(newY) {}
-
+    Point2D(double newX, double newY) : x(newX), y(newY) {}
+    Point2D(): x(), y(){}
 };
 
 inline Point2D& operator-=(Point2D &l, Point2D const& r) {

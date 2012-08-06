@@ -2,14 +2,18 @@
 #include "Spawner.h"
 #include "Hut.h"
 #include "StaticObject.h"
+#include "Bitmap.h"
 template<typename T, std::size_t N>
 static std::size_t length(T(&)[N]) {
     return N;
 }
 
 static GroundHeightmap loadGlobalHeightmap() {
-    double points[] = {120., 110., 70., 79., 95., 190., 270., 270., 270., 270., 270., 270, 270., 270., 270, 260., 240.,
-    100, 95, 90, 100, 190, 280, 285, 283, 280, 260, 230, 180, 110, 70, 75, 120, 170, 200, 140, 110, 110, 95, 105};
+    double points[] = {
+        120., 110., 70.,  79.,  95., 190., 270., 270., 270., 270., 270., 270,
+        270., 270., 270, 260., 240.,  100,   95,   90,  100,  190,  280, 285,
+         283, 284,  284,  283,  284,  284,  284,  283,  282,  284,  260, 230,
+         180, 110,   70,   75,  120,  170,  200,  140,  110,  110,   95, 105,};
     
     return GroundHeightmap(100, static_cast<int>(length(points)), std::vector<double>(points, points + length(points)));
 }
@@ -194,8 +198,11 @@ Scene* Game::update(InputState const& input) {
     }
 
     // Camera control
-    screenCorner = ((mouseToWorldPos(mousePosition) + player.worldPosition) * 0.5) - Point2D(al_get_display_width(al_get_current_display()) * 0.5,
-        al_get_display_height(al_get_current_display()) * 0.5);
+    screenCorner =
+            ((mouseToWorldPos(mousePosition) + player.worldPosition) * 0.5)
+            - Point2D(
+                al_get_display_width(al_get_current_display()) * 0.5,
+                al_get_display_height(al_get_current_display()) * 0.5);
     
     // Enemies!
     for(std::vector<Enemy>::iterator it(enemies.begin()), end(enemies.end()); it != end; ++it)
@@ -217,33 +224,36 @@ Scene* Game::update(InputState const& input) {
     return this;
 }
 
+void Game::drawWorldObject(ALLEGRO_BITMAP* bitmap, Point2D const& position, double depth) const {
+    // renders the object 3 times!
+    drawBitmapAtWorldPoint(bitmap, position, depth);
+    drawBitmapAtWorldPoint(bitmap, Point2D(position.x + ground.getTotalSize(), position.y), depth);
+    drawBitmapAtWorldPoint(bitmap, Point2D(position.x - ground.getTotalSize(), position.y), depth);
+}
+
 void Game::renderQueue(std::vector<Renderable const*> const& queue) const {
     for (std::vector<Renderable const*>::const_iterator it(queue.begin()), end(queue.end()); it != end; ++it)
     {
         Renderable const& curObject(**it);
-        Point2D position(curObject.getWorldPoint());
-        // renders the object 3 times!
-        drawBitmapAtWorldPoint(curObject.getBitmap(), position, curObject.getDepth());
-        drawBitmapAtWorldPoint(curObject.getBitmap(), Point2D(position.x + ground.getTotalSize(), position.y), curObject.getDepth());
-        drawBitmapAtWorldPoint(curObject.getBitmap(), Point2D(position.x - ground.getTotalSize(), position.y), curObject.getDepth());
+        drawWorldObject(curObject.getBitmap(), curObject.getWorldPoint(), curObject.getDepth());
     }
 }
 
-void Game::preRender(RenderQueueSet* renderQueues) const {
+void Game::preRender(RenderQueueSet& renderQueues) const {
     for (std::vector<StaticObject>::const_iterator it(staticRenderables.begin()), end(staticRenderables.end()); it != end; ++it)
     {
         StaticObject const& curObject(*it);
-        curObject.pickRenderQueue(*renderQueues);
+        curObject.pickRenderQueue(renderQueues);
     }
     for (std::vector<Spawner>::const_iterator it(spawners.begin()), end(spawners.end()); it != end; ++it)
     {
         Spawner const& curSpawn(*it);
-        curSpawn.pickRenderQueue(*renderQueues);
+        curSpawn.pickRenderQueue(renderQueues);
     }
     for (std::vector<Enemy>::const_iterator it(enemies.begin()), end(enemies.end()); it != end; ++it)
     {
         Enemy const& curEnemy(*it);
-        curEnemy.pickRenderQueue(*renderQueues);
+        curEnemy.pickRenderQueue(renderQueues);
     }
 }
 
@@ -280,26 +290,26 @@ static void drawUI(
     }
 }
 
-void Game::drawingPass(RenderQueueSet* renderQueues) const {
+void Game::drawingPass(RenderQueueSet& renderQueues) const {
     // Render each queue, in order
     // Sky:
     drawBackground(g_LevelSky, 0.5);
     
-    renderQueue(renderQueues->farBackground);
-    renderQueue(renderQueues->nearBackground);
+    renderQueue(renderQueues.farBackground);
+    renderQueue(renderQueues.nearBackground);
     // Underground:
     Point2D worldTopCorner(-ground.getTotalSize(), 300);
     worldTopCorner = worldToScreenPoint(worldTopCorner);
     Point2D worldBottomCorner(ground.getTotalSize() * 2, 1000);
     worldBottomCorner = worldToScreenPoint(worldBottomCorner);
     al_draw_filled_rectangle(worldTopCorner.x, worldTopCorner.y, worldBottomCorner.x, worldBottomCorner.y, al_map_rgb(146, 120, 94));
-    renderQueue(renderQueues->middleGround);
+    renderQueue(renderQueues.middleGround);
     player.renderStep(screenCorner);
     
     drawCave();
     
     //ground.draw(screenCorner);
-    renderQueue(renderQueues->foreground);
+    renderQueue(renderQueues.foreground);
     
     drawUI(player.save.totalScore,player.save.scoreDelta,player.currentHealth,player.save.stats.size,player.currentStamina,player.save.stats.stamina,player.currentCooldown,player.save.stats.fireCooldown);
 }
@@ -308,10 +318,10 @@ void Game::renderTo(ALLEGRO_BITMAP* target) const {
     // Collect renderables, add to queues
     // Background objects
     RenderQueueSet renderQueues;
-    preRender(&renderQueues);
+    preRender(renderQueues);
     
     // Now, render the collected queues
-    drawingPass(&renderQueues);
+    drawingPass(renderQueues);
 
 }
 

@@ -50,12 +50,13 @@ private:
     Point2D worldToScreenPoint(Point2D const& worldPosition, double layer = 1) const;
     void drawBitmapAtWorldPoint(ALLEGRO_BITMAP* image, Point2D point, double layer = 1) const;
     void drawBitmapAtScreenPoint(ALLEGRO_BITMAP* image, Point2D point) const;
+    void drawWorldObject(ALLEGRO_BITMAP* bitmap, Point2D const& position, double depth = 1) const;
     void drawBackground(ALLEGRO_BITMAP* image, double depth) const;
     
     void renderQueue(std::vector<Renderable const*> const& queue) const;
-    void preRender(RenderQueueSet* renderQueues) const;
+    void preRender(RenderQueueSet& renderQueues) const;
     void drawCave() const;
-    void drawingPass(RenderQueueSet* renderQueues) const;
+    void drawingPass(RenderQueueSet& renderQueues) const;
     
 };
 
