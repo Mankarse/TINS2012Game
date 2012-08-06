@@ -249,6 +249,25 @@ void Game::drawCave() const {
     
 }
 
+static void drawUI(
+    unsigned totalScore,
+    unsigned scoreDelta,
+    double health, double maxHealth,
+    double stamina, double maxStamina,
+    double flames, double maxFlames)
+{
+    std::vector<unsigned> factors(factorize(scoreDelta));
+    al_draw_bitmap(g_GameUI, 0, 0, 0);
+    al_draw_textf(g_Font10, al_map_rgb(0, 0, 0), 27*4, 12*4, 0, "%d", totalScore);
+    al_draw_textf(g_Font10, al_map_rgb(0, 0, 0), 26*4, 21*4, 0, "%d", scoreDelta);
+    int position(0);
+    for (std::vector<unsigned>::reverse_iterator it(factors.rbegin()), end(factors.rend()); it != end; ++it) {
+        int increment;
+        al_draw_textf(g_Font10, al_map_rgb(0, 0, 0), 34*4 + position * 16, 30*4, 0, "%d%n", *it, &increment);
+        position += increment + 1;
+    }
+}
+
 void Game::drawingPass(RenderQueueSet* renderQueues) const {
     // Render each queue, in order
     // Background:
@@ -272,6 +291,8 @@ void Game::drawingPass(RenderQueueSet* renderQueues) const {
     
     //ground.draw(screenCorner);
     renderQueue(renderQueues->foreground);
+    
+    drawUI(30,24,2,2,2,2,2,2);
 }
 
 void Game::renderTo(ALLEGRO_BITMAP* target) const {

@@ -32,6 +32,7 @@ ALLEGRO_BITMAP *g_CaveWingspanUp;
 ALLEGRO_BITMAP *g_DragonSmallStand;
 ALLEGRO_BITMAP *g_LevelFG;
 ALLEGRO_BITMAP *g_LevelSky;
+ALLEGRO_BITMAP *g_GameUI;
 ALLEGRO_BITMAP *g_MenuBackground;
 ALLEGRO_BITMAP *g_MenuContinueDown;
 ALLEGRO_BITMAP *g_MenuContinueGrey;
@@ -225,6 +226,7 @@ struct ResourcesInit {
         DragonSmallStand(&g_DragonSmallStand, "DragonSmallStand.png"),
         LevelFG(&g_LevelFG, "levelFG.png"),
         LevelSky(&g_LevelSky, "levelSky.png"),
+        GameUI(&g_GameUI, "GameUI.png"),
         MenuBackground(&g_MenuBackground, "MenuBackground.png"),
         MenuContinueDown(&g_MenuContinueDown, "MenuContinueDown.png"),
         MenuContinueGrey(&g_MenuContinueGrey, "MenuContinueGrey.png"),
@@ -261,6 +263,7 @@ struct ResourcesInit {
     BitmapInit DragonSmallStand;
     BitmapInit LevelFG;
     BitmapInit LevelSky;
+    BitmapInit GameUI;
     BitmapInit MenuBackground;
     BitmapInit MenuContinueDown;
     BitmapInit MenuContinueGrey;

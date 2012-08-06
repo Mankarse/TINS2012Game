@@ -21,6 +21,7 @@ extern ALLEGRO_BITMAP *g_CaveStaminaUp;
 extern ALLEGRO_BITMAP *g_CaveWingspanDown;
 extern ALLEGRO_BITMAP *g_CaveWingspanUp;
 extern ALLEGRO_BITMAP *g_DragonSmallStand;
+extern ALLEGRO_BITMAP *g_GameUI;
 extern ALLEGRO_BITMAP *g_LevelFG;
 extern ALLEGRO_BITMAP *g_LevelSky;
 extern ALLEGRO_BITMAP *g_MenuBackground;
