@@ -1,6 +1,11 @@
 Chocozuma's Revenge
 Created for TINS 2012 By Evan Wallace, Kieren Wallace, Anna Besley and Luke Besley.
 
+Controls:
+Mouse: Control View
+WASD: Control dragon
+ENTER: Enter cave, the game is saved when you enter the cave, so you can resume later from the main menu.
+
 Compilation:
   Prerequisites:
     C++ compiler
