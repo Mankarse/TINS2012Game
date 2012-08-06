@@ -158,7 +158,7 @@ Scene* Game::update(InputState const& input) {
         if (event.type == ALLEGRO_EVENT_KEY_DOWN && event.keyboard.keycode == ALLEGRO_KEY_ENTER) {
             GameSave save;
             save.stats = DragonStats(player.stats);
-            save.totalPlayTime = 0;
+            save.totalPlayTime = totalPlayTime;
             save.totalScore = 55;
             save.scoreDelta = 67;
             saveGame(save);
@@ -168,6 +168,8 @@ Scene* Game::update(InputState const& input) {
     }
     mousePosition.x = al_get_mouse_state_axis(&input.mouseState, 0);
     mousePosition.y = al_get_mouse_state_axis(&input.mouseState, 1);
+    totalPlayTime += 1. / 60.;
+    //std::cout << "Play Time: " << totalPlayTime << '\n';
     // spawners!
     
     for (std::vector<Spawner>::iterator it(spawners.begin()), end(spawners.end()); it != end; ++it)
