@@ -203,7 +203,7 @@ struct FontInit {
     ALLEGRO_FONT** toInitialize;
 };
 
-static const int font10Range[] = {46, 57};
+static const int font10Range[] = {43, 43, 46, 57};
 
 struct ResourcesInit {
     ResourcesInit() :
@@ -237,7 +237,7 @@ struct ResourcesInit {
         MenuNewGameUp(&g_MenuNewGameUp, "MenuNewGameUp.png"),
         MenuTitle(&g_MenuTitle, "MenuTitle.png"),
         NumberSheet10(&g_NumberSheet10, "NumberSheet10.png"),
-        Font10(&g_Font10, g_NumberSheet10, 1, font10Range),
+        Font10(&g_Font10, g_NumberSheet10, 2, font10Range),
         MenuMus(&g_MenuMus, "MenuMus.ogg")
     {
     }
