@@ -26,15 +26,6 @@ static std::vector<Rect> loadButtonPositions() {
     return retv;
 }
 
-    
-static void draw_element(ALLEGRO_BITMAP * element) {
-    al_draw_scaled_bitmap(
-        element,
-        0, 0, al_get_bitmap_width(element), al_get_bitmap_height(element),
-        0, 0, al_get_bitmap_width(element), al_get_bitmap_height(element),
-        0);
-}
-
 void Cave::nextTile() {
     stackClearance += primeTileHeight;
     factors.pop_back();
@@ -120,15 +111,15 @@ Scene* Cave::update(InputState const& input) {
 
 void Cave::renderTo(ALLEGRO_BITMAP* target) const {
     al_set_target_bitmap(target);
-    draw_element(g_Bitmaps["CaveBackground"]);
+    al_draw_bitmap(g_Bitmaps["CaveBackground"], 0, 0, 0);
     
-    draw_element(factors.empty() ? (pressedButton == 0 ? g_Bitmaps["CaveReturnDown"] : g_Bitmaps["CaveReturnUp"]) : g_Bitmaps["CaveReturnGrey"]);
+    al_draw_bitmap(factors.empty() ? (pressedButton == 0 ? g_Bitmaps["CaveReturnDown"] : g_Bitmaps["CaveReturnUp"]) : g_Bitmaps["CaveReturnGrey"], 40*4, 133*4, 0);
     
-    draw_element(pressedButton == 1 ? g_Bitmaps["CaveSizeDown"] : g_Bitmaps["CaveSizeUp"]);
-    draw_element(pressedButton == 2 ? g_Bitmaps["CaveWingspanDown"] : g_Bitmaps["CaveWingspanUp"]);
-    draw_element(pressedButton == 3 ? g_Bitmaps["CaveStaminaDown"] : g_Bitmaps["CaveStaminaUp"]);
-    draw_element(pressedButton == 4 ? g_Bitmaps["CaveFlamerangeDown"] : g_Bitmaps["CaveFlamerangeUp"]);
-    draw_element(pressedButton == 5 ? g_Bitmaps["CaveFlameCooldownDown"] : g_Bitmaps["CaveFlameCooldownUp"]);
+    al_draw_bitmap(pressedButton == 1 ? g_Bitmaps["CaveSizeDown"] : g_Bitmaps["CaveSizeUp"], 1*4, 13*4, 0);
+    al_draw_bitmap(pressedButton == 2 ? g_Bitmaps["CaveWingspanDown"] : g_Bitmaps["CaveWingspanUp"], 41*4, 13*4, 0);
+    al_draw_bitmap(pressedButton == 3 ? g_Bitmaps["CaveStaminaDown"] : g_Bitmaps["CaveStaminaUp"], 81*4, 13*4, 0);
+    al_draw_bitmap(pressedButton == 4 ? g_Bitmaps["CaveFlamerangeDown"] : g_Bitmaps["CaveFlamerangeUp"], 121*4, 13*4, 0);
+    al_draw_bitmap(pressedButton == 5 ? g_Bitmaps["CaveFlameCooldownDown"] : g_Bitmaps["CaveFlameCooldownUp"], 161*4, 13*4, 0);
     
     drawStats();
     drawFactors();
