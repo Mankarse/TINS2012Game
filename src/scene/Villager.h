@@ -13,6 +13,7 @@ class Villager : public EnemyImplementation, private Renderable {
     double fearCooldown;
     double currentCooldown;
     bool wasStomped;
+    SimpleAnimation anim;
     Point2D footPosition;
     GroundHeightmap const* heightmap;
     public:
@@ -24,7 +25,8 @@ class Villager : public EnemyImplementation, private Renderable {
         currentCooldown(0),
         heightmap(0),
         footPosition(0, -20),
-        wasStomped(false)
+        wasStomped(false),
+        anim(5, "Villager")
     {}
     
     void beginTerror() {
@@ -97,7 +99,7 @@ class Villager : public EnemyImplementation, private Renderable {
         queues.middleGround.push_back(this);
     }
     virtual ALLEGRO_BITMAP* getBitmap() const {
-        return g_Bitmaps["Villager1"];
+        return anim.getCurrentFrame();
     }
     virtual Point2D getWorldPoint() const {
         return Point2D(currentPos, heightmap->getInterpolatedWorldPoint(currentPos)) + footPosition;

@@ -41,4 +41,5 @@ private:
     bool open;
 };
 
+
 #endif
