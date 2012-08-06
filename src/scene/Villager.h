@@ -11,19 +11,47 @@ class Villager : public EnemyImplementation, private Renderable {
     double viewDistance;
     double fearCooldown;
     double currentCooldown;
+    Point2D footPosition;
     GroundHeightmap const* heightmap;
     public:
     Villager(double startPos) :
         currentPos(startPos),
         currentVel(rand() % 100 > 50 ? -40 : 40),
-        viewDistance(1000),
-        fearCooldown(10),
+        viewDistance(2000),
+        fearCooldown(0),
         currentCooldown(0),
-        heightmap(0)
+        heightmap(0),
+        footPosition(0, -20)
     {}
+    
+    void beginTerror() {
+        // Play sounds!
+    }
     
     virtual void update(std::vector<Bullet>& bulletlist, std::vector<Particle>& particleList, Dragon& player){
         currentPos += currentVel / 60;
+        currentPos = heightmap->getLoopedOrdinate(currentPos);
+        if(fearCooldown > 0) {
+            fearCooldown -= 1./60.;
+            if(fearCooldown <= 0)
+            {
+                fearCooldown = 0;
+                currentVel = currentVel > 0 ? 40 : -40;
+            }
+        }
+        if(distance(getWorldPoint(), player.worldPosition) < viewDistance)
+        {
+            if(!heightmap->linecast(getWorldPoint(), player.worldPosition)) {
+                if(fearCooldown <= 0)
+                {
+                    beginTerror();
+                }
+                fearCooldown = 10;
+                int fearDirection = getWorldPoint().x < player.worldPosition.x ? -1 : 1;
+                currentVel = fearDirection * 100;
+
+            }
+        }
     }
     
     virtual bool hasHeightMap() const{
@@ -44,7 +72,7 @@ class Villager : public EnemyImplementation, private Renderable {
         return g_NumberSheet10;
     }
     virtual Point2D getWorldPoint() const {
-        return Point2D(currentPos, heightmap->getInterpolatedWorldPoint(currentPos));
+        return Point2D(currentPos, heightmap->getInterpolatedWorldPoint(currentPos)) + footPosition;
     }
     virtual double getDepth() const {
         return 1;

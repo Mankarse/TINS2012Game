@@ -68,6 +68,16 @@ Point2D GroundHeightmap::getLoopedCoordinate(Point2D const& originalPoint) const
     return Point2D(curPos, originalPoint.y);
 }
 
+double GroundHeightmap::getLoopedOrdinate(double xPos) const {
+    while (xPos > getTotalSize()) {
+        xPos -= getTotalSize();
+    }
+    while (xPos < 0) {
+        xPos += getTotalSize();
+    }
+    return xPos;
+}
+
 double GroundHeightmap::getTotalSize() const {
     return width * resolution;
 }

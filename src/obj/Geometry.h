@@ -8,6 +8,7 @@
 
 #ifndef TINSGame2012_Geometry_h
 #define TINSGame2012_Geometry_h
+#include <cmath>
 struct Point2D {
     double x;
     double y;
@@ -73,6 +74,9 @@ inline bool operator!=(Point2D const& l, Point2D const& r) {
 }
 inline double dot(Point2D const& l, Point2D const& r) {
     return l.x * r.x + l.y * r.y;
+}
+inline double distance(Point2D const& l, Point2D const& r) {
+    return sqrt(pow((r - l).x, 2) * pow((r - l).y, 2));
 }
 
 #endif
