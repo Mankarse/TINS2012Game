@@ -114,6 +114,7 @@
 		2072A3D015CF5592002FF45C /* Screams2.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = Screams2.ogg; sourceTree = "<group>"; };
 		2072A3D115CF5592002FF45C /* Screams3.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = Screams3.ogg; sourceTree = "<group>"; };
 		2072A3D215CF5592002FF45C /* Screams4.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = Screams4.ogg; sourceTree = "<group>"; };
+		2072A3E015CF5D1F002FF45C /* SimpleAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleAnimation.h; sourceTree = "<group>"; };
 		2077483B15CD51E7000EAED4 /* Dragon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dragon.cpp; sourceTree = "<group>"; };
 		2077483C15CD51E7000EAED4 /* Dragon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dragon.h; sourceTree = "<group>"; };
 		2077483F15CD62D6000EAED4 /* Geometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Geometry.h; sourceTree = "<group>"; };
@@ -334,6 +335,7 @@
 				204292D915CEAFFC00665276 /* Particle.h */,
 				204292DE15CECADA00665276 /* Spawner.h */,
 				204292E215CED8F000665276 /* Hut.h */,
+				2072A3E015CF5D1F002FF45C /* SimpleAnimation.h */,
 			);
 			path = scene;
 			sourceTree = "<group>";

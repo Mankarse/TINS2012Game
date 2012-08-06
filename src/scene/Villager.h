@@ -3,6 +3,7 @@
 #include "Enemy.h"
 #include "Renderable.h"
 #include "Globals.h"
+#include "SimpleAnimation.h"
 #include <cstdlib>
 class Villager : public EnemyImplementation, private Renderable {
     private:
@@ -26,6 +27,23 @@ class Villager : public EnemyImplementation, private Renderable {
     
     void beginTerror() {
         // Play sounds!
+        switch(rand() % 4) {
+            case (0):
+            {
+                al_play_sample(g_Screams2, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, 0);
+                break;
+            }
+            case (1):
+            {
+                al_play_sample(g_Screams3, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, 0);
+                break;
+            }
+            case (2):
+            {
+                al_play_sample(g_Screams4, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, 0);
+                break;
+            }
+        }
     }
     
     virtual void update(std::vector<Bullet>& bulletlist, std::vector<Particle>& particleList, Dragon& player){
@@ -69,7 +87,7 @@ class Villager : public EnemyImplementation, private Renderable {
         queues.middleGround.push_back(this);
     }
     virtual ALLEGRO_BITMAP* getBitmap() const {
-        return g_NumberSheet10;
+        return g_CaveEmbossedTile;
     }
     virtual Point2D getWorldPoint() const {
         return Point2D(currentPos, heightmap->getInterpolatedWorldPoint(currentPos)) + footPosition;

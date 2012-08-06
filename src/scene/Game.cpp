@@ -56,6 +56,7 @@ Game::Game(GameSave savedGame) :
 
 void Game::init() {
     al_init_primitives_addon();
+    al_play_sample(g_GameMus, 0.5, 0, 1, ALLEGRO_PLAYMODE_LOOP, 0);
 }
 
 Point2D Game::mouseToWorldPos(Point2D const& mousePosition) const {

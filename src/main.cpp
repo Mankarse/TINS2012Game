@@ -272,7 +272,7 @@ struct ResourcesInit {
         Footstep1(&g_Footstep1, "Footstep1.ogg"),
         Footstep2(&g_Footstep2, "Footstep2.ogg"),
         Footstep3(&g_Footstep3, "Footstep3.ogg"),
-        Footstep4(&g_Footstep4, "Footstpe4.ogg"),
+        Footstep4(&g_Footstep4, "Footstep4.ogg"),
         GameMus(&g_GameMus, "GameMus.ogg"),
         Lazor(&g_Lazor, "Lazor.ogg"),
         Screams1(&g_Screams1, "Screams1.ogg"),
