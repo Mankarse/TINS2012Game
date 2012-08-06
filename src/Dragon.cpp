@@ -44,7 +44,7 @@ void Dragon::assignHeightmap(GroundHeightmap *newGround) {
     ground = newGround;
 }
 
-ScreenFlipMode Dragon::physicsStep(InputState const& input, Point2D const& screenCorner) {
+ScreenFlipMode Dragon::physicsStep(InputState const& input, Point2D const& screenCorner, std::vector<Bullet> const& bulletList) {
 
     bool shouldJump(false);
     for (std::vector<ALLEGRO_EVENT>::const_iterator it(input.events.begin()), end(input.events.end()); it != end; ++it)
@@ -158,7 +158,7 @@ ScreenFlipMode Dragon::physicsStep(InputState const& input, Point2D const& scree
     }
     Point2D oldWorldPosition = worldPosition;
     worldPosition = ground->getLoopedCoordinate(worldPosition);
-    std::cerr << "World Position: " << worldPosition.x << '\n';
+    //std::cerr << "World Position: " << worldPosition.x << '\n';
     if(oldWorldPosition != worldPosition) {
         return oldWorldPosition.x < worldPosition.x ? Right : Left;
         //std::cerr << "Screen flip! Time: " << al_get_time() << '\n';
@@ -206,8 +206,8 @@ void Dragon::renderStep(Point2D screenPos) const {
     //al_draw_filled_rectangle(drawPos.x - 20, drawPos.y - 15, drawPos.x + 20, drawPos.y + 15, al_map_rgb(50, 160, 170));
 }
 
-void Dragon::fireBreath(Point2D mainDirection, Point2D mainVelocity, double lifeTime, std::vector<Bullet> const& bulletList) const {
-    
+void Dragon::fireBreath(Point2D mainVelocity, double lifeTime, std::vector<Bullet> const& bulletList) const {
+    //mainVelocity.x *= (double)rand()
 }
     
 Point2D Dragon::foreLegWorldPos() const {

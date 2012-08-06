@@ -220,7 +220,7 @@ Scene* Game::update(InputState const& input) {
         enemies.insert(enemies.end(), newEnemies.begin(), newEnemies.end());
     }
     // Player!
-    switch(player.physicsStep(input, screenCorner)) {
+    switch(player.physicsStep(input, screenCorner, friendlyBullets)) {
         case Left :
         {
             screenCorner.x -= ground.getTotalSize();
