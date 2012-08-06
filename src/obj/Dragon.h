@@ -14,13 +14,26 @@
 #include "InputState.h"
 #include "GroundHeightmap.h"
 #include "Geometry.h"
+#include "Globals.h"
 #include "DragonStats.h"
 #include "GameSave.h"
-#include "Globals.h"
+#include "SimpleAnimation.h"
 struct DragonSkin {
-    ALLEGRO_BITMAP *body;
-    ALLEGRO_BITMAP *neck;
-    ALLEGRO_BITMAP *head;
+    SimpleAnimation run;
+    SimpleAnimation dive;
+    SimpleAnimation glide;
+    SimpleAnimation flap;
+    SimpleAnimation jump;
+    ALLEGRO_BITMAP* stand;
+    
+    DragonSkin() :
+    run(10, "dragonsmallrun"),
+    dive(10, "DragonSmallDive"),
+    glide(10, "DragonSmallGlide"),
+    flap(10, "DragonSmallFly"),
+    jump(10, "DragonSmallJump"),
+    stand(g_Bitmaps["DragonSmallStand"])
+    {}
 };
 enum DragonMode {
     Grounded,
@@ -36,8 +49,6 @@ enum ScreenFlipMode {
 class Dragon {
     private:
     DragonSkin baby;
-    DragonSkin adult;
-    DragonSkin ancient;
     
     DragonSkin* currentSkin;
     
@@ -45,12 +56,8 @@ class Dragon {
     
     // current physics state variables
     double currentRotation;
-    
-    Point2D localNeckOffset;
-    double currentNeckRotation;
-    Point2D localHeadOffest;
-    double currentHeadRotation;
 
+    ScreenFlipMode currentDirection;
     
     
     Point2D velocity;
@@ -58,6 +65,9 @@ class Dragon {
     Point2D foreLeg;
     Point2D hindLeg;
     
+    double jumpTime;
+    
+    void renderRotated(ALLEGRO_BITMAP* image, Point2D screenPos, int flags = 0) const;
     
     public:
     GameSave save;
@@ -67,13 +77,13 @@ class Dragon {
     double currentCooldown;
     
     Point2D worldPosition;
-
     
     void assignHeightmap(GroundHeightmap* newGround);
-    ScreenFlipMode physicsStep(InputState const& input);
+    ScreenFlipMode physicsStep(InputState const& input, Point2D const& screenCorner);
     void renderStep(Point2D screenPos) const;
     Point2D foreLegWorldPos() const;
     Point2D hindLegWorldPos() const;
+    
     
     Dragon();
     Dragon(GameSave const& newStats);

@@ -6,12 +6,20 @@ static const double landResistance = 0.9;
 static const double flightCost = 15.;
 static const double staminaRegenTime = 5.;
 
+static Point2D hindLegInit() {
+    return Point2D(-30, 50);
+}
+static Point2D foreLegInit() {
+    return Point2D(30, 50);
+}
 Dragon::Dragon() :
     save(0, 0, 0, DragonStats()),
     worldPosition(0, 0),
     mode(Flying),
-    foreLeg(7, 15),
-    hindLeg(-7, 15)
+    foreLeg(foreLegInit()),
+    hindLeg(hindLegInit()),
+    currentRotation(),
+    jumpTime()
 {
     currentStamina = save.stats.stamina;
     currentHealth = save.stats.size;
@@ -21,9 +29,11 @@ Dragon::Dragon() :
 Dragon::Dragon(GameSave const& newSave) :
     worldPosition(0, 0),
     mode(Flying),
-    foreLeg(7, 15),
-    hindLeg(-7, 15),
-    save(newSave)
+    foreLeg(foreLegInit()),
+    hindLeg(hindLegInit()),
+    save(newSave),
+    currentRotation(),
+    jumpTime()
 {
     currentStamina = save.stats.stamina;
     currentHealth = save.stats.size;
@@ -34,7 +44,7 @@ void Dragon::assignHeightmap(GroundHeightmap *newGround) {
     ground = newGround;
 }
 
-ScreenFlipMode Dragon::physicsStep(InputState const& input) {
+ScreenFlipMode Dragon::physicsStep(InputState const& input, Point2D const& screenCorner) {
 
     bool shouldJump(false);
     for (std::vector<ALLEGRO_EVENT>::const_iterator it(input.events.begin()), end(input.events.end()); it != end; ++it)
@@ -76,10 +86,19 @@ ScreenFlipMode Dragon::physicsStep(InputState const& input) {
                 if(al_key_down(&input.keyboardState, ALLEGRO_KEY_A)) {
                     velocityRedirection = false;
                 }
-                velocity.x = velocityRedirection ? velocity.x + (velocity.y * 0.1): velocity.x - (velocity.y * 0.1);
+                Point2D addedVelocity(velocityRedirection ? (velocity.y * 0.1) : -(velocity.y * 0.1), 0);
+                Point2D relativeMousePosition(al_get_mouse_state_axis(&input.mouseState, 0),
+                    al_get_mouse_state_axis(&input.mouseState, 1));
+                relativeMousePosition += screenCorner;
+                relativeMousePosition -= worldPosition;
+                Point2D resultantVelocity = normalised(relativeMousePosition) * magnitude(addedVelocity);
+                
+                velocity += resultantVelocity;
                 velocity.y *= 0.9;
                 currentStamina -= (10. / 60.);
             }
+            
+            
             velocity *= airResistance;
             
             worldPosition += velocity / 60.;
@@ -110,19 +129,29 @@ ScreenFlipMode Dragon::physicsStep(InputState const& input) {
             }
             velocity.x *= landResistance;
             if(al_key_down(&input.keyboardState, ALLEGRO_KEY_D)) {
-                velocity.x += 20;
+                velocity.x += save.stats.size * 2;
             }
             if(al_key_down(&input.keyboardState, ALLEGRO_KEY_A)) {
-                velocity.x -= 20;
+                velocity.x -= save.stats.size * 2;
             }
             if(shouldJump && currentStamina > flightCost)
             {
                 velocity.y -= 100 * save.stats.wingspan;
                 currentStamina -= flightCost;
                 mode = Flying;
+                jumpTime = al_get_time();
+                currentSkin->jump.setTimeOffset();
             }
             worldPosition.x += (velocity.x / 60.);
-            worldPosition.y = ground->getInterpolatedWorldPoint(worldPosition.x + foreLeg.x) - foreLeg.y;
+            Point2D foreDesiredPoint(worldPosition.x + foreLeg.x, ground->getInterpolatedWorldPoint(foreLegWorldPos().x));
+            Point2D hindDesiredPoint(worldPosition.x + hindLeg.x, ground->getInterpolatedWorldPoint(hindLegWorldPos().x));
+            worldPosition.y = lerp(foreDesiredPoint, hindDesiredPoint, 0.5).y - foreLeg.y;
+            currentRotation = angle(foreDesiredPoint - hindDesiredPoint, Point2D(100, 0));
+            if(foreDesiredPoint.y < hindDesiredPoint.y)
+            {
+                currentRotation = -currentRotation;
+            }
+            currentDirection = velocity.x < 0 ? Left : Right;
             break;
         }
         
@@ -136,14 +165,47 @@ ScreenFlipMode Dragon::physicsStep(InputState const& input) {
         return None;
     }
 }
-void Dragon::renderStep(Point2D screenPos) const {
+
+void Dragon::renderRotated(ALLEGRO_BITMAP* image, Point2D screenPos, int flags) const {
     Point2D drawPos = worldPosition - screenPos;
-    al_draw_filled_rectangle(drawPos.x - 20, drawPos.y - 15, drawPos.x + 20, drawPos.y + 15, al_map_rgb(50, 160, 170));
+    al_draw_rotated_bitmap(image, al_get_bitmap_width(image) / 2, al_get_bitmap_height(image) / 2,
+    drawPos.x, drawPos.y, currentRotation, flags);
+    
+}
+
+void Dragon::renderStep(Point2D screenPos) const {
+    int flags = 0;
+    if(currentDirection == Left) {
+        flags += ALLEGRO_FLIP_HORIZONTAL;
+    }
+    switch (mode) {
+        case Flying :
+        {
+            if(al_get_time() - jumpTime < 0.5)
+            {
+                renderRotated(currentSkin->jump.getCurrentFrame(), screenPos, flags);
+                break;
+            }
+            renderRotated(currentSkin->glide.getCurrentFrame(), screenPos, flags);
+            break;
+        }
+        case Grounded :
+        {
+            if(velocity.x > 4 || velocity.x < -4) {
+                renderRotated(currentSkin->run.getCurrentFrame(), screenPos, flags);
+            } else {
+                renderRotated(currentSkin->stand, screenPos, flags);
+            }
+            break;
+        }
+    }
+    //Point2D drawPos = worldPosition - screenPos;
+    //al_draw_filled_rectangle(drawPos.x - 20, drawPos.y - 15, drawPos.x + 20, drawPos.y + 15, al_map_rgb(50, 160, 170));
 }
 Point2D Dragon::foreLegWorldPos() const {
-    return worldPosition + foreLeg;
+    return worldPosition + rotate(foreLeg, currentRotation);
 }
 Point2D Dragon::hindLegWorldPos() const {
-    return worldPosition + hindLeg;
+    return worldPosition + rotate(hindLeg, currentRotation);
 }
     

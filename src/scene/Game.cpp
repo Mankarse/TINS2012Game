@@ -72,8 +72,7 @@ void Game::init() {
 }
 
 Point2D Game::mouseToWorldPos(Point2D const& mousePosition) const {
-    Point2D retV(mousePosition + screenCorner);
-    return retV;
+    return Point2D(mousePosition + screenCorner);
 }
 
 Point2D Game::worldToScreenPoint(Point2D const& worldPosition, double layer) const {
@@ -213,7 +212,7 @@ Scene* Game::update(InputState const& input) {
         enemies.insert(enemies.end(), newEnemies.begin(), newEnemies.end());
     }
     // Player!
-    switch(player.physicsStep(input)) {
+    switch(player.physicsStep(input, screenCorner)) {
         case Left :
         {
             screenCorner.x -= ground.getTotalSize();
