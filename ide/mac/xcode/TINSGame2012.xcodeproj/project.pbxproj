@@ -20,13 +20,10 @@
 		2072A43615CFD4B6002FF45C /* Cave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2072A41315CFD4B6002FF45C /* Cave.cpp */; };
 		2072A43715CFD4B6002FF45C /* Dragon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2072A41515CFD4B6002FF45C /* Dragon.cpp */; };
 		2072A43815CFD4B6002FF45C /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2072A41A15CFD4B6002FF45C /* Game.cpp */; };
-		2072A43915CFD4B6002FF45C /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2072A41C15CFD4B6002FF45C /* GameObject.cpp */; };
-		2072A43A15CFD4B6002FF45C /* GameObjManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2072A41E15CFD4B6002FF45C /* GameObjManager.cpp */; };
 		2072A43B15CFD4B6002FF45C /* GameSave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2072A42015CFD4B6002FF45C /* GameSave.cpp */; };
 		2072A43C15CFD4B6002FF45C /* GroundHeightmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2072A42315CFD4B6002FF45C /* GroundHeightmap.cpp */; };
 		2072A43D15CFD4B6002FF45C /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2072A42715CFD4B6002FF45C /* MainMenu.cpp */; };
 		2072A43E15CFD4B6002FF45C /* Primes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2072A42A15CFD4B6002FF45C /* Primes.cpp */; };
-		2072A43F15CFD4B6002FF45C /* Viewport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2072A43315CFD4B6002FF45C /* Viewport.cpp */; };
 		207F585B15CCD7E90037B9D9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 207F585915CCD7E90037B9D9 /* main.cpp */; };
 		207F586715CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F585C15CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib */; };
 		207F586815CCDB410037B9D9 /* liballegro_audio.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F585D15CCDB410037B9D9 /* liballegro_audio.5.0.7.dylib */; };
@@ -70,10 +67,6 @@
 		2072A41915CFD4B6002FF45C /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 		2072A41A15CFD4B6002FF45C /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		2072A41B15CFD4B6002FF45C /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
-		2072A41C15CFD4B6002FF45C /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
-		2072A41D15CFD4B6002FF45C /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
-		2072A41E15CFD4B6002FF45C /* GameObjManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObjManager.cpp; sourceTree = "<group>"; };
-		2072A41F15CFD4B6002FF45C /* GameObjManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObjManager.h; sourceTree = "<group>"; };
 		2072A42015CFD4B6002FF45C /* GameSave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameSave.cpp; sourceTree = "<group>"; };
 		2072A42115CFD4B6002FF45C /* GameSave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSave.h; sourceTree = "<group>"; };
 		2072A42215CFD4B6002FF45C /* Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Geometry.h; sourceTree = "<group>"; };
@@ -93,8 +86,6 @@
 		2072A43015CFD4B6002FF45C /* SimpleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleAnimation.h; sourceTree = "<group>"; };
 		2072A43115CFD4B6002FF45C /* Spawner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spawner.h; sourceTree = "<group>"; };
 		2072A43215CFD4B6002FF45C /* StaticObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticObject.h; sourceTree = "<group>"; };
-		2072A43315CFD4B6002FF45C /* Viewport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Viewport.cpp; sourceTree = "<group>"; };
-		2072A43415CFD4B6002FF45C /* Viewport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Viewport.h; sourceTree = "<group>"; };
 		2072A43515CFD4B6002FF45C /* Villager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Villager.h; sourceTree = "<group>"; };
 		207F585715CCD7C60037B9D9 /* TINSGame2012-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TINSGame2012-Info.plist"; sourceTree = "<group>"; };
 		207F585915CCD7E90037B9D9 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = main.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
@@ -164,10 +155,6 @@
 				2072A41915CFD4B6002FF45C /* Enemy.h */,
 				2072A41A15CFD4B6002FF45C /* Game.cpp */,
 				2072A41B15CFD4B6002FF45C /* Game.h */,
-				2072A41C15CFD4B6002FF45C /* GameObject.cpp */,
-				2072A41D15CFD4B6002FF45C /* GameObject.h */,
-				2072A41E15CFD4B6002FF45C /* GameObjManager.cpp */,
-				2072A41F15CFD4B6002FF45C /* GameObjManager.h */,
 				2072A42015CFD4B6002FF45C /* GameSave.cpp */,
 				2072A42115CFD4B6002FF45C /* GameSave.h */,
 				2072A42215CFD4B6002FF45C /* Geometry.h */,
@@ -187,8 +174,6 @@
 				2072A43015CFD4B6002FF45C /* SimpleAnimation.h */,
 				2072A43115CFD4B6002FF45C /* Spawner.h */,
 				2072A43215CFD4B6002FF45C /* StaticObject.h */,
-				2072A43315CFD4B6002FF45C /* Viewport.cpp */,
-				2072A43415CFD4B6002FF45C /* Viewport.h */,
 				2072A43515CFD4B6002FF45C /* Villager.h */,
 				20E735E715CD06B800A4F90B /* Globals.h */,
 				20D4688F15CFCFEF00D76210 /* StrictMap.h */,
@@ -354,13 +339,10 @@
 				2072A43615CFD4B6002FF45C /* Cave.cpp in Sources */,
 				2072A43715CFD4B6002FF45C /* Dragon.cpp in Sources */,
 				2072A43815CFD4B6002FF45C /* Game.cpp in Sources */,
-				2072A43915CFD4B6002FF45C /* GameObject.cpp in Sources */,
-				2072A43A15CFD4B6002FF45C /* GameObjManager.cpp in Sources */,
 				2072A43B15CFD4B6002FF45C /* GameSave.cpp in Sources */,
 				2072A43C15CFD4B6002FF45C /* GroundHeightmap.cpp in Sources */,
 				2072A43D15CFD4B6002FF45C /* MainMenu.cpp in Sources */,
 				2072A43E15CFD4B6002FF45C /* Primes.cpp in Sources */,
-				2072A43F15CFD4B6002FF45C /* Viewport.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

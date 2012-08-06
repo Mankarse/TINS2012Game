@@ -1,11 +1,3 @@
-//
-//  Dragon.h
-//  TINSGame2012
-//
-//  Created by Evan Wallace on 4/08/12.
-//
-//
-
 #ifndef TINSGame2012__Dragon
 #define TINSGame2012__Dragon
 #include <allegro5/allegro.h>
@@ -89,7 +81,4 @@ class Dragon {
     Dragon(GameSave const& newStats);
 };
 
-
-
-
-#endif /* defined(__TINSGame2012__Dragon__) */
+#endif /* defined(TINSGame2012__Dragon) */

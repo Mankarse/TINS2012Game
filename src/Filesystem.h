@@ -40,6 +40,4 @@ private:
     ALLEGRO_FS_ENTRY *fsEntry;
     bool open;
 };
-
-
 #endif

@@ -10,6 +10,4 @@ struct StrictMap : std::map<K,V>{
         return base_t::operator[](k);
     }
 };
-
-
 #endif

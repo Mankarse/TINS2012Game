@@ -1,11 +1,3 @@
-//
-//  DragonAnimation.h
-//  TINSGame2012
-//
-//  Created by Evan Wallace on 6/08/12.
-//
-//
-
 #ifndef TINSGame2012_DragonAnimation_h
 #define TINSGame2012_DragonAnimation_h
 
