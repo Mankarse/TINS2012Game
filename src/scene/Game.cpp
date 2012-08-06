@@ -322,6 +322,24 @@ static void drawUI(
         al_draw_textf(g_Font10, al_map_rgb(0, 0, 0), 34*4 + position * 16, 30*4, 0, formatStr, *it, &increment);
         position += increment + 1;
     }
+    {
+        double x = 266;
+        double y = 500;
+        al_draw_bitmap(g_Bitmaps["HealthEmpty"], x, y, 0);
+        al_draw_bitmap_region(g_Bitmaps["HealthFull"], 0, 0, health/maxHealth * al_get_bitmap_width(g_Bitmaps["HealthFull"]), al_get_bitmap_height(g_Bitmaps["HealthFull"]), x, y, 0);
+    }
+    {
+        double x = 10;
+        double y = 540;
+        al_draw_bitmap(g_Bitmaps["StaminaEmpty"], x, y, 0);
+        al_draw_bitmap_region(g_Bitmaps["StaminaFull"], 0, 0, stamina/maxStamina * al_get_bitmap_width(g_Bitmaps["StaminaFull"]), al_get_bitmap_height(g_Bitmaps["StaminaFull"]), x, y, 0);
+    }
+    {
+        double x = 130*4;
+        double y = 540;
+        al_draw_bitmap(g_Bitmaps["FlameCDEmpty"], x, y, 0);
+        al_draw_bitmap_region(g_Bitmaps["FlameCDFull"], 0, 0, flames/maxFlames * al_get_bitmap_width(g_Bitmaps["FlameCDFull"]), al_get_bitmap_height(g_Bitmaps["FlameCDFull"]), x, y, 0);
+    }
 }
 
 void Game::drawingPass(RenderQueueSet& renderQueues) const {
