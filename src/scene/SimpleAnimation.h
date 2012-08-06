@@ -25,6 +25,7 @@ static std::vector<ALLEGRO_BITMAP*> loadFramesFromFilename(std::string namePrefi
     while (g_Bitmaps.find(formatter.str()) != g_Bitmaps.end())
     {
         retV.push_back(g_Bitmaps[formatter.str()]);
+        formatter.str("");
         formatter << namePrefix;
         formatter << curIndex++;
     }
@@ -39,9 +40,6 @@ class SimpleAnimation {
     public:
     ALLEGRO_BITMAP* getCurrentFrame(double currentTime) const{
         long curFrame((long)floor((currentTime - timeOffset) / frameTime) % (long)frames.size());
-        
-        std::cout << "Frame: " << (long)floor((currentTime - timeOffset) / frameTime)<< '\n';
-        std::cout << "Framecount: " << (long)floor((currentTime - timeOffset) / (long)frames.size())<< '\n';
         return frames[curFrame];
     }
     ALLEGRO_BITMAP* getCurrentFrame() const {
