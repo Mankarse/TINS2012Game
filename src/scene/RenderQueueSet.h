@@ -13,6 +13,7 @@ class Renderable;
 
 struct RenderQueueSet {
     std::vector<Renderable const*> farBackground;
+    std::vector<Renderable const*> midBackground;
     std::vector<Renderable const*> nearBackground;
     std::vector<Renderable const*> middleGround;
     std::vector<Renderable const*> foreground;
