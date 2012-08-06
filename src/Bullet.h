@@ -7,8 +7,8 @@ class Dragon;
 class Enemy;
 class BulletImplementation {
 public:
-    virtual void update(Dragon& player);
-    virtual void update(std::vector<Enemy>& enemies);
+    virtual void update(Dragon& player)=0;
+    virtual void update(std::vector<Enemy>& enemies)=0;
     virtual BulletImplementation* clone() const=0;
     virtual ~BulletImplementation(){}
     virtual void pickRenderQueue(RenderQueueSet& queues) const = 0;

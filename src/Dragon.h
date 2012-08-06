@@ -60,9 +60,10 @@ class Dragon {
     Point2D hindLeg;
     
     double jumpTime;
+    bool isBreathing;
     
     void renderRotated(ALLEGRO_BITMAP* image, Point2D screenPos, int flags = 0) const;
-    void fireBreath(Point2D mainVelocity, double lifeTime, std::vector<Bullet> const& bulletList) const;
+    void fireBreath(Point2D mainVelocity, double lifeTime, std::vector<Bullet> bulletList) const;
     public:
     GameSave save;
     
@@ -73,7 +74,7 @@ class Dragon {
     Point2D worldPosition;
     
     void assignHeightmap(GroundHeightmap* newGround);
-    ScreenFlipMode physicsStep(InputState const& input, Point2D const& screenCorner, std::vector<Bullet> const& bulletList);
+    ScreenFlipMode physicsStep(InputState const& input, Point2D const& screenCorner, std::vector<Bullet> bulletList);
     void renderStep(Point2D screenPos) const;
     Point2D foreLegWorldPos() const;
     Point2D hindLegWorldPos() const;

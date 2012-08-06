@@ -44,7 +44,7 @@ void Dragon::assignHeightmap(GroundHeightmap *newGround) {
     ground = newGround;
 }
 
-ScreenFlipMode Dragon::physicsStep(InputState const& input, Point2D const& screenCorner, std::vector<Bullet> const& bulletList) {
+ScreenFlipMode Dragon::physicsStep(InputState const& input, Point2D const& screenCorner, std::vector<Bullet> bulletList) {
 
     bool shouldJump(false);
     for (std::vector<ALLEGRO_EVENT>::const_iterator it(input.events.begin()), end(input.events.end()); it != end; ++it)
@@ -53,6 +53,16 @@ ScreenFlipMode Dragon::physicsStep(InputState const& input, Point2D const& scree
         if(event.type == ALLEGRO_EVENT_KEY_DOWN && event.keyboard.keycode == ALLEGRO_KEY_W)
         {
             shouldJump = true;
+        }
+    }
+    if(currentCooldown < save.stats.fireCooldown && !isBreathing) {
+        currentCooldown += (1./60.);
+    }
+    if(isBreathing) {
+        currentCooldown -= (save.stats.fireCooldown / 2) * (1./60.);
+        if(currentCooldown <= 0) {
+            currentCooldown = 0;
+            isBreathing = false;
         }
     }
     
@@ -206,8 +216,10 @@ void Dragon::renderStep(Point2D screenPos) const {
     //al_draw_filled_rectangle(drawPos.x - 20, drawPos.y - 15, drawPos.x + 20, drawPos.y + 15, al_map_rgb(50, 160, 170));
 }
 
-void Dragon::fireBreath(Point2D mainVelocity, double lifeTime, std::vector<Bullet> const& bulletList) const {
-    //mainVelocity.x *= (double)rand()
+void Dragon::fireBreath(Point2D mainVelocity, double lifeTime, std::vector<Bullet> bulletList) const {
+    mainVelocity.x *= (1 + (((double)(rand() % 1000) - 500) / 1000.));
+    mainVelocity.y *= (1 + (((double)(rand() % 1000) - 500) / 1000.));
+    bulletList.push_back(Bullet(new DragonFlame(worldPosition, mainVelocity, ground, 5)));
 }
     
 Point2D Dragon::foreLegWorldPos() const {
