@@ -11,8 +11,8 @@
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
 #include <allegro5/allegro_font.h>
-#include "scene/MainMenu.h"
-#include "scene/Cave.h"
+#include "MainMenu.h"
+#include "Cave.h"
 #include "Bitmap.h"
 #include "EventQueue.h"
 #include "Timer.h"
