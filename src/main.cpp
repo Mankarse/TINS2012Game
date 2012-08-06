@@ -12,6 +12,8 @@
 #include "scene/MainMenu.h"
 #include "scene/Cave.h"
 #include "Bitmap.h"
+#include "EventQueue.h"
+#include "Timer.h"
 
 ALLEGRO_DISPLAY *g_display;
 
@@ -368,21 +370,21 @@ int main(int argc, char **argv){
 int const fps(60);
 
 void mainLoop(std::auto_ptr<Scene> scene) {
-    ALLEGRO_TIMER *timer(al_create_timer(1.0 / fps));
-    ALLEGRO_EVENT_QUEUE *event_queue(al_create_event_queue());
-    al_register_event_source(event_queue, al_get_display_event_source(g_display));
-    al_register_event_source(event_queue, al_get_timer_event_source(timer));
-    al_register_event_source(event_queue, al_get_keyboard_event_source());
-    al_register_event_source(event_queue, al_get_mouse_event_source());
+    Timer timer(al_create_timer(1.0 / fps));
+    EventQueue event_queue(al_create_event_queue());
+    al_register_event_source(event_queue.get(), al_get_display_event_source(g_display));
+    al_register_event_source(event_queue.get(), al_get_timer_event_source(timer.get()));
+    al_register_event_source(event_queue.get(), al_get_keyboard_event_source());
+    al_register_event_source(event_queue.get(), al_get_mouse_event_source());
 
-    al_start_timer(timer);
+    al_start_timer(timer.get());
 
     //LagLimiter lag;
-    InputState input(timer);
+    InputState input(timer.get());
     while (scene.get()) {
         //readInput reads until the timer triggers
         //so it is what regulates game speed.
-        input.updateState(event_queue);
+        input.updateState(event_queue.get());
         Scene* newScene(scene->update(input));
         if (newScene != scene.get()) {
             scene.reset(newScene);
