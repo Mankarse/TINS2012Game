@@ -149,5 +149,3 @@ void Cave::drawFactors() const {
         y += al_get_bitmap_height(b) + 4;
     }
 }
-
-

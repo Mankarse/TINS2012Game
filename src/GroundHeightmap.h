@@ -1,11 +1,3 @@
-//
-//  GroundHeightmap.h
-//  TINSGame2012
-//
-//  Created by Evan Wallace on 4/08/12.
-//
-//
-
 #ifndef TINSGame2012__GroundHeightmap
 #define TINSGame2012__GroundHeightmap
 #include <vector>
@@ -33,4 +25,4 @@ class GroundHeightmap {
     //double getGradient(double xPos) const;
 };
 
-#endif /* defined(__TINSGame2012__GroundHeightmap__) */
+#endif /* defined(TINSGame2012__GroundHeightmap) */
