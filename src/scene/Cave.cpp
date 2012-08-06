@@ -120,15 +120,15 @@ Scene* Cave::update(InputState const& input) {
 
 void Cave::renderTo(ALLEGRO_BITMAP* target) const {
     al_set_target_bitmap(target);
-    draw_element(g_CaveBackground);
+    draw_element(g_Bitmaps["CaveBackground"]);
     
-    draw_element(factors.empty() ? (pressedButton == 0 ? g_CaveReturnDown : g_CaveReturnUp) : g_CaveReturnGrey);
+    draw_element(factors.empty() ? (pressedButton == 0 ? g_Bitmaps["CaveReturnDown"] : g_Bitmaps["CaveReturnUp"]) : g_Bitmaps["CaveReturnGrey"]);
     
-    draw_element(pressedButton == 1 ? g_CaveSizeDown : g_CaveSizeUp);
-    draw_element(pressedButton == 2 ? g_CaveWingspanDown : g_CaveWingspanUp);
-    draw_element(pressedButton == 3 ? g_CaveStaminaDown : g_CaveStaminaUp);
-    draw_element(pressedButton == 4 ? g_CaveFlamerangeDown : g_CaveFlamerangeUp);
-    draw_element(pressedButton == 5 ? g_CaveFlameCooldownDown : g_CaveFlameCooldownUp);
+    draw_element(pressedButton == 1 ? g_Bitmaps["CaveSizeDown"] : g_Bitmaps["CaveSizeUp"]);
+    draw_element(pressedButton == 2 ? g_Bitmaps["CaveWingspanDown"] : g_Bitmaps["CaveWingspanUp"]);
+    draw_element(pressedButton == 3 ? g_Bitmaps["CaveStaminaDown"] : g_Bitmaps["CaveStaminaUp"]);
+    draw_element(pressedButton == 4 ? g_Bitmaps["CaveFlamerangeDown"] : g_Bitmaps["CaveFlamerangeUp"]);
+    draw_element(pressedButton == 5 ? g_Bitmaps["CaveFlameCooldownDown"] : g_Bitmaps["CaveFlameCooldownUp"]);
     
     drawStats();
     drawFactors();
@@ -149,7 +149,7 @@ void Cave::drawStats() const {
 void Cave::drawFactors() const {
     int x(2*4);
     int y(75*4 + stackClearance);
-    ALLEGRO_BITMAP* b(g_CaveEmbossedTile);
+    ALLEGRO_BITMAP* b(g_Bitmaps["CaveEmbossedTile"]);
     int width(al_get_bitmap_width(b));
     int height(al_get_bitmap_height(b));
     for (std::vector<unsigned>::const_reverse_iterator it(factors.rbegin()), end(factors.rend()); it != end; ++it) {

@@ -170,6 +170,7 @@
 		20D4682C15CF5E7B00D76210 /* EventQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventQueue.h; sourceTree = "<group>"; };
 		20D4683415CF722300D76210 /* Villager1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Villager1.png; sourceTree = "<group>"; };
 		20D4683515CF722300D76210 /* Villager2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Villager2.png; sourceTree = "<group>"; };
+		20D4683815CF98BA00D76210 /* Filesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Filesystem.h; sourceTree = "<group>"; };
 		20E735E715CD06B800A4F90B /* Globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Globals.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		20E735EF15CD091100A4F90B /* MenuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBackground.png; sourceTree = "<group>"; };
 		20E7360215CD2EA000A4F90B /* Scene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
@@ -257,6 +258,7 @@
 				20D4681D15CEA07500D76210 /* Bitmap.h */,
 				20D4682C15CF5E7B00D76210 /* EventQueue.h */,
 				20D4682B15CF5E6D00D76210 /* Timer.h */,
+				20D4683815CF98BA00D76210 /* Filesystem.h */,
 				207F585915CCD7E90037B9D9 /* main.cpp */,
 				204292E515CF209200665276 /* clone_ptr.h */,
 			);

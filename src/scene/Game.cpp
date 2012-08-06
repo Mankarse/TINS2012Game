@@ -30,7 +30,7 @@ static std::vector<Spawner> createSpawners() {
 
 static std::vector<StaticObject> createStaticObjects() {
     std::vector<StaticObject> staticObjs;
-    staticObjs.push_back(StaticObject(*new StaticObject(g_LevelFG, Point2D(), 1, Middle)));
+    staticObjs.push_back(StaticObject(g_Bitmaps["LevelFG"], Point2D(), 1, Middle));
     return staticObjs;
 }
 
@@ -275,7 +275,7 @@ static void drawUI(
     double flames, double maxFlames)
 {
     std::vector<unsigned> factors(factorize(scoreDelta));
-    al_draw_bitmap(g_GameUI, 0, 0, 0);
+    al_draw_bitmap(g_Bitmaps["GameUI"], 0, 0, 0);
     al_draw_textf(g_Font10, al_map_rgb(0, 0, 0), 27*4, 12*4, 0, "%d", totalScore);
     al_draw_textf(g_Font10, al_map_rgb(0, 0, 0), 26*4, 21*4, 0, "%d", scoreDelta);
     int position(0);
@@ -293,7 +293,7 @@ static void drawUI(
 void Game::drawingPass(RenderQueueSet& renderQueues) const {
     // Render each queue, in order
     // Sky:
-    drawBackground(g_LevelSky, 0.5);
+    drawBackground(g_Bitmaps["LevelSky"], 0.5);
     
     renderQueue(renderQueues.farBackground);
     renderQueue(renderQueues.nearBackground);

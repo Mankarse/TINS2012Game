@@ -26,7 +26,7 @@ class Hut : public SpawnerImplementation, private Renderable
         worldPosition(position),
         lastSpawn(0),
         timeToNextSpawn(0),
-        image(g_CaveEmbossedTile)
+        image(g_Bitmaps["CaveEmbossedTile"])
     {}
     
     virtual void pickRenderQueue(RenderQueueSet& queues) const {

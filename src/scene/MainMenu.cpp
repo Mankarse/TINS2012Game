@@ -98,12 +98,12 @@ static void draw_element(ALLEGRO_BITMAP * element) {
 void MainMenu::renderTo(ALLEGRO_BITMAP* target) const {
     al_set_target_bitmap(target);
     
-    draw_element(g_MenuBackground);
-    draw_element(g_MenuTitle);
+    draw_element(g_Bitmaps["MenuBackground"]);
+    draw_element(g_Bitmaps["MenuTitle"]);
     
-    draw_element(pressedButton == 0 ? g_MenuInstructionsDown : g_MenuInstructionsUp);
-    draw_element(pressedButton == 1 ? g_MenuNewGameDown : g_MenuNewGameUp);
-    draw_element(saveExists ? (pressedButton == 2 ? g_MenuContinueDown : g_MenuContinueUp) : g_MenuContinueGrey);
-    draw_element(pressedButton == 3 ? g_MenuExitDown : g_MenuExitUp);
+    draw_element(pressedButton == 0 ? g_Bitmaps["MenuInstructionsDown"] : g_Bitmaps["MenuInstructionsUp"]);
+    draw_element(pressedButton == 1 ? g_Bitmaps["MenuNewGameDown"] : g_Bitmaps["MenuNewGameUp"]);
+    draw_element(saveExists ? (pressedButton == 2 ? g_Bitmaps["MenuContinueDown"] : g_Bitmaps["MenuContinueUp"]) : g_Bitmaps["MenuContinueGrey"]);
+    draw_element(pressedButton == 3 ? g_Bitmaps["MenuExitDown"] : g_Bitmaps["MenuExitUp"]);
 }
 

@@ -4,6 +4,7 @@
 #include <exception>
 #include <allegro5/allegro.h>
 #include <memory>
+#include <list>
 #include <cstdlib>
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_audio.h>
@@ -14,42 +15,11 @@
 #include "Bitmap.h"
 #include "EventQueue.h"
 #include "Timer.h"
+#include "Filesystem.h"
+
+std::map<std::string, ALLEGRO_BITMAP*> g_Bitmaps;
 
 ALLEGRO_DISPLAY *g_display;
-
-ALLEGRO_BITMAP *g_CaveBackground;
-ALLEGRO_BITMAP *g_CaveEmbossedTile;
-ALLEGRO_BITMAP *g_CaveFlameCooldownDown;
-ALLEGRO_BITMAP *g_CaveFlameCooldownUp;
-ALLEGRO_BITMAP *g_CaveFlamerangeDown;
-ALLEGRO_BITMAP *g_CaveFlamerangeUp;
-ALLEGRO_BITMAP *g_CaveReturnDown;
-ALLEGRO_BITMAP *g_CaveReturnGrey;
-ALLEGRO_BITMAP *g_CaveReturnUp;
-ALLEGRO_BITMAP *g_CaveSizeDown;
-ALLEGRO_BITMAP *g_CaveSizeUp;
-ALLEGRO_BITMAP *g_CaveStaminaDown;
-ALLEGRO_BITMAP *g_CaveStaminaUp;
-ALLEGRO_BITMAP *g_CaveWingspanDown;
-ALLEGRO_BITMAP *g_CaveWingspanUp;
-ALLEGRO_BITMAP *g_DragonSmallStand;
-ALLEGRO_BITMAP *g_LevelFG;
-ALLEGRO_BITMAP *g_LevelSky;
-ALLEGRO_BITMAP *g_GameUI;
-ALLEGRO_BITMAP *g_MenuBackground;
-ALLEGRO_BITMAP *g_MenuContinueDown;
-ALLEGRO_BITMAP *g_MenuContinueGrey;
-ALLEGRO_BITMAP *g_MenuContinueUp;
-ALLEGRO_BITMAP *g_MenuExitDown;
-ALLEGRO_BITMAP *g_MenuExitUp;
-ALLEGRO_BITMAP *g_MenuInstructionsDown;
-ALLEGRO_BITMAP *g_MenuInstructionsUp;
-ALLEGRO_BITMAP *g_MenuNewGameDown;
-ALLEGRO_BITMAP *g_MenuNewGameUp;
-ALLEGRO_BITMAP *g_MenuTitle;
-ALLEGRO_BITMAP *g_NumberSheet10;
-ALLEGRO_BITMAP *g_Villager1;
-ALLEGRO_BITMAP *g_Villager2;
 
 ALLEGRO_FONT *g_Font10;
 
@@ -167,10 +137,7 @@ struct AllegroInit {
     AllegroFontInit afont;
 };
 
-struct BitmapInit {
-    BitmapInit(ALLEGRO_BITMAP **toInitialize, char const* filename):
-        toInitialize(toInitialize)
-    {
+ALLEGRO_BITMAP* loadAndScaleBitmap(char const* filename) {
         Bitmap rawBitmap(al_load_bitmap(filename));
         if (!rawBitmap.get()) {
             throw FileLoadingException("Failed to load bitmap\n", filename);
@@ -178,15 +145,23 @@ struct BitmapInit {
         int rawWidth(al_get_bitmap_width(rawBitmap.get()));
         int rawHeight(al_get_bitmap_height(rawBitmap.get()));
         
-        *toInitialize = al_create_bitmap(rawWidth * 4, rawHeight * 4);
+        ALLEGRO_BITMAP* scaledBitmap = al_create_bitmap(rawWidth * 4, rawHeight * 4);
         
-        if (!*toInitialize) {
+        if (!scaledBitmap) {
             throw FileLoadingException("Failed to load bitmap\n", filename);
         }
         
-        al_set_target_bitmap(*toInitialize);
+        al_set_target_bitmap(scaledBitmap);
         al_clear_to_color(al_map_rgba(0, 0, 0, 0));
         al_draw_scaled_bitmap(rawBitmap.get(), 0, 0, rawWidth, rawHeight, 0, 0, rawWidth*4, rawHeight*4, 0);
+        return scaledBitmap;
+}
+
+struct BitmapInit {
+    BitmapInit(ALLEGRO_BITMAP **toInitialize, char const* filename):
+        toInitialize(toInitialize)
+    {
+        *toInitialize = loadAndScaleBitmap(filename);
     }
     ~BitmapInit() {
         al_destroy_bitmap(*toInitialize);
@@ -218,7 +193,7 @@ struct FontInit {
     FontInit(ALLEGRO_FONT** toInitialize, ALLEGRO_BITMAP* sourceBitmap, int rangec, int const* rangev) :
         toInitialize(toInitialize)
     {
-        *toInitialize = al_grab_font_from_bitmap(g_NumberSheet10, rangec, const_cast<int*>(rangev));
+        *toInitialize = al_grab_font_from_bitmap(g_Bitmaps["NumberSheet10"], rangec, const_cast<int*>(rangev));
     }
     ~FontInit() {
         al_destroy_font(*toInitialize);
@@ -233,44 +208,62 @@ struct RandInit {
     }
 };
 
+
+
+struct BitmapManager {
+    BitmapManager() : bitmap() {}
+    ALLEGRO_BITMAP* init(char const* filename) {
+        return bitmap = loadAndScaleBitmap(filename);
+    }
+    BitmapManager(BitmapManager const& o): bitmap() {
+        assert(!o.bitmap);
+    }
+    BitmapManager& operator=(BitmapManager const& o) {
+        assert(!o.bitmap);
+        assert(!bitmap);
+        return *this;
+    }
+    ~BitmapManager() {
+        al_destroy_bitmap(bitmap);
+    }
+    ALLEGRO_BITMAP *bitmap;
+};
+
+bool endsWith(std::string const& haystack, std::string const& needle) {
+    return haystack.size()>=needle.size() && haystack.substr(haystack.size()-needle.size())==needle.c_str();
+}
+
+struct BitmapsInit {
+
+BitmapsInit() {
+    FilesystemEntry resourceDirectory(al_create_fs_entry("."));
+    if (!resourceDirectory.get()) {
+        throw LoadingException("Could not init resources directory");
+    }
+    DirectoryManager directory(resourceDirectory.get());
+    if (!directory.is_open()) { throw LoadingException("Could not open resources directory"); }
+    
+    FilesystemEntry resourceFile;
+    while (resourceFile.reset(al_read_directory(resourceDirectory.get())), resourceFile.get()) {
+        std::string filename(al_get_fs_entry_name(resourceFile.get()));
+        
+        if (endsWith(filename,std::string(".png"))) {
+            filename = filename.substr(2);
+            bitmapManagers.push_back(BitmapManager());
+            g_Bitmaps[filename.substr(0,filename.size()-4)]=bitmapManagers.back().init(filename.c_str());
+        }
+    }
+}
+//Using std::list because insertion does not invaliate iterators.
+std::list<BitmapManager> bitmapManagers;
+};
+
 static const int font10Range[] = {43, 43, 46, 57};
 
 struct ResourcesInit {
     ResourcesInit() :
-        CaveBackground(&g_CaveBackground, "CaveBackground.png"),
-        CaveEmbossedTile(&g_CaveEmbossedTile, "CaveEmbossedTile.png"),
-        CaveFlameCooldownDown(&g_CaveFlameCooldownDown, "CaveFlameCooldownDown.png"),
-        CaveFlameCooldownUp(&g_CaveFlameCooldownUp, "CaveFlameCooldownUp.png"),
-        CaveFlamerangeDown(&g_CaveFlamerangeDown, "CaveFlamerangeDown.png"),
-        CaveFlamerangeUp(&g_CaveFlamerangeUp, "CaveFlamerangeUp.png"),
-        CaveReturnDown(&g_CaveReturnDown, "CaveReturnDown.png"),
-        CaveReturnUp(&g_CaveReturnUp, "CaveReturnUp.png"),
-        CaveReturnGrey(&g_CaveReturnGrey, "CaveReturnGrey.png"),
-        CaveSizeDown(&g_CaveSizeDown, "CaveSizeDown.png"),
-        CaveSizeUp(&g_CaveSizeUp, "CaveSizeUp.png"),
-        CaveStaminaDown(&g_CaveStaminaDown, "CaveStaminaDown.png"),
-        CaveStaminaUp(&g_CaveStaminaUp, "CaveStaminaUp.png"),
-        CaveWingspanDown(&g_CaveWingspanDown, "CaveWingspanDown.png"),
-        CaveWingspanUp(&g_CaveWingspanUp, "CaveWingspanUp.png"),
-        DragonSmallStand(&g_DragonSmallStand, "DragonSmallStand.png"),
-        LevelFG(&g_LevelFG, "levelFG.png"),
-        LevelSky(&g_LevelSky, "levelSky.png"),
-        GameUI(&g_GameUI, "GameUI.png"),
-        MenuBackground(&g_MenuBackground, "MenuBackground.png"),
-        MenuContinueDown(&g_MenuContinueDown, "MenuContinueDown.png"),
-        MenuContinueGrey(&g_MenuContinueGrey, "MenuContinueGrey.png"),
-        MenuContinueUp(&g_MenuContinueUp, "MenuContinueUp.png"),
-        MenuExitDown(&g_MenuExitDown, "MenuExitDown.png"),
-        MenuExitUp(&g_MenuExitUp, "MenuExitUp.png"),
-        MenuInstructionsDown(&g_MenuInstructionsDown, "MenuInstructionsDown.png"),
-        MenuInstructionsUp(&g_MenuInstructionsUp, "MenuInstructionsUp.png"),
-        MenuNewGameDown(&g_MenuNewGameDown, "MenuNewGameDown.png"),
-        MenuNewGameUp(&g_MenuNewGameUp, "MenuNewGameUp.png"),
-        MenuTitle(&g_MenuTitle, "MenuTitle.png"),
-        NumberSheet10(&g_NumberSheet10, "NumberSheet10.png"),
-        Villager1(&g_Villager1, "Villager1.png"),
-        Villager2(&g_Villager2, "Villager2.png"),
-        Font10(&g_Font10, g_NumberSheet10, 2, font10Range),
+        bitmaps(),
+        Font10(&g_Font10, g_Bitmaps["NumberSheet10"], 2, font10Range),
         MenuMus(&g_MenuMus, "MenuMus.ogg"),
         DragonRoar(&g_DragonRoar, "DragonRoar.ogg"),
         FireLoop(&g_FireLoop, "FireLoop.ogg"),
@@ -287,39 +280,8 @@ struct ResourcesInit {
     {
     }
     
-    BitmapInit CaveBackground;
-    BitmapInit CaveEmbossedTile;
-    BitmapInit CaveFlameCooldownDown;
-    BitmapInit CaveFlameCooldownUp;
-    BitmapInit CaveFlamerangeDown;
-    BitmapInit CaveFlamerangeUp;
-    BitmapInit CaveReturnDown;
-    BitmapInit CaveReturnGrey;
-    BitmapInit CaveReturnUp;
-    BitmapInit CaveSizeDown;
-    BitmapInit CaveSizeUp;
-    BitmapInit CaveStaminaDown;
-    BitmapInit CaveStaminaUp;
-    BitmapInit CaveWingspanDown;
-    BitmapInit CaveWingspanUp;
-    BitmapInit DragonSmallStand;
-    BitmapInit LevelFG;
-    BitmapInit LevelSky;
-    BitmapInit GameUI;
-    BitmapInit MenuBackground;
-    BitmapInit MenuContinueDown;
-    BitmapInit MenuContinueGrey;
-    BitmapInit MenuContinueUp;
-    BitmapInit MenuExitDown;
-    BitmapInit MenuExitUp;
-    BitmapInit MenuInstructionsDown;
-    BitmapInit MenuInstructionsUp;
-    BitmapInit MenuNewGameDown;
-    BitmapInit MenuNewGameUp;
-    BitmapInit MenuTitle;
-    BitmapInit NumberSheet10;
-    BitmapInit Villager1;
-    BitmapInit Villager2;
+    BitmapsInit bitmaps;
+
     FontInit Font10;
     SampleInit MenuMus;
     SampleInit DragonRoar;
