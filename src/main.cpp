@@ -48,6 +48,8 @@ ALLEGRO_BITMAP *g_MenuNewGameDown;
 ALLEGRO_BITMAP *g_MenuNewGameUp;
 ALLEGRO_BITMAP *g_MenuTitle;
 ALLEGRO_BITMAP *g_NumberSheet10;
+ALLEGRO_BITMAP *g_Villager1;
+ALLEGRO_BITMAP *g_Villager2;
 
 ALLEGRO_FONT *g_Font10;
 
@@ -266,6 +268,8 @@ struct ResourcesInit {
         MenuNewGameUp(&g_MenuNewGameUp, "MenuNewGameUp.png"),
         MenuTitle(&g_MenuTitle, "MenuTitle.png"),
         NumberSheet10(&g_NumberSheet10, "NumberSheet10.png"),
+        Villager1(&g_Villager1, "Villager1.png"),
+        Villager2(&g_Villager2, "Villager2.png"),
         Font10(&g_Font10, g_NumberSheet10, 2, font10Range),
         MenuMus(&g_MenuMus, "MenuMus.ogg"),
         DragonRoar(&g_DragonRoar, "DragonRoar.ogg"),
@@ -314,6 +318,8 @@ struct ResourcesInit {
     BitmapInit MenuNewGameUp;
     BitmapInit MenuTitle;
     BitmapInit NumberSheet10;
+    BitmapInit Villager1;
+    BitmapInit Villager2;
     FontInit Font10;
     SampleInit MenuMus;
     SampleInit DragonRoar;

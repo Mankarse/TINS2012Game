@@ -53,6 +53,11 @@ Scene* MainMenu::update(InputState const& input) {
                             al_stop_sample(&music);
                             return game.release();
                         }
+                        case 2: {
+                            std::auto_ptr<Cave> cave(new Cave(currentSave));
+                            al_stop_sample(&music);
+                            return cave.release();
+                        }
                         case 3: {
                             al_stop_sample(&music);
                             return 0;

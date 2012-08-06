@@ -70,6 +70,8 @@
 		20D4681C15CE980000D76210 /* NumberSheet10.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D4681B15CE980000D76210 /* NumberSheet10.png */; };
 		20D4682215CEC05900D76210 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20D4682115CEC05900D76210 /* Game.cpp */; };
 		20D4682715CF4F6900D76210 /* GameUI.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D4682615CF4F6900D76210 /* GameUI.png */; };
+		20D4683615CF722300D76210 /* Villager1.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D4683415CF722300D76210 /* Villager1.png */; };
+		20D4683715CF722300D76210 /* Villager2.png in Resources */ = {isa = PBXBuildFile; fileRef = 20D4683515CF722300D76210 /* Villager2.png */; };
 		20E735FA15CD091100A4F90B /* MenuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 20E735EF15CD091100A4F90B /* MenuBackground.png */; };
 		20E7360C15CD768700A4F90B /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E7360B15CD768700A4F90B /* MainMenu.cpp */; };
 		20EF027815CE128800E86905 /* GameSave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20EF027715CE128800E86905 /* GameSave.cpp */; };
@@ -166,6 +168,8 @@
 		20D4682615CF4F6900D76210 /* GameUI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameUI.png; sourceTree = "<group>"; };
 		20D4682B15CF5E6D00D76210 /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		20D4682C15CF5E7B00D76210 /* EventQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventQueue.h; sourceTree = "<group>"; };
+		20D4683415CF722300D76210 /* Villager1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Villager1.png; sourceTree = "<group>"; };
+		20D4683515CF722300D76210 /* Villager2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Villager2.png; sourceTree = "<group>"; };
 		20E735E715CD06B800A4F90B /* Globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Globals.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		20E735EF15CD091100A4F90B /* MenuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBackground.png; sourceTree = "<group>"; };
 		20E7360215CD2EA000A4F90B /* Scene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 		205E8C2C15CCD77C00CD2AA5 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				20D4683415CF722300D76210 /* Villager1.png */,
+				20D4683515CF722300D76210 /* Villager2.png */,
 				2072A3C715CF5592002FF45C /* DragonRoar.ogg */,
 				2072A3C815CF5592002FF45C /* FireLoop.ogg */,
 				2072A3C915CF5592002FF45C /* Footstep1.ogg */,
@@ -482,6 +488,8 @@
 				2072A3DC15CF5592002FF45C /* Screams2.ogg in Resources */,
 				2072A3DD15CF5592002FF45C /* Screams3.ogg in Resources */,
 				2072A3DE15CF5592002FF45C /* Screams4.ogg in Resources */,
+				20D4683615CF722300D76210 /* Villager1.png in Resources */,
+				20D4683715CF722300D76210 /* Villager2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

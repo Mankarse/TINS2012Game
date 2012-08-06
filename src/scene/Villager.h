@@ -89,7 +89,7 @@ class Villager : public EnemyImplementation, private Renderable {
         queues.middleGround.push_back(this);
     }
     virtual ALLEGRO_BITMAP* getBitmap() const {
-        return g_CaveEmbossedTile;
+        return g_Villager1;
     }
     virtual Point2D getWorldPoint() const {
         return Point2D(currentPos, heightmap->getInterpolatedWorldPoint(currentPos)) + footPosition;

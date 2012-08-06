@@ -36,6 +36,8 @@ extern ALLEGRO_BITMAP *g_MenuNewGameDown;
 extern ALLEGRO_BITMAP *g_MenuNewGameUp;
 extern ALLEGRO_BITMAP *g_MenuTitle;
 extern ALLEGRO_BITMAP *g_NumberSheet10;
+extern ALLEGRO_BITMAP *g_Villager1;
+extern ALLEGRO_BITMAP *g_Villager2;
 
 extern ALLEGRO_FONT *g_Font10;
 
