@@ -269,7 +269,6 @@ void Game::drawCave() const {
     al_draw_line(caveTopCorner.x, caveTopCorner.y, caveBottomCorner.x, caveTopCorner.y, al_map_rgb(255, 0, 0), 3);
     al_draw_line(caveBottomCorner.x, caveTopCorner.y, caveBottomCorner.x, caveBottomCorner.y, al_map_rgb(255, 0, 0), 3);
     al_draw_line(caveBottomCorner.x, caveBottomCorner.y, caveTopCorner.x, caveBottomCorner.y, al_map_rgb(255, 0, 0), 3);
-    
 }
 
 static void drawUI(
@@ -314,7 +313,7 @@ void Game::drawingPass(RenderQueueSet& renderQueues) const {
     renderQueue(renderQueues.middleGround);
     player.renderStep(screenCorner);
     
-    drawCave();
+    //drawCave();
     
     //ground.draw(screenCorner);
     renderQueue(renderQueues.foreground);

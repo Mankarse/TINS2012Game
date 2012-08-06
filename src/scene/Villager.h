@@ -24,7 +24,7 @@ class Villager : public EnemyImplementation, private Renderable {
         fearCooldown(0),
         currentCooldown(0),
         heightmap(0),
-        footPosition(0, -20),
+        footPosition(0, -10),
         wasStomped(false),
         anim(5, "Villager")
     {}
@@ -77,7 +77,7 @@ class Villager : public EnemyImplementation, private Renderable {
         }
         
         if(pointInRectInclusive(player.foreLegWorldPos().x, player.foreLegWorldPos().y,
-        Rect(getWorldPoint().x - 10, getWorldPoint().y - 40, 20, 80))) {
+        Rect(getWorldPoint().x - 10, getWorldPoint().y - 15, 20, 30))) {
             player.save.scoreDelta += 2;
             player.save.totalScore += 2;
             wasStomped = true;

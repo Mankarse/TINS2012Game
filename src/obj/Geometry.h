@@ -78,5 +78,8 @@ inline double dot(Point2D const& l, Point2D const& r) {
 inline double distance(Point2D const& l, Point2D const& r) {
     return sqrt(pow((r - l).x, 2) * pow((r - l).y, 2));
 }
+inline double gradient(Point2D const& l, Point2D const& r) {
+    return (r.y - l.y) / (r.x - l.x)
+}
 
 #endif
