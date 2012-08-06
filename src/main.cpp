@@ -98,9 +98,7 @@ struct DisplayInit {
     }
     ~DisplayInit() {
         g_display = 0;
-        if (display) {
-            al_destroy_display(display);
-        }
+        al_destroy_display(display);
     }
 };
 
@@ -220,6 +218,9 @@ struct FontInit {
     {
         *toInitialize = al_grab_font_from_bitmap(g_NumberSheet10, rangec, const_cast<int*>(rangev));
     }
+    ~FontInit() {
+        al_destroy_font(*toInitialize);
+    }
     private:
     ALLEGRO_FONT** toInitialize;
 };
@@ -281,7 +282,6 @@ struct ResourcesInit {
         Screams4(&g_Screams4, "Screams4.ogg")
     {
     }
-    ~ResourcesInit() {}
     
     BitmapInit CaveBackground;
     BitmapInit CaveEmbossedTile;
@@ -331,7 +331,6 @@ struct ResourcesInit {
 };
 
 struct Initializer {
-    Initializer(){}
     AllegroInit allegroInit;
     DisplayInit displayInit;
     ResourcesInit resourcesInit;
