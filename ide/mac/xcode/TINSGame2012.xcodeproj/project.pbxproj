@@ -25,6 +25,20 @@
 		2072A3DB15CF5592002FF45C /* Screams1.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 2072A3CF15CF5592002FF45C /* Screams1.ogg */; };
 		2072A3DC15CF5592002FF45C /* Screams2.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 2072A3D015CF5592002FF45C /* Screams2.ogg */; };
 		2072A3DD15CF5592002FF45C /* Screams3.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 2072A3D115CF5592002FF45C /* Screams3.ogg */; };
+		2072A3FD15CFBD15002FF45C /* DragonSmallDive0.png in Resources */ = {isa = PBXBuildFile; fileRef = 2072A3EF15CFBD0D002FF45C /* DragonSmallDive0.png */; };
+		2072A3FE15CFBD15002FF45C /* DragonSmallDive1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2072A3F015CFBD0E002FF45C /* DragonSmallDive1.png */; };
+		2072A3FF15CFBD15002FF45C /* DragonSmallDive2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2072A3F115CFBD0E002FF45C /* DragonSmallDive2.png */; };
+		2072A40015CFBD15002FF45C /* DragonSmallDive3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2072A3F215CFBD0F002FF45C /* DragonSmallDive3.png */; };
+		2072A40115CFBD15002FF45C /* DragonSmallGlide0.png in Resources */ = {isa = PBXBuildFile; fileRef = 2072A3F315CFBD11002FF45C /* DragonSmallGlide0.png */; };
+		2072A40215CFBD15002FF45C /* DragonSmallGlide1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2072A3F415CFBD11002FF45C /* DragonSmallGlide1.png */; };
+		2072A40315CFBD15002FF45C /* DragonSmallGlide2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2072A3F515CFBD11002FF45C /* DragonSmallGlide2.png */; };
+		2072A40415CFBD15002FF45C /* DragonSmallGlide3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2072A3F615CFBD12002FF45C /* DragonSmallGlide3.png */; };
+		2072A40515CFBD15002FF45C /* dragonsmallrun0.png in Resources */ = {isa = PBXBuildFile; fileRef = 2072A3F715CFBD13002FF45C /* dragonsmallrun0.png */; };
+		2072A40615CFBD15002FF45C /* dragonsmallrun1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2072A3F815CFBD13002FF45C /* dragonsmallrun1.png */; };
+		2072A40715CFBD15002FF45C /* dragonsmallrun2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2072A3F915CFBD13002FF45C /* dragonsmallrun2.png */; };
+		2072A40815CFBD15002FF45C /* dragonsmallrun3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2072A3FA15CFBD14002FF45C /* dragonsmallrun3.png */; };
+		2072A40915CFBD15002FF45C /* dragonsmallrun4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2072A3FB15CFBD14002FF45C /* dragonsmallrun4.png */; };
+		2072A40A15CFBD15002FF45C /* dragonsmallrun5.png in Resources */ = {isa = PBXBuildFile; fileRef = 2072A3FC15CFBD15002FF45C /* dragonsmallrun5.png */; };
 		2077483D15CD51E7000EAED4 /* Dragon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2077483B15CD51E7000EAED4 /* Dragon.cpp */; };
 		207F585B15CCD7E90037B9D9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 207F585915CCD7E90037B9D9 /* main.cpp */; };
 		207F586715CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F585C15CCDB410037B9D9 /* liballegro_acodec.5.0.7.dylib */; };
@@ -147,6 +161,20 @@
 		2072A3D115CF5592002FF45C /* Screams3.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = Screams3.ogg; sourceTree = "<group>"; };
 		2072A3E015CF5D1F002FF45C /* SimpleAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleAnimation.h; sourceTree = "<group>"; };
 		2072A3E515CF9AC2002FF45C /* DragonAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DragonAnimation.h; sourceTree = "<group>"; };
+		2072A3EF15CFBD0D002FF45C /* DragonSmallDive0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DragonSmallDive0.png; sourceTree = "<group>"; };
+		2072A3F015CFBD0E002FF45C /* DragonSmallDive1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DragonSmallDive1.png; sourceTree = "<group>"; };
+		2072A3F115CFBD0E002FF45C /* DragonSmallDive2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DragonSmallDive2.png; sourceTree = "<group>"; };
+		2072A3F215CFBD0F002FF45C /* DragonSmallDive3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DragonSmallDive3.png; sourceTree = "<group>"; };
+		2072A3F315CFBD11002FF45C /* DragonSmallGlide0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DragonSmallGlide0.png; sourceTree = "<group>"; };
+		2072A3F415CFBD11002FF45C /* DragonSmallGlide1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DragonSmallGlide1.png; sourceTree = "<group>"; };
+		2072A3F515CFBD11002FF45C /* DragonSmallGlide2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DragonSmallGlide2.png; sourceTree = "<group>"; };
+		2072A3F615CFBD12002FF45C /* DragonSmallGlide3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DragonSmallGlide3.png; sourceTree = "<group>"; };
+		2072A3F715CFBD13002FF45C /* dragonsmallrun0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragonsmallrun0.png; sourceTree = "<group>"; };
+		2072A3F815CFBD13002FF45C /* dragonsmallrun1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragonsmallrun1.png; sourceTree = "<group>"; };
+		2072A3F915CFBD13002FF45C /* dragonsmallrun2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragonsmallrun2.png; sourceTree = "<group>"; };
+		2072A3FA15CFBD14002FF45C /* dragonsmallrun3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragonsmallrun3.png; sourceTree = "<group>"; };
+		2072A3FB15CFBD14002FF45C /* dragonsmallrun4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragonsmallrun4.png; sourceTree = "<group>"; };
+		2072A3FC15CFBD15002FF45C /* dragonsmallrun5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragonsmallrun5.png; sourceTree = "<group>"; };
 		2077483B15CD51E7000EAED4 /* Dragon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dragon.cpp; sourceTree = "<group>"; };
 		2077483C15CD51E7000EAED4 /* Dragon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dragon.h; sourceTree = "<group>"; };
 		2077483F15CD62D6000EAED4 /* Geometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Geometry.h; sourceTree = "<group>"; };
@@ -332,6 +360,20 @@
 		205E8C2C15CCD77C00CD2AA5 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				2072A3EF15CFBD0D002FF45C /* DragonSmallDive0.png */,
+				2072A3F015CFBD0E002FF45C /* DragonSmallDive1.png */,
+				2072A3F115CFBD0E002FF45C /* DragonSmallDive2.png */,
+				2072A3F215CFBD0F002FF45C /* DragonSmallDive3.png */,
+				2072A3F315CFBD11002FF45C /* DragonSmallGlide0.png */,
+				2072A3F415CFBD11002FF45C /* DragonSmallGlide1.png */,
+				2072A3F515CFBD11002FF45C /* DragonSmallGlide2.png */,
+				2072A3F615CFBD12002FF45C /* DragonSmallGlide3.png */,
+				2072A3F715CFBD13002FF45C /* dragonsmallrun0.png */,
+				2072A3F815CFBD13002FF45C /* dragonsmallrun1.png */,
+				2072A3F915CFBD13002FF45C /* dragonsmallrun2.png */,
+				2072A3FA15CFBD14002FF45C /* dragonsmallrun3.png */,
+				2072A3FB15CFBD14002FF45C /* dragonsmallrun4.png */,
+				2072A3FC15CFBD15002FF45C /* dragonsmallrun5.png */,
 				20D4687A15CFAA1200D76210 /* Alien0.png */,
 				20D4684D15CFA8B400D76210 /* Alien1.png */,
 				20D4684C15CFA8B400D76210 /* Alien2.png */,
@@ -618,6 +660,20 @@
 				20D4688515CFAA1200D76210 /* Footstep0.ogg in Resources */,
 				20D4688615CFAA1200D76210 /* Screams0.ogg in Resources */,
 				20D4688715CFAA1200D76210 /* Villager0.png in Resources */,
+				2072A3FD15CFBD15002FF45C /* DragonSmallDive0.png in Resources */,
+				2072A3FE15CFBD15002FF45C /* DragonSmallDive1.png in Resources */,
+				2072A3FF15CFBD15002FF45C /* DragonSmallDive2.png in Resources */,
+				2072A40015CFBD15002FF45C /* DragonSmallDive3.png in Resources */,
+				2072A40115CFBD15002FF45C /* DragonSmallGlide0.png in Resources */,
+				2072A40215CFBD15002FF45C /* DragonSmallGlide1.png in Resources */,
+				2072A40315CFBD15002FF45C /* DragonSmallGlide2.png in Resources */,
+				2072A40415CFBD15002FF45C /* DragonSmallGlide3.png in Resources */,
+				2072A40515CFBD15002FF45C /* dragonsmallrun0.png in Resources */,
+				2072A40615CFBD15002FF45C /* dragonsmallrun1.png in Resources */,
+				2072A40715CFBD15002FF45C /* dragonsmallrun2.png in Resources */,
+				2072A40815CFBD15002FF45C /* dragonsmallrun3.png in Resources */,
+				2072A40915CFBD15002FF45C /* dragonsmallrun4.png in Resources */,
+				2072A40A15CFBD15002FF45C /* dragonsmallrun5.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
