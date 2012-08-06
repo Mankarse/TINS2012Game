@@ -140,4 +140,10 @@ void Dragon::renderStep(Point2D screenPos) const {
     Point2D drawPos = worldPosition - screenPos;
     al_draw_filled_rectangle(drawPos.x - 20, drawPos.y - 15, drawPos.x + 20, drawPos.y + 15, al_map_rgb(50, 160, 170));
 }
+Point2D Dragon::foreLegWorldPos() const {
+    return worldPosition + foreLeg;
+}
+Point2D Dragon::hindLegWorldPos() const {
+    return worldPosition + hindLeg;
+}
     

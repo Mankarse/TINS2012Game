@@ -90,67 +90,66 @@ void Game::drawBitmapAtScreenPoint(ALLEGRO_BITMAP* image, Point2D point) const {
         0);
 }
 void Game::drawBackground(ALLEGRO_BITMAP* image, double depth) const {
-    double layer = 0.6;
+    double layer = 0.5;
     double basePosition = ground.getTotalSize() / 2;
     double positionOffset = al_get_time() * 15; // Look at the clouds move! Happy now?
-    Point2D screenspaceCentre (worldToScreenPoint(Point2D(basePosition + positionOffset, 300), layer));
-    //std::cout << screenCorner.x << '\n';
-    if(screenCorner.y - positionOffset < screenspaceCentre.y - (al_get_bitmap_height(image) * 0.5)) {
-        screenspaceCentre.y -= al_get_bitmap_height(image);
-        al_draw_scaled_bitmap(
-            image,
-            0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-            screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y - ((al_get_bitmap_height(image)*0.5)),
-            al_get_bitmap_width(image)*4, al_get_bitmap_height(image),
-            0);
-        screenspaceCentre.y += al_get_bitmap_height(image);
+    while(positionOffset > basePosition) {
+        positionOffset -= basePosition * 2;
     }
+    double worldHeight = 0;
+    while(worldHeight - al_get_bitmap_height(image) > screenCorner.y) {
+        worldHeight -= al_get_bitmap_height(image) * 2;
+    }
+    Point2D screenspaceCentre (worldToScreenPoint(Point2D(basePosition + positionOffset, worldHeight), layer));
+    //std::cout << screenCorner.x << '\n';
     al_draw_scaled_bitmap(
         image,
         0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
         screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y - ((al_get_bitmap_height(image)*0.5)),
         al_get_bitmap_width(image), al_get_bitmap_height(image),
         0);
+    al_draw_scaled_bitmap(
+        image,
+        0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
+        screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y + ((al_get_bitmap_height(image)*0.5)),
+        al_get_bitmap_width(image), al_get_bitmap_height(image),
+        0);
     if(screenCorner.x - positionOffset < 0)
     {
-        screenspaceCentre = worldToScreenPoint(Point2D((-basePosition) + positionOffset, 300), layer);
-        if(screenCorner.y < screenspaceCentre.y - (al_get_bitmap_height(image) * 0.5)) {
-            screenspaceCentre.y -= al_get_bitmap_height(image);
-            al_draw_scaled_bitmap(
-                image,
-                0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-                screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y - ((al_get_bitmap_height(image)*0.5)),
-                al_get_bitmap_width(image)*4, al_get_bitmap_height(image),
-                0);
-            screenspaceCentre.y += al_get_bitmap_height(image);
-        }
+        screenspaceCentre = worldToScreenPoint(Point2D((-basePosition) + positionOffset, worldHeight), layer);
         al_draw_scaled_bitmap(
             image,
             0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
             screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y - ((al_get_bitmap_height(image)*0.5)),
+            al_get_bitmap_width(image), al_get_bitmap_height(image),
+            0);
+        al_draw_scaled_bitmap(
+            image,
+            0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
+            screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y + ((al_get_bitmap_height(image)*0.5)),
             al_get_bitmap_width(image), al_get_bitmap_height(image),
             0);
     }
     if(screenCorner.x + al_get_display_width(al_get_current_display()) > ground.getTotalSize() / 2)
     {
-        screenspaceCentre = worldToScreenPoint(Point2D((basePosition + ground.getTotalSize() + positionOffset), 300), layer);
-        if(screenCorner.y < screenspaceCentre.y - (al_get_bitmap_height(image) * 0.5)) {
-            screenspaceCentre.y -= al_get_bitmap_height(image);
-            al_draw_scaled_bitmap(
-                image,
-                0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
-                screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y - ((al_get_bitmap_height(image)*0.5)),
-                al_get_bitmap_width(image)*4, al_get_bitmap_height(image),
-                0);
-            screenspaceCentre.y += al_get_bitmap_height(image);
-        }
+        screenspaceCentre = worldToScreenPoint(Point2D((basePosition + ground.getTotalSize() + positionOffset), worldHeight), layer);
         al_draw_scaled_bitmap(
             image,
             0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
             screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y - ((al_get_bitmap_height(image)*0.5)),
             al_get_bitmap_width(image), al_get_bitmap_height(image),
             0);
+        al_draw_scaled_bitmap(
+            image,
+            0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image),
+            screenspaceCentre.x - ((al_get_bitmap_width(image)*0.5)), screenspaceCentre.y + ((al_get_bitmap_height(image)*0.5)),
+            al_get_bitmap_width(image), al_get_bitmap_height(image),
+            0);
     }
+}
+
+bool shouldRemove(Enemy const& check) {
+    return check.shouldDie();
 }
 
 Scene* Game::update(InputState const& input) {
@@ -221,6 +220,7 @@ Scene* Game::update(InputState const& input) {
     // Particle effects update
     
     // Clean up dead things
+    enemies.erase(std::remove_if(enemies.begin(), enemies.end(), shouldRemove), enemies.end());
     return this;
 }
 

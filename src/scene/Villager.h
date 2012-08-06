@@ -12,6 +12,7 @@ class Villager : public EnemyImplementation, private Renderable {
     double viewDistance;
     double fearCooldown;
     double currentCooldown;
+    bool wasStomped;
     Point2D footPosition;
     GroundHeightmap const* heightmap;
     public:
@@ -22,7 +23,8 @@ class Villager : public EnemyImplementation, private Renderable {
         fearCooldown(0),
         currentCooldown(0),
         heightmap(0),
-        footPosition(0, -20)
+        footPosition(0, -20),
+        wasStomped(false)
     {}
     
     void beginTerror() {
@@ -62,8 +64,7 @@ class Villager : public EnemyImplementation, private Renderable {
             if(!heightmap->linecast(getWorldPoint(), player.worldPosition)) {
                 if(fearCooldown <= 0)
                 {
-                    player.save.scoreDelta += 2;
-                    player.save.totalScore += 2;
+                    
                     beginTerror();
                 }
                 fearCooldown = 10;
@@ -71,6 +72,13 @@ class Villager : public EnemyImplementation, private Renderable {
                 currentVel = fearDirection * 100;
 
             }
+        }
+        
+        if(pointInRectInclusive(player.foreLegWorldPos().x, player.foreLegWorldPos().y,
+        Rect(getWorldPoint().x - 10, getWorldPoint().y - 40, 20, 80))) {
+            player.save.scoreDelta += 2;
+            player.save.totalScore += 2;
+            wasStomped = true;
         }
     }
     
@@ -96,6 +104,9 @@ class Villager : public EnemyImplementation, private Renderable {
     }
     virtual double getDepth() const {
         return 1;
+    }
+    virtual bool shouldDie() const {
+        return wasStomped;
     }
 };
 

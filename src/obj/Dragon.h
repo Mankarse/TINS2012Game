@@ -55,9 +55,9 @@ class Dragon {
     
     Point2D velocity;
     DragonMode mode;
-    
     Point2D foreLeg;
     Point2D hindLeg;
+    
     
     public:
     GameSave save;
@@ -67,11 +67,13 @@ class Dragon {
     double currentCooldown;
     
     Point2D worldPosition;
-    
+
     
     void assignHeightmap(GroundHeightmap* newGround);
     ScreenFlipMode physicsStep(InputState const& input);
     void renderStep(Point2D screenPos) const;
+    Point2D foreLegWorldPos() const;
+    Point2D hindLegWorldPos() const;
     
     Dragon();
     Dragon(GameSave const& newStats);
