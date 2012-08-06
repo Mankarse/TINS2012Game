@@ -33,6 +33,7 @@ public:
 
 
 private:
+    bool gamePaused;
     Rect caveRect;
     std::vector<StaticObject> staticRenderables;
     std::vector<Enemy> enemies;

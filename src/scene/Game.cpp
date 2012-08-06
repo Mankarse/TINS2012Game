@@ -3,6 +3,7 @@
 #include "Hut.h"
 #include "StaticObject.h"
 #include "Bitmap.h"
+#include "MainMenu.h"
 template<typename T, std::size_t N>
 static std::size_t length(T(&)[N]) {
     return N;
@@ -42,6 +43,7 @@ static bool isDisplayClosedEvent(ALLEGRO_EVENT const& e) {
 }
 
 Game::Game() :
+    gamePaused(),
     ground(loadGlobalHeightmap()),
     caveRect(cavePosition()),
     spawners(createSpawners()),
@@ -53,6 +55,7 @@ Game::Game() :
 }
 
 Game::Game(GameSave savedGame) :
+    gamePaused(),
     ground(loadGlobalHeightmap()),
     caveRect(cavePosition()),
     spawners(createSpawners()),
@@ -97,7 +100,7 @@ void Game::drawBitmapAtScreenPoint(ALLEGRO_BITMAP* image, Point2D point) const {
 void Game::drawBackground(ALLEGRO_BITMAP* image, double depth) const {
     double layer = 0.5;
     double basePosition = ground.getTotalSize() / 2;
-    double positionOffset = al_get_time() * 15; // Look at the clouds move! Happy now?
+    double positionOffset = player.save.totalPlayTime * 15; // Look at the clouds move! Happy now?
     while(positionOffset > basePosition) {
         positionOffset -= basePosition * 2;
     }
@@ -164,12 +167,38 @@ Scene* Game::update(InputState const& input) {
     for (std::vector<ALLEGRO_EVENT>::const_iterator it(input.events.begin()), end(input.events.end()); it != end; ++it)
     {
         ALLEGRO_EVENT const& event(*it);
+        if (gamePaused) {
+            if (event.type == ALLEGRO_EVENT_KEY_DOWN
+             && event.keyboard.keycode == ALLEGRO_KEY_R)
+            {
+                gamePaused = false;
+                continue;
+            }
+            if (event.type == ALLEGRO_EVENT_KEY_DOWN
+             && event.keyboard.keycode == ALLEGRO_KEY_Q)
+            {
+                std::auto_ptr<MainMenu> mainMenu(new MainMenu());
+                al_stop_sample(&music);
+                mainMenu->init();
+                return mainMenu.release();
+            }
+        }
         if (event.type == ALLEGRO_EVENT_KEY_DOWN && event.keyboard.keycode == ALLEGRO_KEY_ENTER) {
             saveGame(player.save);
             std::auto_ptr<Cave> cave(new Cave(player.save));
             al_stop_sample(&music);
             return cave.release();
         }
+        if (event.type == ALLEGRO_EVENT_KEY_DOWN
+            && (event.keyboard.keycode == ALLEGRO_KEY_ESCAPE || event.keyboard.keycode == ALLEGRO_KEY_P))
+        {
+            gamePaused = true;
+            return this;
+        }
+    }
+    
+    if (gamePaused) {
+        return this;
     }
     mousePosition.x = al_get_mouse_state_axis(&input.mouseState, 0);
     mousePosition.y = al_get_mouse_state_axis(&input.mouseState, 1);
@@ -319,6 +348,10 @@ void Game::drawingPass(RenderQueueSet& renderQueues) const {
     renderQueue(renderQueues.foreground);
     
     drawUI(player.save.totalScore,player.save.scoreDelta,player.currentHealth,player.save.stats.size,player.currentStamina,player.save.stats.stamina,player.currentCooldown,player.save.stats.fireCooldown);
+    
+    if (gamePaused) {
+        al_draw_bitmap(g_Bitmaps["Pause"], 0, 0, 0);
+    }
 }
 
 void Game::renderTo(ALLEGRO_BITMAP* target) const {
