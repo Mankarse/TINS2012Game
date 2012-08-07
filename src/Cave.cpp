@@ -1,5 +1,6 @@
 #include "Cave.h"
 #include "Game.h"
+
 static DragonStats getUpgradeAmounts(unsigned prime, GameSave const& save) {
     DragonStats stats;
     stats.size = 0.1 * std::pow(static_cast<double>(prime), 1.04);

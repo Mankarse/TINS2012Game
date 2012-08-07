@@ -11,7 +11,7 @@
 
 class EnemyImplementation {
 public:
-    virtual void update(std::vector<Bullet>& bulletlist, std::vector<Particle>& particleList, Dragon& player)=0;
+    virtual void update(std::vector<Bullet>& bulletlist, Dragon& player)=0;
     virtual bool hasHeightMap() const=0;
     virtual void assignHeightMap(GroundHeightmap const& newMap)=0;
     virtual void pickRenderQueue(RenderQueueSet& queues) const = 0;
@@ -28,8 +28,8 @@ class Enemy {
         impl(impl)
     {
     }
-    void update(std::vector<Bullet>& bulletlist, std::vector<Particle>& particleList, Dragon& player){
-        impl->update(bulletlist, particleList, player);
+    void update(std::vector<Bullet>& bulletlist, Dragon& player){
+        impl->update(bulletlist, player);
     }
     bool hasHeightmap() {
         return impl->hasHeightMap();

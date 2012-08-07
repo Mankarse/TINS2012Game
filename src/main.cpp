@@ -289,6 +289,7 @@ static ALLEGRO_BITMAP* loadSubBitmap(ALLEGRO_BITMAP* parent, int x, int y, int w
 struct SpritesInit {
     SpritesInit() {
         std::ifstream spriteManifest("SpriteSheet.txt");
+		if (!spriteManifest.is_open()) throw LoadingException("Could not open SpriteSheet.txt");
         while (spriteManifest) {
             std::string name;
             std::string eq;
@@ -329,6 +330,9 @@ struct Initializer {
 void mainLoop(std::auto_ptr<Scene> screen);
 
 int main(int argc, char **argv){
+#ifdef _MSC_VER
+	_set_printf_count_output(1);
+#endif
     try {
         Initializer init;
         

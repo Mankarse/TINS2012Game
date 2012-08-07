@@ -37,7 +37,6 @@ private:
     Rect caveRect;
     std::vector<StaticObject> staticRenderables;
     std::vector<Enemy> enemies;
-    std::vector<Particle> particles;
     std::vector<Bullet> friendlyBullets;
     std::vector<Bullet> enemyBullets;
     std::vector<Spawner> spawners;
