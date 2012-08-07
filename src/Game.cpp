@@ -252,7 +252,7 @@ Scene* Game::update(InputState const& input) {
         {
             curEnemy.assignHeightmap(ground);
         }
-        curEnemy.update(enemyBullets, particles, player);
+        curEnemy.update(enemyBullets, player);
     }
     // My bullets!
     for (std::vector<Bullet>::iterator it(friendlyBullets.begin()), end(friendlyBullets.end()); it != end; ++it)
